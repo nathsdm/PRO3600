@@ -1,0 +1,9 @@
+2023-03-17 12:38:48 - App - INFO - Launching...
+2023-03-17 12:38:49 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-17 12:38:49 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 41 32768
+2023-03-17 12:38:52 - App - INFO - (Main menu)
+2023-03-17 12:38:52 - App - INFO - (Credits menu)
+2023-03-17 12:38:52 - App - INFO - Switched to settings menu
+2023-03-17 12:38:52 - App - INFO - Switched to cards menu
+2023-03-17 12:38:56 - App - INFO - End of the program
+--------------------------------------------------------------

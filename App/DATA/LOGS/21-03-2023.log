@@ -1,0 +1,182 @@
+2023-03-21 12:02:37 - App - INFO - Launching...
+2023-03-21 12:02:37 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-21 12:02:37 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 41 32768
+2023-03-21 12:02:39 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2023-03-21 12:02:39 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&fields=nextPageToken%2C+files%28id%2C+name%29&pageSize=10&alt=json
+2023-03-21 12:02:39 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=media
+2023-03-21 12:02:40 - App - INFO - (Main menu)
+2023-03-21 12:02:40 - App - INFO - (Credits menu)
+2023-03-21 12:02:40 - App - INFO - Switched to settings menu
+2023-03-21 12:02:40 - App - INFO - Switched to cards menu
+2023-03-21 12:02:41 - App - INFO - (Cards description window)
+2023-03-21 12:02:44 - App - INFO - End of the program
+--------------------------------------------------------------
+2023-03-21 12:05:11 - App - INFO - Launching...
+2023-03-21 12:05:11 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-21 12:05:11 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 41 32768
+2023-03-21 12:05:12 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2023-03-21 12:05:13 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&fields=nextPageToken%2C+files%28id%2C+name%29&pageSize=10&alt=json
+2023-03-21 12:05:13 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=media
+2023-03-21 12:05:14 - App - INFO - (Main menu)
+2023-03-21 12:05:14 - App - INFO - (Credits menu)
+2023-03-21 12:05:14 - App - INFO - Switched to settings menu
+2023-03-21 12:05:14 - App - INFO - Switched to cards menu
+2023-03-21 12:05:15 - App - INFO - (Cards description window)
+2023-03-21 12:05:16 - App - INFO - End of the program
+--------------------------------------------------------------
+2023-03-21 12:05:58 - App - INFO - Launching...
+2023-03-21 12:05:58 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-21 12:05:58 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 41 32768
+2023-03-21 12:05:59 - requests_oauthlib.oauth2_session - DEBUG - Generated new state E6NmGDFFAAcem2aqmqtjDF0t2pjzpX.
+2023-03-21 12:06:11 - google_auth_oauthlib.flow - INFO - "GET /?state=E6NmGDFFAAcem2aqmqtjDF0t2pjzpX&code=4/0AWtgzh7h35uJ_YD8WiuCAkzZklamaJAQFdnGtyztqX6PU_BHMldNhwM05UY3AM2ZV8Vw_g&scope=https://www.googleapis.com/auth/drive.appdata%20https://www.googleapis.com/auth/drive.metadata.readonly HTTP/1.1" 200 65
+2023-03-21 12:06:11 - requests_oauthlib.oauth2_session - DEBUG - Encoding `client_id` "936748069792-gmbns0ab4gflsomto2565cpiqj39rk0i.apps.googleusercontent.com" with `client_secret` as Basic auth credentials.
+2023-03-21 12:06:11 - requests_oauthlib.oauth2_session - DEBUG - Requesting url https://oauth2.googleapis.com/token using method POST.
+2023-03-21 12:06:11 - requests_oauthlib.oauth2_session - DEBUG - Supplying headers {'Accept': 'application/json', 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'} and data {'grant_type': 'authorization_code', 'code': '4/0AWtgzh7h35uJ_YD8WiuCAkzZklamaJAQFdnGtyztqX6PU_BHMldNhwM05UY3AM2ZV8Vw_g', 'redirect_uri': 'http://localhost:56091/'}
+2023-03-21 12:06:11 - requests_oauthlib.oauth2_session - DEBUG - Passing through key word arguments {'timeout': None, 'auth': <requests.auth.HTTPBasicAuth object at 0x000002292BB72CB0>, 'verify': True, 'proxies': None, 'cert': None}.
+2023-03-21 12:06:11 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2023-03-21 12:06:11 - urllib3.connectionpool - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2023-03-21 12:06:11 - requests_oauthlib.oauth2_session - DEBUG - Request to fetch token completed with status 200.
+2023-03-21 12:06:11 - requests_oauthlib.oauth2_session - DEBUG - Request url was https://oauth2.googleapis.com/token
+2023-03-21 12:06:11 - requests_oauthlib.oauth2_session - DEBUG - Request headers were {'User-Agent': 'python-requests/2.27.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8', 'Content-Length': '157', 'Authorization': 'Basic OTM2NzQ4MDY5NzkyLWdtYm5zMGFiNGdmbHNvbXRvMjU2NWNwaXFqMzlyazBpLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tOkdPQ1NQWC1Ld2RrNC1EMU53aDNJSW5vRnA0XzBYMkh5azJt'}
+2023-03-21 12:06:11 - requests_oauthlib.oauth2_session - DEBUG - Request body was grant_type=authorization_code&code=4%2F0AWtgzh7h35uJ_YD8WiuCAkzZklamaJAQFdnGtyztqX6PU_BHMldNhwM05UY3AM2ZV8Vw_g&redirect_uri=http%3A%2F%2Flocalhost%3A56091%2F
+2023-03-21 12:06:11 - requests_oauthlib.oauth2_session - DEBUG - Response headers were {'Date': 'Mon, 20 Mar 2023 23:06:11 GMT', 'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate', 'Pragma': 'no-cache', 'Expires': 'Mon, 01 Jan 1990 00:00:00 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Vary': 'Origin, X-Origin, Referer', 'Content-Encoding': 'gzip', 'Server': 'scaffolding on HTTPServer2', 'X-XSS-Protection': '0', 'X-Frame-Options': 'SAMEORIGIN', 'X-Content-Type-Options': 'nosniff', 'Alt-Svc': 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000', 'Transfer-Encoding': 'chunked'} and content {
+  "access_token": "ya29.a0AVvZVsoTYN7LJvYhS1PEDUqHWJDvJa__hHxm6ICKs5VR3cWXDTtzA6Adxyjezh3xUSg1gK-T5pnUzmBQQRE2Uogp7QqpQPR1oxmz7n3NyVjHYZDgRLTpKPjm8PFzO1QedVt_9vfLXzDa50gJLftD5Eu1wYnRaCgYKAQESARESFQGbdwaIT20vsgwzLKFR0N3_Hclziw0163",
+  "expires_in": 3599,
+  "refresh_token": "1//03Mmt46lidKE9CgYIARAAGAMSNwF-L9Ir3Aci408eF3Btj2xVYNudbVmCy8c88aLcvacYieoQTESkVS16CszCJf6Dxks4y-oQGeA",
+  "scope": "https://www.googleapis.com/auth/drive.metadata.readonly https://www.googleapis.com/auth/drive.appdata",
+  "token_type": "Bearer"
+}.
+2023-03-21 12:06:11 - requests_oauthlib.oauth2_session - DEBUG - Invoking 0 token response hooks.
+2023-03-21 12:06:11 - requests_oauthlib.oauth2_session - DEBUG - Obtained token {'access_token': 'ya29.a0AVvZVsoTYN7LJvYhS1PEDUqHWJDvJa__hHxm6ICKs5VR3cWXDTtzA6Adxyjezh3xUSg1gK-T5pnUzmBQQRE2Uogp7QqpQPR1oxmz7n3NyVjHYZDgRLTpKPjm8PFzO1QedVt_9vfLXzDa50gJLftD5Eu1wYnRaCgYKAQESARESFQGbdwaIT20vsgwzLKFR0N3_Hclziw0163', 'expires_in': 3599, 'refresh_token': '1//03Mmt46lidKE9CgYIARAAGAMSNwF-L9Ir3Aci408eF3Btj2xVYNudbVmCy8c88aLcvacYieoQTESkVS16CszCJf6Dxks4y-oQGeA', 'scope': ['https://www.googleapis.com/auth/drive.metadata.readonly', 'https://www.googleapis.com/auth/drive.appdata'], 'token_type': 'Bearer', 'expires_at': 1679357170.255521}.
+2023-03-21 12:06:11 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2023-03-21 12:06:11 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&fields=nextPageToken%2C+files%28id%2C+name%29&pageSize=10&alt=json
+2023-03-21 12:06:11 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=media
+2023-03-21 12:06:12 - App - INFO - (Main menu)
+2023-03-21 12:06:12 - App - INFO - (Credits menu)
+2023-03-21 12:06:12 - App - INFO - Switched to settings menu
+2023-03-21 12:06:12 - App - INFO - Switched to cards menu
+2023-03-21 12:06:13 - App - INFO - (Cards description window)
+2023-03-21 12:06:22 - App - INFO - End of the program
+--------------------------------------------------------------
+2023-03-21 12:08:49 - App - INFO - Launching...
+2023-03-21 12:08:50 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-21 12:08:50 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 41 32768
+2023-03-21 12:08:51 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2023-03-21 12:08:51 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&fields=nextPageToken%2C+files%28id%2C+name%29&pageSize=10&alt=json
+2023-03-21 12:08:51 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=media
+2023-03-21 12:08:53 - App - INFO - (Main menu)
+2023-03-21 12:08:53 - App - INFO - (Credits menu)
+2023-03-21 12:08:53 - App - INFO - Switched to settings menu
+2023-03-21 12:08:53 - App - INFO - Switched to cards menu
+2023-03-21 12:08:58 - App - INFO - End of the program
+--------------------------------------------------------------
+2023-03-21 12:10:19 - App - INFO - Launching...
+2023-03-21 12:10:19 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-21 12:10:19 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 41 32768
+2023-03-21 12:10:20 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2023-03-21 12:10:20 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&fields=nextPageToken%2C+files%28id%2C+name%29&pageSize=10&alt=json
+2023-03-21 12:10:21 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=media
+2023-03-21 12:10:22 - App - INFO - (Main menu)
+2023-03-21 12:10:22 - App - INFO - (Credits menu)
+2023-03-21 12:10:22 - App - INFO - Switched to settings menu
+2023-03-21 12:10:22 - App - INFO - Switched to cards menu
+2023-03-21 12:10:27 - App - INFO - End of the program
+--------------------------------------------------------------
+2023-03-21 12:11:23 - App - INFO - Launching...
+2023-03-21 12:11:23 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-21 12:11:23 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 41 32768
+2023-03-21 12:11:24 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2023-03-21 12:11:24 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&fields=nextPageToken%2C+files%28id%2C+name%29&pageSize=10&alt=json
+2023-03-21 12:11:25 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=media
+2023-03-21 12:11:26 - App - INFO - (Main menu)
+2023-03-21 12:11:26 - App - INFO - (Credits menu)
+2023-03-21 12:11:26 - App - INFO - Switched to settings menu
+2023-03-21 12:11:26 - App - INFO - Switched to cards menu
+2023-03-21 12:11:32 - App - INFO - End of the program
+--------------------------------------------------------------
+2023-03-21 12:12:28 - App - INFO - Launching...
+2023-03-21 12:12:28 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-21 12:12:28 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 41 32768
+2023-03-21 12:12:30 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2023-03-21 12:12:30 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&fields=nextPageToken%2C+files%28id%2C+name%29&pageSize=10&alt=json
+2023-03-21 12:12:30 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=media
+2023-03-21 12:12:31 - App - INFO - (Main menu)
+2023-03-21 12:12:31 - App - INFO - (Credits menu)
+2023-03-21 12:12:31 - App - INFO - Switched to settings menu
+2023-03-21 12:12:31 - App - INFO - Switched to cards menu
+2023-03-21 12:12:35 - App - INFO - End of the program
+--------------------------------------------------------------
+2023-03-21 12:13:32 - App - INFO - Launching...
+2023-03-21 12:13:32 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-21 12:13:32 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 41 32768
+2023-03-21 12:13:33 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2023-03-21 12:13:33 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&fields=nextPageToken%2C+files%28id%2C+name%29&pageSize=10&alt=json
+2023-03-21 12:13:34 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=media
+2023-03-21 12:13:35 - App - INFO - (Main menu)
+2023-03-21 12:13:35 - App - INFO - (Credits menu)
+2023-03-21 12:13:35 - App - INFO - Switched to settings menu
+2023-03-21 12:13:39 - App - INFO - End of the program
+--------------------------------------------------------------
+2023-03-21 12:15:13 - App - INFO - Launching...
+2023-03-21 12:15:14 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-21 12:15:14 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 41 32768
+2023-03-21 12:15:15 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2023-03-21 12:15:15 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&fields=nextPageToken%2C+files%28id%2C+name%29&pageSize=10&alt=json
+2023-03-21 12:15:15 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=media
+2023-03-21 12:15:16 - App - INFO - (Main menu)
+2023-03-21 12:15:16 - App - INFO - (Credits menu)
+2023-03-21 12:15:16 - App - INFO - Switched to settings menu
+2023-03-21 12:15:16 - App - INFO - Switched to cards menu
+2023-03-21 12:15:17 - App - INFO - (Cards description window)
+2023-03-21 12:15:25 - App - INFO - End of the program
+--------------------------------------------------------------
+2023-03-21 12:22:38 - App - INFO - Launching...
+2023-03-21 12:22:39 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-21 12:22:39 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 41 32768
+2023-03-21 12:22:40 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2023-03-21 12:22:40 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&fields=nextPageToken%2C+files%28id%2C+name%29&pageSize=10&alt=json
+2023-03-21 12:22:40 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=media
+2023-03-21 12:22:41 - App - INFO - (Main menu)
+2023-03-21 12:22:41 - App - INFO - (Credits menu)
+2023-03-21 12:22:41 - App - INFO - Switched to settings menu
+2023-03-21 12:22:41 - App - INFO - Switched to cards menu
+2023-03-21 12:22:45 - App - INFO - End of the program
+--------------------------------------------------------------
+2023-03-21 12:26:05 - App - INFO - Launching...
+2023-03-21 12:26:05 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-21 12:26:05 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 41 32768
+2023-03-21 12:26:06 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2023-03-21 12:26:06 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&fields=nextPageToken%2C+files%28id%2C+name%29&pageSize=10&alt=json
+2023-03-21 12:26:07 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=media
+2023-03-21 12:26:08 - App - INFO - (Main menu)
+2023-03-21 12:26:08 - App - INFO - (Credits menu)
+2023-03-21 12:26:08 - App - INFO - Switched to settings menu
+2023-03-21 12:26:08 - App - INFO - Switched to cards menu
+2023-03-21 12:26:14 - App - INFO - End of the program
+--------------------------------------------------------------
+2023-03-21 12:29:18 - App - INFO - Launching...
+2023-03-21 12:29:18 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-21 12:29:18 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 41 32768
+2023-03-21 12:29:19 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2023-03-21 12:29:19 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&fields=nextPageToken%2C+files%28id%2C+name%29&pageSize=10&alt=json
+2023-03-21 12:29:19 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=media
+2023-03-21 12:29:21 - App - INFO - (Main menu)
+2023-03-21 12:29:21 - App - INFO - (Credits menu)
+2023-03-21 12:29:21 - App - INFO - Switched to settings menu
+2023-03-21 12:29:21 - App - INFO - Switched to cards menu
+2023-03-21 12:29:21 - App - INFO - (Cards description window)
+2023-03-21 12:29:32 - App - INFO - End of the program
+--------------------------------------------------------------
+2023-03-21 09:38:58 - App - INFO - Launching...
+2023-03-21 09:38:58 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-21 09:38:58 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 41 32768
+2023-03-21 09:38:59 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2023-03-21 09:38:59 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&fields=nextPageToken%2C+files%28id%2C+name%29&pageSize=10&alt=json
+2023-03-21 09:39:00 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=media
+2023-03-21 09:39:01 - App - INFO - (Main menu)
+2023-03-21 09:39:01 - App - INFO - (Credits menu)
+2023-03-21 09:39:01 - App - INFO - Switched to settings menu
+2023-03-21 09:39:01 - App - INFO - Switched to cards menu
+2023-03-21 09:39:01 - App - INFO - (Cards description window)
+2023-03-21 09:39:07 - App - INFO - End of the program
+--------------------------------------------------------------
