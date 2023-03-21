@@ -53,7 +53,6 @@ class LoadingScreen(tk.Tk):
         
         def start():
             self.authentifier = GoogleAuth(self)
-            self.deiconify()
             self.cards_manager = CardsManager(self)
             self.destroy()
             self.son = GUI(self.app, self.cards_manager)

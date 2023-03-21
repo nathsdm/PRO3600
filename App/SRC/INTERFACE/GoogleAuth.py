@@ -39,6 +39,7 @@ class GoogleAuth:
             else:
                 flow = InstalledAppFlow.from_client_secrets_file(os.path.join("App", "credentials.json"), self.SCOPES)
                 self.creds = flow.run_local_server(port=0)
+            self.master.deiconify()
             # Save the credentials for the next run
             with open(os.path.join("App", "token.json"), 'w') as token:
                 token.write(self.creds.to_json())
