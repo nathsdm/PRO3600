@@ -25,8 +25,44 @@ class CardsMenu(tk.Frame):
         self.back_button.pack()
         self.analyse_button = tk.Button(self, text="Analyse", command=lambda: self.cards_manager.analyse_card())
         self.analyse_button.pack()
+        self.set_code_button = tk.Button(self, text="Set code", command=lambda: self.set_code_query())
+        self.set_code_button.pack()
         self.display_cards()
         
+    def set_code_query(self):
+        """
+        Ask the user to enter the code of the card.
+        """
+        def set_code():
+            code = self.code_query_entry.get()
+            self.code_query.destroy()
+            self.cards_manager.recognize_card(code)
+            self.update()
+        
+        def cancel_code_query():
+            self.code_query.destroy()
+        
+        self.code_query = tk.Tk()
+        self.code_query.title("Set code")
+        self.code_query.geometry("300x100")
+        self.code_query.protocol("WM_DELETE_WINDOW", cancel_code_query)
+        self.code_query_label = tk.Label(self.code_query, text="Enter the code of the card:")
+        self.code_query_label.pack()
+        
+        def upper(*args): # callback function
+            code.set(code.get().upper()) # change to Upper case
+            if len(code.get()) >= 10:
+                code.set(code.get()[:10])
+        
+        code = tk.StringVar(self.code_query) # declare StringVar()
+        self.code_query_entry = tk.Entry(self.code_query,textvariable=code,font=28,width=30)
+        code.trace('w',upper) # trigger when variable changes
+        
+        self.code_query_entry.pack()
+        self.code_query_button = tk.Button(self.code_query, text="Ok", command=set_code)
+        self.code_query_button.pack()
+        
+    
     def display_cards(self):
         """
         Display the cards in the cards manager.
