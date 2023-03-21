@@ -7,7 +7,6 @@ Configure the BT settings page.
 #-------------------------------------------------------------------#
 
 import tkinter as tk
-import os
 from SRC.CARDS.CardsManager import CardsManager
 
 #-------------------------------------------------------------------#

@@ -20,11 +20,11 @@ class CardsManager:
         self.cards_ref = []
         self.cards = []
         self.names = {}
-        self.cards_path = os.path.join(os.getcwd(), "DATA", "CARDS", "cards.txt")
+        self.cards_path = os.path.join("App", "DATA", "CARDS", "cards.txt")
         self.info_fr = cardinfo.info_fr["data"]
         self.info_en = cardinfo.info_en["data"]
         self.refs = {}
-        path = os.path.join(os.getcwd(), "DATA", "CARDS", "IMAGES")        
+        path = os.path.join("App", "DATA", "CARDS", "IMAGES")        
         if os.path.isdir(path):
             print("Images folder found")
         else:
@@ -35,12 +35,12 @@ class CardsManager:
         """
         Defines the cards used in the cards menu.
         """
-        if os.path.isdir(os.path.join(os.getcwd(), "DATA", "CARDS")):
+        if os.path.isdir(os.path.join("App", "DATA", "CARDS")):
             print("Cards folder found")
         else:
-            os.makedirs(name=os.path.join(os.getcwd(), "DATA", "CARDS"))
+            os.makedirs(name=os.path.join("App", "DATA", "CARDS"))
         if os.path.isfile(self.cards_path):
-            for ref in open(file="DATA\CARDS\cards.txt", mode="r"):
+            for ref in open(file="App\DATA\CARDS\cards.txt", mode="r"):
                 if ref != "UNKNOWN":
                     self.cards_ref.append(ref.rstrip('\n'))
         else:
@@ -114,7 +114,7 @@ class CardsManager:
         """
         # Download the image from the URL
         filename = slugify(card.name) + ".jpg"
-        path = os.path.join(os.getcwd(), "DATA", "CARDS", "IMAGES")
+        path = os.path.join("App", "DATA", "CARDS", "IMAGES")
         image_path = os.path.join(path, filename)
         
         if os.path.isfile(image_path):

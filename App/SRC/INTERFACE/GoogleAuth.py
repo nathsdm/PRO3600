@@ -22,25 +22,25 @@ class GoogleAuth:
         self.master = master
         self.creds = None
         self.file_id = None
-        self.path = os.path.join(os.getcwd(), "DATA", "CARDS", "cards_drive.txt")
+        self.path = os.path.join("App", "DATA", "CARDS", "cards_drive.txt")
         self.local_fd = io.FileIO(self.path, mode="w")
         # If modifying these scopes, delete the file token.json.
         self.SCOPES = ['https://www.googleapis.com/auth/drive.metadata.readonly', 'https://www.googleapis.com/auth/drive.appdata']
         # The file token.json stores the user's access and refresh tokens, and is
         # created automatically when the authorization flow completes for the first
         # time.
-        if os.path.exists('token.json'):
-            self.creds = Credentials.from_authorized_user_file('token.json', self.SCOPES)
+        if os.path.exists(os.path.join("App", "token.json")):
+            self.creds = Credentials.from_authorized_user_file(os.path.join("App", "token.json"), self.SCOPES)
         # If there are no (valid) credentials available, let the user log in.
         if not self.creds or not self.creds.valid:
             self.master.withdraw()
             if self.creds and self.creds.expired and self.creds.refresh_token:
                 self.creds.refresh(Request())
             else:
-                flow = InstalledAppFlow.from_client_secrets_file('credentials.json', self.SCOPES)
+                flow = InstalledAppFlow.from_client_secrets_file(os.path.join("App", "credentials.json"), self.SCOPES)
                 self.creds = flow.run_local_server(port=0)
             # Save the credentials for the next run
-            with open('token.json', 'w') as token:
+            with open(os.path.join("App", "token.json"), 'w') as token:
                 token.write(self.creds.to_json())
         self.service = build('drive', 'v3', credentials=self.creds)
         try:
@@ -91,7 +91,7 @@ class GoogleAuth:
                 'name': 'CARDS.txt',
                 'parents': ['appDataFolder']
             }
-            media = MediaFileUpload('DATA\CARDS\cards.txt',
+            media = MediaFileUpload(os.path.join("App", "DATA", "CARDS", "cards.txt"),
                                     mimetype='text/txt',
                                     resumable=True)
             file = self.service.files().create(body=file_metadata, media_body=media,
@@ -130,7 +130,7 @@ class GoogleAuth:
                 return
 
     def update_filedata(self, file_id):
-        self.service.files().update(fileId=file_id, media_body=MediaFileUpload('DATA\CARDS\cards.txt', mimetype='text/txt', resumable=True)).execute()
+        self.service.files().update(fileId=file_id, media_body=MediaFileUpload(os.join("App", "DATA", "CARDS", "cards.txt"), mimetype='text/txt', resumable=True)).execute()
 
     def list_appdata(self):
         """List all files inserted in the application data folder
