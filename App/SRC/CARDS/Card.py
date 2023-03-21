@@ -10,6 +10,8 @@ class Card():
         self.find_card()
         self.image = self.card_info.get("card_images")[0].get("image_url")
         self.image_name = slugify(self.name)
+        self.infos = []
+        self.setup_infos()
         
         
     def find_card(self):
@@ -17,6 +19,10 @@ class Card():
             if k.get("name") == self.name:
                 self.card_info = k
                 break
+    
+    def setup_infos(self):
+        for k in self.card_info.keys():
+            self.infos.append(str(k) + " : " + str(self.card_info.get(k)))
             
     def display_infos(self):
         for k in self.card_info.keys():

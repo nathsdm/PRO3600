@@ -25,7 +25,8 @@ class CardDescWindow(tk.Frame):
         """
         Defines the labels used in the cards description window.
         """
-        self.labels.append(tk.Label(self, text=self.card.name, font=("System", 30)))
+        for info in self.card.infos:
+            self.labels.append(tk.Label(self, text=info))
         for label in self.labels:
             label.pack()
         
