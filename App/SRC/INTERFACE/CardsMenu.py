@@ -37,8 +37,12 @@ class CardsMenu(tk.Frame):
         sb.pack(side="right")
         self.text.configure(yscrollcommand=sb.set)
         self.card_buttons = self.cards_manager.get_buttons(self.text)
+        count = 0
         for button in self.card_buttons:
             self.text.window_create("end", window=button)
+            count += 1
+            if count % 7 == 0:
+                self.text.insert("end", "\n")
         self.text.configure(state="disabled")
         
     def update(self):

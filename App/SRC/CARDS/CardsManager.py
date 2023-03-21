@@ -135,4 +135,4 @@ class CardsManager:
         with open(self.cards_path, 'a') as f:
             f.write('\n')
             f.write(card)
-        self.master.update()
+        self.master.son.cards_menu.update()
