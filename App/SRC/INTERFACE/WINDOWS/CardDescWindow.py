@@ -15,7 +15,7 @@ class CardDescWindow(tk.Frame):
         """
         Defines the images used in the cards description window.
         """
-        card_img = ImageTk.PhotoImage(Image.open(os.path.join("DATA", "CARDS", "IMAGES", self.card.image_name + ".jpg")))
+        card_img = ImageTk.PhotoImage(Image.open(os.path.join("App", "DATA", "CARDS", "IMAGES", self.card.image_name + ".jpg")))
         self.images.append(tk.Label(self, image=card_img))
         self.images[-1].image = card_img
         for image in self.images:
