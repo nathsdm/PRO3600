@@ -56,29 +56,6 @@ class GoogleAuth:
         except HttpError as error:
             # TODO(developer) - Handle errors from drive API.
             print(f'An error occurred: {error}')
-        
-        
-    def create_folder(self):
-        """
-        Create a folder and prints the folder ID
-        Returns : Folder Id
-        """
-
-        try:
-            file_metadata = {
-                'name': 'appDataFolder',
-                'mimeType': 'application/vnd.google-apps.folder'
-            }
-
-            # pylint: disable=maybe-no-member
-            file = self.service.files().create(body=file_metadata, fields='id'
-                                        ).execute()
-            print(F'Folder ID: "{file.get("id")}".')
-            return file.get('id')
-
-        except HttpError as error:
-            print(F'An error occurred: {error}')
-            return None
 
     def upload_appdata(self):
         """
@@ -129,6 +106,14 @@ class GoogleAuth:
             if done:
                 print('Download Complete')
                 return
+        self.update_localdata()
+        
+    def update_localdata(self):
+        with open(os.path.join("App", "DATA", "CARDS", "cards_drive.txt"), "r") as file:
+            data = file.read()
+        with open(os.path.join("App", "DATA", "CARDS", "cards.txt"), "w") as file:
+            file.write(data)
+        os.remove(os.path.join("App", "DATA", "CARDS", "cards_drive.txt"))
 
     def update_filedata(self):
         self.service.files().update(fileId=self.file_id, media_body=MediaFileUpload(os.path.join("App", "DATA", "CARDS", "cards.txt"), mimetype='text/txt', resumable=True)).execute()

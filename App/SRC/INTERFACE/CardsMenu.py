@@ -69,9 +69,9 @@ class CardsMenu(tk.Frame):
         """
         self.text = tk.Text(self, width = self.master.winfo_screenwidth(), height = self.master.winfo_screenheight(), wrap="none")
         self.text.pack(side="left")
-        sb = tk.Scrollbar(self, command=self.text.yview)
-        sb.pack(side="right")
-        self.text.configure(yscrollcommand=sb.set)
+        self.sb = tk.Scrollbar(self, command=self.text.yview)
+        self.sb.pack(side="right", fill="y")
+        self.text.configure(yscrollcommand=self.sb.set, state="normal")
         self.card_buttons = self.cards_manager.get_buttons(self.text)
         count = 0
         for button in self.card_buttons:
@@ -86,5 +86,6 @@ class CardsMenu(tk.Frame):
         Update the cards menu.
         """
         self.text.destroy()
+        self.sb.destroy()
         self.display_cards()
        
