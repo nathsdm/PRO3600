@@ -445,3 +445,19 @@
 2023-03-21 02:10:21 - App - INFO - (Cards description window)
 2023-03-21 02:10:50 - App - INFO - End of the program
 --------------------------------------------------------------
+2023-03-21 08:29:03 - App - INFO - Launching...
+2023-03-21 08:29:04 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-21 08:29:04 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 41 32768
+2023-03-21 08:29:05 - google.auth.transport.requests - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2023-03-21 08:29:05 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2023-03-21 08:29:06 - urllib3.connectionpool - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2023-03-21 08:29:06 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2023-03-21 08:29:06 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&fields=nextPageToken%2C+files%28id%2C+name%29&pageSize=10&alt=json
+2023-03-21 08:29:07 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=media
+2023-03-21 08:29:11 - App - INFO - (Main menu)
+2023-03-21 08:29:11 - App - INFO - (Credits menu)
+2023-03-21 08:29:11 - App - INFO - Switched to settings menu
+2023-03-21 08:29:11 - App - INFO - Switched to cards menu
+2023-03-21 08:29:11 - App - INFO - (Cards description window)
+2023-03-21 08:30:28 - App - INFO - End of the program
+--------------------------------------------------------------

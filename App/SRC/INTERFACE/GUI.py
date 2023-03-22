@@ -14,6 +14,7 @@ from SRC.INTERFACE.CardsMenu import CardsMenu
 from SRC.INTERFACE.WINDOWS.CardDescWindow import CardDescWindow
 
 import tkinter as tk
+from tkinter import font
 import os
 
 #------------------------------------------------------------#
@@ -52,6 +53,14 @@ class GUI(tk.Tk):
         self.title("Yugi")
         self.attributes('-fullscreen',True)
         self.resizable(False, False)
+        # Creating a Font object of "TkDefaultFont"
+        self.defaultFont = font.nametofont("TkDefaultFont")
+  
+        # Overriding default-font with custom settings
+        # i.e changing font-family, size and weight
+        self.defaultFont.configure(family="Matrix-Bold",
+                                   size=19,
+                                   weight=font.BOLD)
         self.protocol("WM_DELETE_WINDOW", self.quit)
         self.center()
         self.focus_force()

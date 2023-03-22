@@ -130,8 +130,8 @@ class GoogleAuth:
                 print('Download Complete')
                 return
 
-    def update_filedata(self, file_id):
-        self.service.files().update(fileId=file_id, media_body=MediaFileUpload(os.join("App", "DATA", "CARDS", "cards.txt"), mimetype='text/txt', resumable=True)).execute()
+    def update_filedata(self):
+        self.service.files().update(fileId=self.file_id, media_body=MediaFileUpload(os.path.join("App", "DATA", "CARDS", "cards.txt"), mimetype='text/txt', resumable=True)).execute()
 
     def list_appdata(self):
         """List all files inserted in the application data folder
