@@ -120,14 +120,15 @@ class CardsManager:
         path = os.path.join("App", "DATA", "CARDS", "IMAGES")
         image_path = os.path.join(path, filename)
         
-        if os.path.isfile(image_path):
-            return image_path
-        else:
+        if not os.path.isfile(image_path):
             urlretrieve(card.image, image_path)
-            return image_path
+        
+        return image_path
         
     def analyse_card(self):
         image_path = fd.askopenfilename(title = "Choose an image", filetypes=[("Image files", ".jpg .png")])
+        if image_path == None or image_path == "":
+            return
         analyser = Analyser(image_path)
         analyser.analyse()
         ref = self.recognize_card(analyser.result)

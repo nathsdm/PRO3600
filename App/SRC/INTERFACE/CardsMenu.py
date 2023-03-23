@@ -19,6 +19,8 @@ class CardsMenu(tk.Frame):
         self.master = master
         self.cards_manager = cards_manager
         self.setup_buttons()
+        self.setup_text()
+        self.display_cards()
         
     def setup_buttons(self):
         self.back_button = tk.Button(self, text="Back", command=lambda: self.master.change_menu(self.master.main_menu))
@@ -27,7 +29,17 @@ class CardsMenu(tk.Frame):
         self.analyse_button.pack()
         self.set_code_button = tk.Button(self, text="Set code", command=lambda: self.set_code_query())
         self.set_code_button.pack()
-        self.display_cards()
+        
+    def setup_text(self):
+        self.text = tk.Text(self, width = self.master.winfo_screenwidth(), height = self.master.winfo_screenheight()-50, wrap="none", cursor="arrow")
+        self.sb = tk.Scrollbar(self, command=self.text.yview, orient="vertical", cursor="arrow", width=20, activebackground="blue")
+        self.sb.pack(side="right", fill="y")
+        self.text.pack(side="left", fill="both", expand=True)
+        self.text.configure(yscrollcommand=self.sb.set)
+        self.bind("<MouseWheel>", self._on_mousewheel)
+        
+    def _on_mousewheel(self, event):
+        self.text.yview_scroll(int(-1*(event.delta/120)), "units")
         
     def set_code_query(self):
         """
@@ -67,11 +79,6 @@ class CardsMenu(tk.Frame):
         """
         Display the cards in the cards manager.
         """
-        self.text = tk.Text(self, width = self.master.winfo_screenwidth(), height = self.master.winfo_screenheight(), wrap="none")
-        self.text.pack(side="left")
-        self.sb = tk.Scrollbar(self, command=self.text.yview)
-        self.sb.pack(side="right", fill="y")
-        self.text.configure(yscrollcommand=self.sb.set, state="normal")
         self.card_buttons = self.cards_manager.get_buttons(self.text)
         count = 0
         for button in self.card_buttons:
@@ -86,6 +93,7 @@ class CardsMenu(tk.Frame):
         Update the cards menu.
         """
         self.text.destroy()
-        self.sb.destroy()
+        self.text = tk.Text(self, width = self.master.winfo_screenwidth(), height = self.master.winfo_screenheight(), wrap="none")
+        self.text.pack(side="left", fill="both", expand=True)
         self.display_cards()
        
