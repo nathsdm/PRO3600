@@ -36,10 +36,6 @@ class CardsMenu(tk.Frame):
         self.sb.pack(side="right", fill="y")
         self.text.pack(side="left", fill="both", expand=True)
         self.text.configure(yscrollcommand=self.sb.set)
-        self.bind("<MouseWheel>", self._on_mousewheel)
-        
-    def _on_mousewheel(self, event):
-        self.text.yview_scroll(int(-1*(event.delta/120)), "units")
         
     def set_code_query(self):
         """
@@ -93,7 +89,7 @@ class CardsMenu(tk.Frame):
         Update the cards menu.
         """
         self.text.destroy()
-        self.text = tk.Text(self, width = self.master.winfo_screenwidth(), height = self.master.winfo_screenheight(), wrap="none")
+        self.text = tk.Text(self, width = self.master.winfo_screenwidth(), height = self.master.winfo_screenheight(), wrap="none", cursor="arrow")
         self.text.pack(side="left", fill="both", expand=True)
         self.display_cards()
        

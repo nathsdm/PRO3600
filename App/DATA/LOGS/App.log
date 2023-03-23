@@ -1,16 +1,14 @@
-2023-03-23 11:36:18 - App - INFO - Launching...
-2023-03-23 11:36:18 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
-2023-03-23 11:36:18 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 41 32768
-2023-03-23 11:36:20 - google.auth.transport.requests - DEBUG - Making request: POST https://oauth2.googleapis.com/token
-2023-03-23 11:36:20 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
-2023-03-23 11:36:20 - urllib3.connectionpool - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
-2023-03-23 11:36:20 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
-2023-03-23 11:36:20 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&fields=nextPageToken%2C+files%28id%2C+name%29&pageSize=10&alt=json
-2023-03-23 11:36:20 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=media
-2023-03-23 11:36:27 - App - INFO - (Main menu)
-2023-03-23 11:36:27 - App - INFO - (Credits menu)
-2023-03-23 11:36:27 - App - INFO - Switched to settings menu
-2023-03-23 11:36:27 - App - INFO - Switched to cards menu
-2023-03-23 11:36:27 - App - INFO - (Cards description window)
-2023-03-23 11:36:37 - googleapiclient.discovery - DEBUG - URL being requested: PATCH https://www.googleapis.com/upload/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=json&uploadType=resumable
-2023-03-23 11:36:38 - App - INFO - End of the program
+2023-03-23 11:51:20 - App - INFO - Launching...
+2023-03-23 11:51:21 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-23 11:51:21 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 41 32768
+2023-03-23 11:51:22 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2023-03-23 11:51:22 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&fields=nextPageToken%2C+files%28id%2C+name%29&pageSize=10&alt=json
+2023-03-23 11:51:22 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=media
+2023-03-23 11:51:29 - App - INFO - (Main menu)
+2023-03-23 11:51:29 - App - INFO - (Credits menu)
+2023-03-23 11:51:29 - App - INFO - Switched to settings menu
+2023-03-23 11:51:29 - App - INFO - Switched to cards menu
+2023-03-23 11:51:29 - App - INFO - (Cards description window)
+2023-03-23 11:51:45 - App - INFO - Card deleted
+2023-03-23 11:51:52 - googleapiclient.discovery - DEBUG - URL being requested: PATCH https://www.googleapis.com/upload/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=json&uploadType=resumable
+2023-03-23 11:51:53 - App - INFO - End of the program
