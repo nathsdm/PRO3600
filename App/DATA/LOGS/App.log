@@ -1,14 +1,23 @@
-2023-03-23 11:51:20 - App - INFO - Launching...
-2023-03-23 11:51:21 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
-2023-03-23 11:51:21 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 41 32768
-2023-03-23 11:51:22 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
-2023-03-23 11:51:22 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&fields=nextPageToken%2C+files%28id%2C+name%29&pageSize=10&alt=json
-2023-03-23 11:51:22 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=media
-2023-03-23 11:51:29 - App - INFO - (Main menu)
-2023-03-23 11:51:29 - App - INFO - (Credits menu)
-2023-03-23 11:51:29 - App - INFO - Switched to settings menu
-2023-03-23 11:51:29 - App - INFO - Switched to cards menu
-2023-03-23 11:51:29 - App - INFO - (Cards description window)
-2023-03-23 11:51:45 - App - INFO - Card deleted
-2023-03-23 11:51:52 - googleapiclient.discovery - DEBUG - URL being requested: PATCH https://www.googleapis.com/upload/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=json&uploadType=resumable
-2023-03-23 11:51:53 - App - INFO - End of the program
+2023-03-25 01:00:23 - App - INFO - Launching...
+2023-03-25 01:00:23 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-25 01:00:23 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 41 32768
+2023-03-25 01:00:25 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2023-03-25 01:00:25 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&fields=nextPageToken%2C+files%28id%2C+name%29&pageSize=10&alt=json
+2023-03-25 01:00:25 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=media
+2023-03-25 01:00:33 - App - INFO - (Main menu)
+2023-03-25 01:00:33 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-25 01:00:33 - PIL.PngImagePlugin - DEBUG - STREAM b'iCCP' 41 389
+2023-03-25 01:00:33 - PIL.PngImagePlugin - DEBUG - iCCP profile name b'ICC profile'
+2023-03-25 01:00:33 - PIL.PngImagePlugin - DEBUG - Compression method 0
+2023-03-25 01:00:33 - PIL.PngImagePlugin - DEBUG - STREAM b'bKGD' 442 6
+2023-03-25 01:00:33 - PIL.PngImagePlugin - DEBUG - b'bKGD' 442 6 (unknown)
+2023-03-25 01:00:33 - PIL.PngImagePlugin - DEBUG - STREAM b'pHYs' 460 9
+2023-03-25 01:00:33 - PIL.PngImagePlugin - DEBUG - STREAM b'tIME' 481 7
+2023-03-25 01:00:33 - PIL.PngImagePlugin - DEBUG - b'tIME' 481 7 (unknown)
+2023-03-25 01:00:33 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 500 5379
+2023-03-25 01:00:33 - App - INFO - (Credits menu)
+2023-03-25 01:00:33 - App - INFO - Switched to settings menu
+2023-03-25 01:00:33 - App - INFO - Switched to cards menu
+2023-03-25 01:00:33 - App - INFO - (Cards description window)
+2023-03-25 01:00:41 - googleapiclient.discovery - DEBUG - URL being requested: PATCH https://www.googleapis.com/upload/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=json&uploadType=resumable
+2023-03-25 01:00:42 - App - INFO - End of the program

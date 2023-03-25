@@ -43,7 +43,9 @@ class MainMenu(tk.Frame):
         """
         Defines the buttons used in the main menu.
         """
-        self.play_btn = tk.Button(self, text="View cards", command=lambda: self.master.change_menu(self.master.cards_menu))
+        play_btn_image = ImageTk.PhotoImage(Image.open(os.path.join("App", "DATA", "IMAGES", "Play_btn.png")))
+        self.play_btn = tk.Button(self, text="View cards", image = play_btn_image,command=lambda: self.master.change_menu(self.master.cards_menu), compound=tk.CENTER, bg="white")
+        self.play_btn.image = play_btn_image
         self.credits_btn = tk.Button(self, text="Credits", command=lambda: self.master.change_menu(self.master.credits_menu))
         self.settings_btn = tk.Button(self, text="Settings", command=lambda: self.master.change_menu(self.master.settings_menu))
         self.quit_btn = tk.Button(self, text="Quit", command=self.master.quit)
