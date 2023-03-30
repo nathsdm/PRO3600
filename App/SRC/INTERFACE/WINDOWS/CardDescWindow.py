@@ -15,17 +15,18 @@ class CardDescWindow(tk.Frame):
         """
         Defines the images used in the cards description window.
         """
-        card_img = ImageTk.PhotoImage(Image.open(os.path.join("DATA", "CARDS", "IMAGES", self.card.image_name + ".jpg")))
+        card_img = ImageTk.PhotoImage(Image.open(os.path.join("App", "DATA", "CARDS", "IMAGES", self.card.image_name + ".jpg")))
         self.images.append(tk.Label(self, image=card_img))
         self.images[-1].image = card_img
         for image in self.images:
-            image.pack()
+            image.pack(side=tk.LEFT, padx=10)
     
     def setup_label(self):
         """
         Defines the labels used in the cards description window.
         """
-        self.labels.append(tk.Label(self, text=self.card.name, font=("System", 30)))
+        for info in self.card.infos:
+            self.labels.append(tk.Label(self, text=info, width=300, wraplength=1000, justify=tk.LEFT))
         for label in self.labels:
             label.pack()
         
@@ -34,9 +35,18 @@ class CardDescWindow(tk.Frame):
         Defines the buttons used in the cards description window.
         """
         self.buttons.append(tk.Button(self, text="Back", command=lambda: self.master.change_menu(self.master.cards_menu)))
+        self.buttons.append(tk.Button(self, text="Delete", command=lambda: self.delete(self.master.cards_menu)))
         for button in self.buttons:
             button.pack()
-        
+    
+    def delete(self, menu):
+        """
+        Deletes the card from the database.
+        """
+        self.master.master.loggers.log.info("Card deleted")
+        self.master.change_menu(menu)
+        self.master.cards_manager.delete_card(self.card)
+    
     def update(self, card):
         self.card = card
         if self.card != None:

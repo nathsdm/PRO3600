@@ -69,16 +69,8 @@ class Analyser():
 			# Read image using opencv
 			img = cv2.imread(img_path)
 
-			# Extract the file name without the file extension
-			file_name = os.path.basename(img_path).split('.')[0]
-			file_name = file_name.split()[0]
-
-			# Create a directory for outputs
-			output_path = os.path.join(os.getcwd(), file_name)
-			if not os.path.exists(output_path):
-				os.makedirs(output_path)
 			# Rescale the image, if needed.
-			img = cv2.resize(img, None, fx=1.5, fy=1.5, interpolation=cv2.INTER_CUBIC)
+			img = cv2.resize(img, None, fx=3, fy=3, interpolation=cv2.INTER_CUBIC)
 			# Convert to gray
 			img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
@@ -88,41 +80,8 @@ class Analyser():
 			img = cv2.erode(img, kernel, iterations=1)
 			# Apply threshold to get image with only black and white
 			img = cv2.adaptiveThreshold(cv2.medianBlur(img, 5), 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 31, 2)
-			# Save the filtered image in the output directory
-			save_path = os.path.join(output_path, file_name + "_filter.jpg")
-
 			# Recognize text with tesseract for python
-			result = pytesseract.image_to_string(img, config='--psm 1')
-			return result
-
-		def process(img_path):
-			# Read image using opencv
-			img = cv2.imread(img_path)
-
-			# Extract the file name without the file extension
-			file_name = os.path.basename(img_path).split('.')[0]
-			file_name = file_name.split()[0]
-
-			# Create a directory for outputs
-			output_path = os.path.join(os.getcwd(), file_name)
-			if not os.path.exists(output_path):
-				os.makedirs(output_path)
-			# Rescale the image, if needed.
-			img = cv2.resize(img, None, fx=1.5, fy=1.5, interpolation=cv2.INTER_CUBIC)
-			# Convert to gray
-			img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-
-			# Apply dilation and erosion to remove some noise
-			kernel = np.ones((3, 3), np.uint8)
-			img = cv2.dilate(img, kernel, iterations=2)
-			img = cv2.erode(img, kernel, iterations=2)
-			# Apply threshold to get image with only black and white
-			img = cv2.adaptiveThreshold(cv2.medianBlur(img, 5), 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 31, 2)
-			# Save the filtered image in the output directory
-			save_path = os.path.join(output_path, file_name + "_filter.jpg")
-
-			# Recognize text with tesseract for python
-			result = pytesseract.image_to_string(img, config='--psm 1')
+			result = pytesseract.image_to_string(img, config='--psm 11')
 			return result
 
 		image = cv2.imread(self.image)
@@ -173,15 +132,13 @@ class Analyser():
 
 		warped = four_point_transform(image, pts = np.array(eval("{}".format(pts)), dtype = "float32"))
 
-		cv2.imwrite('step3.jpg', warped)
+		cv2.imwrite(os.path.join("App", "DATA", "CARDS", "IMAGES", "test.jpg"), warped)
 
 		w,h = warped.shape[:2]
-		cropped = warped[11*w//16:3*w//4, 2*h//3:h]
-		cropped = cv2.resize(cropped, (0,0), fx=3, fy=3)
+		cropped = warped[45*w//64:3*w//4, 2*h//3:49*h//50]
   
-		cv2.imwrite('step4.jpg', cropped)
-		result = get_string("step4.jpg")
+		cv2.imwrite("ocr.jpg", cropped)
+  
+		result = get_string("ocr.jpg")
 		print(result)
-		resulta = process("step4.jpg")
-		print(resulta)
 		self.result = result

@@ -26,7 +26,7 @@ class Loggers:
         self.logName = name
         self.logFormat = "%(asctime)s - %(name)s - %(levelname)s - %(message)s" # Display format in the log
         self.logDateFormat = "%Y-%m-%d %I:%M:%S"
-        self.logOutPath = os.path.join(os.getcwd(), "DATA", "LOGS") # Path of the log file
+        self.logOutPath = os.path.join("App", "DATA", "LOGS") # Path of the log file
         self.logPath = os.path.join(self.logOutPath, self.logName + ".log")
 
         self.create_root_dir()

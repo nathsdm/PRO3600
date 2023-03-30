@@ -36,7 +36,7 @@ class LoadingScreen(tk.Tk):
         except:
             pass
         
-        image = Image.open("DATA/IMAGES/yugi_transparent.png")
+        image = Image.open(os.path.join("APP", "DATA", "IMAGES", "yugi_transparent.png"))
         image = image.resize((400, 200), Image.ANTIALIAS)
         test = ImageTk.PhotoImage(image)
         
@@ -53,7 +53,6 @@ class LoadingScreen(tk.Tk):
         
         def start():
             self.authentifier = GoogleAuth(self)
-            self.deiconify()
             self.cards_manager = CardsManager(self)
             self.destroy()
             self.son = GUI(self.app, self.cards_manager)

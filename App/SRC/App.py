@@ -20,7 +20,8 @@ class App:
         self.loggers = Loggers(App.NAME)
         self.loggers.log.info("Launching...")
         
-        splash_screen = LoadingScreen(self)
+        self.splash_screen = LoadingScreen(self)
+        self.splash_screen.authentifier.update_filedata()
         
         self.loggers.log.info("End of the program")
         self.loggers.refreshLogs()
