@@ -21,9 +21,15 @@ class Card():
                 break
     
     def setup_infos(self):
-        for k in self.card_info.keys():
-            if k != "card_images":
-                self.infos.append(str(k) + " : " + str(self.card_info.get(k)))
+        for info in self.card_info.keys():
+            if info != "card_images" and info != "card_prices" and info != "card_sets" :
+                self.infos.append(str(info) + " : " + str(self.card_info.get(info)))
+            elif info == "card_sets":
+                for card_set in self.card_info.get(info):
+                    set_info = ""
+                    for k in card_set.keys():
+                        set_info += str(k) + " : " + str(card_set.get(k)) + "\n"
+                    self.infos.append(set_info)
             
     def display_infos(self):
         for k in self.card_info.keys():
