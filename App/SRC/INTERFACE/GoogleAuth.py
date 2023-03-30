@@ -40,7 +40,7 @@ class GoogleAuth:
                 try:
                     self.creds.refresh(Request())
                 except:
-                    tk.messagebox.showerror(title="Error", message="An error occured while refreshing the token. Please try again.")
+                    tk.messagebox.showerror(title="Error", message="An error occured while refreshing the token. Check your connection and please try again.")
                     os.remove(path=os.path.join("App", "token.json"))
                     self.master.destroy()
                     exit()

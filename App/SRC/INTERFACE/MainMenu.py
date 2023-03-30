@@ -44,13 +44,12 @@ class MainMenu(tk.Frame):
         Defines the buttons used in the main menu.
         """
         play_btn_image = ImageTk.PhotoImage(Image.open(os.path.join("App", "DATA", "IMAGES", "Play_btn.png")))
-        self.play_btn = tk.Button(self, text="View cards", image = play_btn_image,command=lambda: self.master.change_menu(self.master.cards_menu), compound=tk.CENTER, bg="#103188", border=0)
-        self.play_btn.image = play_btn_image
-        self.credits_btn = tk.Button(self, text="Credits", command=lambda: self.master.change_menu(self.master.credits_menu))
-        self.settings_btn = tk.Button(self, text="Settings", command=lambda: self.master.change_menu(self.master.settings_menu))
-        self.quit_btn = tk.Button(self, text="Quit", command=self.master.quit)
+        self.play_btn = tk.Button(self, text="View cards", command=lambda: self.master.change_menu(self.master.cards_menu), bg="#103188", fg="white", border=0, cursor="hand2")
+        self.credits_btn = tk.Button(self, text="Credits", command=lambda: self.master.change_menu(self.master.credits_menu), bg="#103188", fg="white", border=0, cursor="hand2")
+        self.settings_btn = tk.Button(self, text="Settings", command=lambda: self.master.change_menu(self.master.settings_menu), bg="#103188", fg="white", border=0, cursor="hand2")
+        self.quit_btn = tk.Button(self, text="Quit", command=self.master.quit, bg="#103188", fg="white", border=0, cursor="hand2")
         
-        self.play_btn.pack(pady=50)
+        self.play_btn.pack(pady=300)
         self.credits_btn.pack()
         self.settings_btn.pack()
         self.quit_btn.pack()
