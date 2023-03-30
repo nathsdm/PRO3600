@@ -29,7 +29,12 @@ class CardsMenu(tk.Frame):
         self.analyse_button.pack()
         self.set_code_button = tk.Button(self, text="Set code", command=lambda: self.set_code_query())
         self.set_code_button.pack()
-        
+        self.sort_button = tk.Button(self, text="Sort", command=lambda: self.cards_manager.sort_cards())
+        self.sort_button.pack()
+    
+    def sort_cards(self):
+        pass
+    
     def setup_text(self):
         self.text = tk.Text(self, width = self.master.winfo_screenwidth(), height = self.master.winfo_screenheight()-50, wrap="none", cursor="arrow")
         self.sb = tk.Scrollbar(self, command=self.text.yview, orient="vertical", cursor="arrow", width=20, activebackground="blue")

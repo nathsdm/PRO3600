@@ -45,7 +45,7 @@ class LoadingScreen(tk.Tk):
         #self.iconphoto(True, PhotoImage(os.path.join(os.getcwd(), "DATA", "IMAGES", "icone.png")))
 
         #Define the label of the window
-        splash_image= tk.Label(image=test, background="white").pack()
+        splash_image= tk.Label(image=test, background="white", border=0).pack()
         
         self.center()
         
