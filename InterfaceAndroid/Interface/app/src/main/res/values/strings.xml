@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Interface</string>
+    <string name="title_scan">Scan</string>
+    <string name="title_collections">Collections</string>
+    <string name="title_parametre">Paramètre</string>
+    <string name="take_photo">Scanner</string>
+
+</resources>
