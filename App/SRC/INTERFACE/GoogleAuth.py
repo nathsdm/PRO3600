@@ -16,6 +16,8 @@ from googleapiclient.http import MediaIoBaseDownload
 
 from googleapiclient.http import MediaFileUpload
 
+import tkinter as tk
+
 
 class GoogleAuth:
     def __init__(self, master):
@@ -35,7 +37,15 @@ class GoogleAuth:
         if not self.creds or not self.creds.valid:
             self.master.withdraw()
             if self.creds and self.creds.expired and self.creds.refresh_token:
-                self.creds.refresh(Request())
+                try:
+                    self.creds.refresh(Request())
+                except:
+                    tk.messagebox.showerror(title="Error", message="An error occured while refreshing the token. Check your connection and please try again.")
+                    os.remove(path=os.path.join("App", "token.json"))
+                    self.master.destroy()
+                    exit()
+                    return
+                    
             else:
                 flow = InstalledAppFlow.from_client_secrets_file(os.path.join("App", "credentials.json"), self.SCOPES)
                 self.creds = flow.run_local_server(port=0)

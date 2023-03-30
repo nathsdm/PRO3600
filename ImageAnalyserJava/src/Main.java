@@ -9,23 +9,30 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        System.setProperty("java.library.path", "D:/Programmes/opencv/build/java/x64/opencv_java470.dll");
-        System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+        System.loadLibrary(opencv_java4);
+
+        // Lecture de l'image en entrée à partir d'un emplacement de fichier
         Mat image = Imgcodecs.imread("src/tocrop2.jpg");
+
+        // Les images sont souvent dans des formats trop grands pour être traité
+        // efficacement, on réduit donc la taille de l'image avant de l'analyser
         int scale_percent = 40;
         int width = image.cols() * scale_percent / 100;
         int height = image.rows() * scale_percent / 100;
         Size newSize = new Size(width, height);
         Imgproc.resize(image, image, newSize);
 
+        // On extrait de l'image les potentiels bords grâce à du traitement d'image (ils
+        // apparaissent en blanc et le reste de l'image est noir)
         Mat gray = new Mat();
         Imgproc.cvtColor(image, gray, Imgproc.COLOR_BGR2GRAY);
         Imgproc.GaussianBlur(gray, gray, new Size(5, 5), 0);
         Mat edged = new Mat();
         Imgproc.Canny(gray, edged, 35, 200);
-
         Imgcodecs.imwrite("step1.jpg", edged);
 
+        // On utilise la fonction findcontours proposée par opencv afin de détecter les
+        // contours de l'image
         List<MatOfPoint> cnts = new ArrayList<>();
         Imgproc.findContours(edged.clone(), cnts, new Mat(), Imgproc.RETR_LIST, Imgproc.CHAIN_APPROX_SIMPLE);
         cnts.sort((o1, o2) -> {
@@ -34,9 +41,10 @@ public class Main {
             return Double.compare(area2, area1);
         });
 
+        // On cherche les quadrilatères parmis les contours précédents
         MatOfPoint screenCnt = new MatOfPoint();
         for (MatOfPoint cnt : cnts) {
-            MatOfPoint2f  cnt2 = new MatOfPoint2f( cnt.toArray() );
+            MatOfPoint2f cnt2 = new MatOfPoint2f(cnt.toArray());
             MatOfPoint2f approx = new MatOfPoint2f();
             MatOfPoint2f contour2f = new MatOfPoint2f(cnt.toArray());
             double peri = Imgproc.arcLength(contour2f, true);
@@ -47,9 +55,12 @@ public class Main {
             }
         }
 
+        // On dessine sur l'image le contour de carte trouvé
         Imgproc.drawContours(image, List.of(screenCnt), -1, new Scalar(0, 0, 255), 3);
         Imgcodecs.imwrite("step2.jpg", image);
 
+        // Finalement, à l'aide de la fonction getPerspectiveTransform, on transforme
+        // notre quadrilatère en rectangle
         Point[] pts = screenCnt.toArray();
         Point[] rect = new Point[4];
         double[] s = new double[4];
@@ -74,20 +85,26 @@ public class Main {
 
         Point[] dst = new Point[4];
         dst[0] = new Point(0, 0);
-        dst[1] = new Point((maxWidth - 1)*2, 0);
-        dst[2] = new Point((maxWidth - 1)*2, (maxHeight - 1)*2);
-        dst[3] = new Point(0, (maxHeight - 1)*2);
+        dst[1] = new Point((maxWidth - 1) * 2, 0);
+        dst[2] = new Point((maxWidth - 1) * 2, (maxHeight - 1) * 2);
+        dst[3] = new Point(0, (maxHeight - 1) * 2);
 
-        Mat M = Imgproc.getPerspectiveTransform(Converters.vector_Point2f_to_Mat(Arrays.asList(rect)), Converters.vector_Point2f_to_Mat(Arrays.asList(dst)));
+        Mat M = Imgproc.getPerspectiveTransform(Converters.vector_Point2f_to_Mat(Arrays.asList(rect)),
+                Converters.vector_Point2f_to_Mat(Arrays.asList(dst)));
         Mat warped = new Mat();
         Imgproc.warpPerspective(image, warped, M, new Size(maxWidth * 2, maxHeight * 2));
         Imgcodecs.imwrite("step3.jpg", warped);
-        Rect rectangle = new Rect((int) (4*maxWidth/3),(int) (7*maxHeight/5),(int) maxWidth/2,(int) maxHeight/10);
-        Mat image_roi = new Mat(warped,rectangle);
+
+        // Cette partie du code sert simplement à isoler sur la carte le code de
+        // référence qui nous servira pour retrouver la carte dans la base de donnée
+        Rect rectangle = new Rect((int) (4 * maxWidth / 3), (int) (7 * maxHeight / 5), (int) maxWidth / 2,
+                (int) maxHeight / 10);
+        Mat image_roi = new Mat(warped, rectangle);
         Imgcodecs.imwrite("step4.jpg", image_roi);
     }
 }
 
+// Utilitaires pour trouver le max et le min d'une liste de double
 class Utils {
     public static int minIndex(double[] arr) {
         int minIndex = 0;
@@ -107,4 +124,3 @@ class Utils {
         return maxIndex;
     }
 }
-
