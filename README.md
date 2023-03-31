@@ -29,7 +29,7 @@ You can install these dependencies by running the following command:
 
 To use the Yu-Gi-Oh Recognizing App on Windows, simply run the following command:
 
-<code>App/main.py</code
+<code>App/main.py</code>
 
 ## Credits
 
