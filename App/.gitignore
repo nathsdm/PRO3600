@@ -1,5 +1,3 @@
 __pycache__
-ARCHIVES/
-DATA/CARDS/
-DATA/LOGS/
-TODO.txt
+App/DATA/CARDS/
+App/DATA/LOGS/

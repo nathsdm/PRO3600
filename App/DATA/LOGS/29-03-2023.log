@@ -1,0 +1,1158 @@
+2023-03-29 09:59:48 - App - INFO - Launching...
+2023-03-29 09:59:49 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 09:59:49 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 41 32768
+2023-03-29 09:59:50 - google.auth.transport.requests - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2023-03-29 09:59:50 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2023-03-29 09:59:51 - urllib3.connectionpool - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2023-03-29 09:59:51 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2023-03-29 09:59:51 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&fields=nextPageToken%2C+files%28id%2C+name%29&pageSize=10&alt=json
+2023-03-29 09:59:51 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=media
+2023-03-29 09:59:59 - App - INFO - (Main menu)
+2023-03-29 09:59:59 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 09:59:59 - PIL.PngImagePlugin - DEBUG - STREAM b'gAMA' 41 4
+2023-03-29 09:59:59 - PIL.PngImagePlugin - DEBUG - STREAM b'cHRM' 57 32
+2023-03-29 09:59:59 - PIL.PngImagePlugin - DEBUG - STREAM b'bKGD' 101 6
+2023-03-29 09:59:59 - PIL.PngImagePlugin - DEBUG - b'bKGD' 101 6 (unknown)
+2023-03-29 09:59:59 - PIL.PngImagePlugin - DEBUG - STREAM b'pHYs' 119 9
+2023-03-29 09:59:59 - PIL.PngImagePlugin - DEBUG - STREAM b'tIME' 140 7
+2023-03-29 09:59:59 - PIL.PngImagePlugin - DEBUG - b'tIME' 140 7 (unknown)
+2023-03-29 09:59:59 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 159 32768
+2023-03-29 09:59:59 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198547 46
+2023-03-29 09:59:59 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198605 44
+2023-03-29 09:59:59 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198661 34
+2023-03-29 09:59:59 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 09:59:59 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 41 6583
+2023-03-29 09:59:59 - PIL.PngImagePlugin - DEBUG - STREAM b'iCCP' 6636 388
+2023-03-29 09:59:59 - PIL.PngImagePlugin - DEBUG - iCCP profile name b'ICC profile'
+2023-03-29 09:59:59 - PIL.PngImagePlugin - DEBUG - Compression method 0
+2023-03-29 09:59:59 - PIL.PngImagePlugin - DEBUG - STREAM b'iTXt' 7036 3352
+2023-03-29 09:59:59 - PIL.PngImagePlugin - DEBUG - STREAM b'PLTE' 10400 318
+2023-03-29 09:59:59 - PIL.PngImagePlugin - DEBUG - STREAM b'tRNS' 10730 1
+2023-03-29 09:59:59 - PIL.PngImagePlugin - DEBUG - STREAM b'bKGD' 10743 1
+2023-03-29 09:59:59 - PIL.PngImagePlugin - DEBUG - b'bKGD' 10743 1 (unknown)
+2023-03-29 09:59:59 - PIL.PngImagePlugin - DEBUG - STREAM b'pHYs' 10756 9
+2023-03-29 09:59:59 - PIL.PngImagePlugin - DEBUG - STREAM b'tIME' 10777 7
+2023-03-29 09:59:59 - PIL.PngImagePlugin - DEBUG - b'tIME' 10777 7 (unknown)
+2023-03-29 09:59:59 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 10796 8192
+2023-03-29 09:59:59 - App - INFO - (Credits menu)
+2023-03-29 09:59:59 - App - INFO - Switched to settings menu
+2023-03-29 09:59:59 - App - INFO - Switched to cards menu
+2023-03-29 09:59:59 - App - INFO - (Cards description window)
+2023-03-29 10:00:15 - googleapiclient.discovery - DEBUG - URL being requested: PATCH https://www.googleapis.com/upload/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=json&uploadType=resumable
+2023-03-29 10:00:17 - App - INFO - End of the program
+--------------------------------------------------------------
+2023-03-29 10:02:06 - App - INFO - Launching...
+2023-03-29 10:02:06 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:02:06 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 41 32768
+2023-03-29 10:02:07 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2023-03-29 10:02:07 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&fields=nextPageToken%2C+files%28id%2C+name%29&pageSize=10&alt=json
+2023-03-29 10:02:08 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=media
+2023-03-29 10:02:15 - App - INFO - (Main menu)
+2023-03-29 10:02:15 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:02:15 - PIL.PngImagePlugin - DEBUG - STREAM b'gAMA' 41 4
+2023-03-29 10:02:15 - PIL.PngImagePlugin - DEBUG - STREAM b'cHRM' 57 32
+2023-03-29 10:02:15 - PIL.PngImagePlugin - DEBUG - STREAM b'bKGD' 101 6
+2023-03-29 10:02:15 - PIL.PngImagePlugin - DEBUG - b'bKGD' 101 6 (unknown)
+2023-03-29 10:02:15 - PIL.PngImagePlugin - DEBUG - STREAM b'pHYs' 119 9
+2023-03-29 10:02:15 - PIL.PngImagePlugin - DEBUG - STREAM b'tIME' 140 7
+2023-03-29 10:02:15 - PIL.PngImagePlugin - DEBUG - b'tIME' 140 7 (unknown)
+2023-03-29 10:02:15 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 159 32768
+2023-03-29 10:02:15 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198547 46
+2023-03-29 10:02:15 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198605 44
+2023-03-29 10:02:15 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198661 34
+2023-03-29 10:02:15 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:02:15 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 41 6583
+2023-03-29 10:02:15 - PIL.PngImagePlugin - DEBUG - STREAM b'iCCP' 6636 388
+2023-03-29 10:02:15 - PIL.PngImagePlugin - DEBUG - iCCP profile name b'ICC profile'
+2023-03-29 10:02:15 - PIL.PngImagePlugin - DEBUG - Compression method 0
+2023-03-29 10:02:15 - PIL.PngImagePlugin - DEBUG - STREAM b'iTXt' 7036 3352
+2023-03-29 10:02:15 - PIL.PngImagePlugin - DEBUG - STREAM b'PLTE' 10400 318
+2023-03-29 10:02:15 - PIL.PngImagePlugin - DEBUG - STREAM b'tRNS' 10730 1
+2023-03-29 10:02:15 - PIL.PngImagePlugin - DEBUG - STREAM b'bKGD' 10743 1
+2023-03-29 10:02:15 - PIL.PngImagePlugin - DEBUG - b'bKGD' 10743 1 (unknown)
+2023-03-29 10:02:15 - PIL.PngImagePlugin - DEBUG - STREAM b'pHYs' 10756 9
+2023-03-29 10:02:15 - PIL.PngImagePlugin - DEBUG - STREAM b'tIME' 10777 7
+2023-03-29 10:02:15 - PIL.PngImagePlugin - DEBUG - b'tIME' 10777 7 (unknown)
+2023-03-29 10:02:15 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 10796 8192
+2023-03-29 10:02:15 - App - INFO - (Credits menu)
+2023-03-29 10:02:15 - App - INFO - Switched to settings menu
+2023-03-29 10:02:15 - App - INFO - Switched to cards menu
+2023-03-29 10:02:16 - App - INFO - (Cards description window)
+2023-03-29 10:02:20 - googleapiclient.discovery - DEBUG - URL being requested: PATCH https://www.googleapis.com/upload/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=json&uploadType=resumable
+2023-03-29 10:02:21 - App - INFO - End of the program
+--------------------------------------------------------------
+2023-03-29 10:02:47 - App - INFO - Launching...
+2023-03-29 10:02:47 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:02:47 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 41 32768
+2023-03-29 10:02:48 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2023-03-29 10:02:48 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&fields=nextPageToken%2C+files%28id%2C+name%29&pageSize=10&alt=json
+2023-03-29 10:02:49 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=media
+2023-03-29 10:02:56 - App - INFO - (Main menu)
+2023-03-29 10:02:56 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:02:56 - PIL.PngImagePlugin - DEBUG - STREAM b'gAMA' 41 4
+2023-03-29 10:02:56 - PIL.PngImagePlugin - DEBUG - STREAM b'cHRM' 57 32
+2023-03-29 10:02:56 - PIL.PngImagePlugin - DEBUG - STREAM b'bKGD' 101 6
+2023-03-29 10:02:56 - PIL.PngImagePlugin - DEBUG - b'bKGD' 101 6 (unknown)
+2023-03-29 10:02:56 - PIL.PngImagePlugin - DEBUG - STREAM b'pHYs' 119 9
+2023-03-29 10:02:56 - PIL.PngImagePlugin - DEBUG - STREAM b'tIME' 140 7
+2023-03-29 10:02:56 - PIL.PngImagePlugin - DEBUG - b'tIME' 140 7 (unknown)
+2023-03-29 10:02:56 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 159 32768
+2023-03-29 10:02:56 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198547 46
+2023-03-29 10:02:56 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198605 44
+2023-03-29 10:02:56 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198661 34
+2023-03-29 10:02:56 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:02:56 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 41 6583
+2023-03-29 10:02:56 - PIL.PngImagePlugin - DEBUG - STREAM b'iCCP' 6636 388
+2023-03-29 10:02:56 - PIL.PngImagePlugin - DEBUG - iCCP profile name b'ICC profile'
+2023-03-29 10:02:56 - PIL.PngImagePlugin - DEBUG - Compression method 0
+2023-03-29 10:02:56 - PIL.PngImagePlugin - DEBUG - STREAM b'iTXt' 7036 3352
+2023-03-29 10:02:56 - PIL.PngImagePlugin - DEBUG - STREAM b'PLTE' 10400 318
+2023-03-29 10:02:56 - PIL.PngImagePlugin - DEBUG - STREAM b'tRNS' 10730 1
+2023-03-29 10:02:56 - PIL.PngImagePlugin - DEBUG - STREAM b'bKGD' 10743 1
+2023-03-29 10:02:56 - PIL.PngImagePlugin - DEBUG - b'bKGD' 10743 1 (unknown)
+2023-03-29 10:02:56 - PIL.PngImagePlugin - DEBUG - STREAM b'pHYs' 10756 9
+2023-03-29 10:02:56 - PIL.PngImagePlugin - DEBUG - STREAM b'tIME' 10777 7
+2023-03-29 10:02:56 - PIL.PngImagePlugin - DEBUG - b'tIME' 10777 7 (unknown)
+2023-03-29 10:02:56 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 10796 8192
+2023-03-29 10:02:56 - App - INFO - (Credits menu)
+2023-03-29 10:02:56 - App - INFO - Switched to settings menu
+2023-03-29 10:02:56 - App - INFO - Switched to cards menu
+2023-03-29 10:02:57 - App - INFO - (Cards description window)
+2023-03-29 10:02:59 - googleapiclient.discovery - DEBUG - URL being requested: PATCH https://www.googleapis.com/upload/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=json&uploadType=resumable
+2023-03-29 10:03:01 - App - INFO - End of the program
+--------------------------------------------------------------
+2023-03-29 10:04:44 - App - INFO - Launching...
+2023-03-29 10:04:44 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:04:44 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 41 32768
+2023-03-29 10:04:46 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2023-03-29 10:04:46 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&fields=nextPageToken%2C+files%28id%2C+name%29&pageSize=10&alt=json
+2023-03-29 10:04:46 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=media
+2023-03-29 10:04:53 - App - INFO - (Main menu)
+2023-03-29 10:04:53 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:04:53 - PIL.PngImagePlugin - DEBUG - STREAM b'gAMA' 41 4
+2023-03-29 10:04:53 - PIL.PngImagePlugin - DEBUG - STREAM b'cHRM' 57 32
+2023-03-29 10:04:53 - PIL.PngImagePlugin - DEBUG - STREAM b'bKGD' 101 6
+2023-03-29 10:04:53 - PIL.PngImagePlugin - DEBUG - b'bKGD' 101 6 (unknown)
+2023-03-29 10:04:53 - PIL.PngImagePlugin - DEBUG - STREAM b'pHYs' 119 9
+2023-03-29 10:04:53 - PIL.PngImagePlugin - DEBUG - STREAM b'tIME' 140 7
+2023-03-29 10:04:53 - PIL.PngImagePlugin - DEBUG - b'tIME' 140 7 (unknown)
+2023-03-29 10:04:53 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 159 32768
+2023-03-29 10:04:53 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198547 46
+2023-03-29 10:04:53 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198605 44
+2023-03-29 10:04:53 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198661 34
+2023-03-29 10:04:54 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:04:54 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 41 6583
+2023-03-29 10:04:54 - PIL.PngImagePlugin - DEBUG - STREAM b'iCCP' 6636 388
+2023-03-29 10:04:54 - PIL.PngImagePlugin - DEBUG - iCCP profile name b'ICC profile'
+2023-03-29 10:04:54 - PIL.PngImagePlugin - DEBUG - Compression method 0
+2023-03-29 10:04:54 - PIL.PngImagePlugin - DEBUG - STREAM b'iTXt' 7036 3352
+2023-03-29 10:04:54 - PIL.PngImagePlugin - DEBUG - STREAM b'PLTE' 10400 318
+2023-03-29 10:04:54 - PIL.PngImagePlugin - DEBUG - STREAM b'tRNS' 10730 1
+2023-03-29 10:04:54 - PIL.PngImagePlugin - DEBUG - STREAM b'bKGD' 10743 1
+2023-03-29 10:04:54 - PIL.PngImagePlugin - DEBUG - b'bKGD' 10743 1 (unknown)
+2023-03-29 10:04:54 - PIL.PngImagePlugin - DEBUG - STREAM b'pHYs' 10756 9
+2023-03-29 10:04:54 - PIL.PngImagePlugin - DEBUG - STREAM b'tIME' 10777 7
+2023-03-29 10:04:54 - PIL.PngImagePlugin - DEBUG - b'tIME' 10777 7 (unknown)
+2023-03-29 10:04:54 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 10796 8192
+2023-03-29 10:04:54 - App - INFO - (Credits menu)
+2023-03-29 10:04:54 - App - INFO - Switched to settings menu
+2023-03-29 10:04:54 - App - INFO - Switched to cards menu
+2023-03-29 10:04:54 - App - INFO - (Cards description window)
+2023-03-29 10:04:56 - googleapiclient.discovery - DEBUG - URL being requested: PATCH https://www.googleapis.com/upload/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=json&uploadType=resumable
+2023-03-29 10:04:58 - App - INFO - End of the program
+--------------------------------------------------------------
+2023-03-29 10:06:32 - App - INFO - Launching...
+2023-03-29 10:06:32 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:06:32 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 41 32768
+2023-03-29 10:06:33 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2023-03-29 10:06:33 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&fields=nextPageToken%2C+files%28id%2C+name%29&pageSize=10&alt=json
+2023-03-29 10:06:33 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=media
+2023-03-29 10:06:41 - App - INFO - (Main menu)
+2023-03-29 10:06:41 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:06:41 - PIL.PngImagePlugin - DEBUG - STREAM b'gAMA' 41 4
+2023-03-29 10:06:41 - PIL.PngImagePlugin - DEBUG - STREAM b'cHRM' 57 32
+2023-03-29 10:06:41 - PIL.PngImagePlugin - DEBUG - STREAM b'bKGD' 101 6
+2023-03-29 10:06:41 - PIL.PngImagePlugin - DEBUG - b'bKGD' 101 6 (unknown)
+2023-03-29 10:06:41 - PIL.PngImagePlugin - DEBUG - STREAM b'pHYs' 119 9
+2023-03-29 10:06:41 - PIL.PngImagePlugin - DEBUG - STREAM b'tIME' 140 7
+2023-03-29 10:06:41 - PIL.PngImagePlugin - DEBUG - b'tIME' 140 7 (unknown)
+2023-03-29 10:06:41 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 159 32768
+2023-03-29 10:06:41 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198547 46
+2023-03-29 10:06:41 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198605 44
+2023-03-29 10:06:41 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198661 34
+2023-03-29 10:06:41 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:06:41 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 41 6583
+2023-03-29 10:06:41 - PIL.PngImagePlugin - DEBUG - STREAM b'iCCP' 6636 388
+2023-03-29 10:06:41 - PIL.PngImagePlugin - DEBUG - iCCP profile name b'ICC profile'
+2023-03-29 10:06:41 - PIL.PngImagePlugin - DEBUG - Compression method 0
+2023-03-29 10:06:41 - PIL.PngImagePlugin - DEBUG - STREAM b'iTXt' 7036 3352
+2023-03-29 10:06:41 - PIL.PngImagePlugin - DEBUG - STREAM b'PLTE' 10400 318
+2023-03-29 10:06:41 - PIL.PngImagePlugin - DEBUG - STREAM b'tRNS' 10730 1
+2023-03-29 10:06:41 - PIL.PngImagePlugin - DEBUG - STREAM b'bKGD' 10743 1
+2023-03-29 10:06:41 - PIL.PngImagePlugin - DEBUG - b'bKGD' 10743 1 (unknown)
+2023-03-29 10:06:41 - PIL.PngImagePlugin - DEBUG - STREAM b'pHYs' 10756 9
+2023-03-29 10:06:41 - PIL.PngImagePlugin - DEBUG - STREAM b'tIME' 10777 7
+2023-03-29 10:06:41 - PIL.PngImagePlugin - DEBUG - b'tIME' 10777 7 (unknown)
+2023-03-29 10:06:41 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 10796 8192
+2023-03-29 10:06:41 - App - INFO - (Credits menu)
+2023-03-29 10:06:41 - App - INFO - Switched to settings menu
+2023-03-29 10:06:41 - App - INFO - Switched to cards menu
+2023-03-29 10:06:41 - App - INFO - (Cards description window)
+2023-03-29 10:06:43 - googleapiclient.discovery - DEBUG - URL being requested: PATCH https://www.googleapis.com/upload/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=json&uploadType=resumable
+2023-03-29 10:06:44 - App - INFO - End of the program
+--------------------------------------------------------------
+2023-03-29 10:08:23 - App - INFO - Launching...
+2023-03-29 10:08:23 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:08:23 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 41 32768
+2023-03-29 10:08:24 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2023-03-29 10:08:24 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&fields=nextPageToken%2C+files%28id%2C+name%29&pageSize=10&alt=json
+2023-03-29 10:08:24 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=media
+2023-03-29 10:08:31 - App - INFO - (Main menu)
+2023-03-29 10:08:31 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:08:31 - PIL.PngImagePlugin - DEBUG - STREAM b'gAMA' 41 4
+2023-03-29 10:08:31 - PIL.PngImagePlugin - DEBUG - STREAM b'cHRM' 57 32
+2023-03-29 10:08:31 - PIL.PngImagePlugin - DEBUG - STREAM b'bKGD' 101 6
+2023-03-29 10:08:31 - PIL.PngImagePlugin - DEBUG - b'bKGD' 101 6 (unknown)
+2023-03-29 10:08:31 - PIL.PngImagePlugin - DEBUG - STREAM b'pHYs' 119 9
+2023-03-29 10:08:31 - PIL.PngImagePlugin - DEBUG - STREAM b'tIME' 140 7
+2023-03-29 10:08:31 - PIL.PngImagePlugin - DEBUG - b'tIME' 140 7 (unknown)
+2023-03-29 10:08:31 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 159 32768
+2023-03-29 10:08:31 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198547 46
+2023-03-29 10:08:31 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198605 44
+2023-03-29 10:08:31 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198661 34
+2023-03-29 10:08:32 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:08:32 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 41 6583
+2023-03-29 10:08:32 - PIL.PngImagePlugin - DEBUG - STREAM b'iCCP' 6636 388
+2023-03-29 10:08:32 - PIL.PngImagePlugin - DEBUG - iCCP profile name b'ICC profile'
+2023-03-29 10:08:32 - PIL.PngImagePlugin - DEBUG - Compression method 0
+2023-03-29 10:08:32 - PIL.PngImagePlugin - DEBUG - STREAM b'iTXt' 7036 3352
+2023-03-29 10:08:32 - PIL.PngImagePlugin - DEBUG - STREAM b'PLTE' 10400 318
+2023-03-29 10:08:32 - PIL.PngImagePlugin - DEBUG - STREAM b'tRNS' 10730 1
+2023-03-29 10:08:32 - PIL.PngImagePlugin - DEBUG - STREAM b'bKGD' 10743 1
+2023-03-29 10:08:32 - PIL.PngImagePlugin - DEBUG - b'bKGD' 10743 1 (unknown)
+2023-03-29 10:08:32 - PIL.PngImagePlugin - DEBUG - STREAM b'pHYs' 10756 9
+2023-03-29 10:08:32 - PIL.PngImagePlugin - DEBUG - STREAM b'tIME' 10777 7
+2023-03-29 10:08:32 - PIL.PngImagePlugin - DEBUG - b'tIME' 10777 7 (unknown)
+2023-03-29 10:08:32 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 10796 8192
+2023-03-29 10:08:32 - App - INFO - (Credits menu)
+2023-03-29 10:08:32 - App - INFO - Switched to settings menu
+2023-03-29 10:08:32 - App - INFO - Switched to cards menu
+2023-03-29 10:08:32 - App - INFO - (Cards description window)
+2023-03-29 10:08:37 - googleapiclient.discovery - DEBUG - URL being requested: PATCH https://www.googleapis.com/upload/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=json&uploadType=resumable
+2023-03-29 10:08:38 - App - INFO - End of the program
+--------------------------------------------------------------
+2023-03-29 10:08:59 - App - INFO - Launching...
+2023-03-29 10:09:00 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:09:00 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 41 32768
+2023-03-29 10:09:01 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2023-03-29 10:09:01 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&fields=nextPageToken%2C+files%28id%2C+name%29&pageSize=10&alt=json
+2023-03-29 10:09:01 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=media
+2023-03-29 10:09:08 - App - INFO - (Main menu)
+2023-03-29 10:09:08 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:09:08 - PIL.PngImagePlugin - DEBUG - STREAM b'gAMA' 41 4
+2023-03-29 10:09:08 - PIL.PngImagePlugin - DEBUG - STREAM b'cHRM' 57 32
+2023-03-29 10:09:08 - PIL.PngImagePlugin - DEBUG - STREAM b'bKGD' 101 6
+2023-03-29 10:09:08 - PIL.PngImagePlugin - DEBUG - b'bKGD' 101 6 (unknown)
+2023-03-29 10:09:08 - PIL.PngImagePlugin - DEBUG - STREAM b'pHYs' 119 9
+2023-03-29 10:09:08 - PIL.PngImagePlugin - DEBUG - STREAM b'tIME' 140 7
+2023-03-29 10:09:08 - PIL.PngImagePlugin - DEBUG - b'tIME' 140 7 (unknown)
+2023-03-29 10:09:08 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 159 32768
+2023-03-29 10:09:08 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198547 46
+2023-03-29 10:09:08 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198605 44
+2023-03-29 10:09:08 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198661 34
+2023-03-29 10:09:08 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:09:08 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 41 6583
+2023-03-29 10:09:08 - PIL.PngImagePlugin - DEBUG - STREAM b'iCCP' 6636 388
+2023-03-29 10:09:08 - PIL.PngImagePlugin - DEBUG - iCCP profile name b'ICC profile'
+2023-03-29 10:09:08 - PIL.PngImagePlugin - DEBUG - Compression method 0
+2023-03-29 10:09:08 - PIL.PngImagePlugin - DEBUG - STREAM b'iTXt' 7036 3352
+2023-03-29 10:09:08 - PIL.PngImagePlugin - DEBUG - STREAM b'PLTE' 10400 318
+2023-03-29 10:09:08 - PIL.PngImagePlugin - DEBUG - STREAM b'tRNS' 10730 1
+2023-03-29 10:09:08 - PIL.PngImagePlugin - DEBUG - STREAM b'bKGD' 10743 1
+2023-03-29 10:09:08 - PIL.PngImagePlugin - DEBUG - b'bKGD' 10743 1 (unknown)
+2023-03-29 10:09:08 - PIL.PngImagePlugin - DEBUG - STREAM b'pHYs' 10756 9
+2023-03-29 10:09:08 - PIL.PngImagePlugin - DEBUG - STREAM b'tIME' 10777 7
+2023-03-29 10:09:08 - PIL.PngImagePlugin - DEBUG - b'tIME' 10777 7 (unknown)
+2023-03-29 10:09:08 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 10796 8192
+2023-03-29 10:09:08 - App - INFO - (Credits menu)
+2023-03-29 10:09:08 - App - INFO - Switched to settings menu
+2023-03-29 10:09:08 - App - INFO - Switched to cards menu
+2023-03-29 10:09:09 - App - INFO - (Cards description window)
+2023-03-29 10:09:12 - googleapiclient.discovery - DEBUG - URL being requested: PATCH https://www.googleapis.com/upload/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=json&uploadType=resumable
+2023-03-29 10:09:13 - App - INFO - End of the program
+--------------------------------------------------------------
+2023-03-29 10:10:27 - App - INFO - Launching...
+2023-03-29 10:10:27 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:10:27 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 41 32768
+2023-03-29 10:10:29 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2023-03-29 10:10:29 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&fields=nextPageToken%2C+files%28id%2C+name%29&pageSize=10&alt=json
+2023-03-29 10:10:29 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=media
+2023-03-29 10:10:36 - App - INFO - (Main menu)
+2023-03-29 10:10:36 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:10:36 - PIL.PngImagePlugin - DEBUG - STREAM b'gAMA' 41 4
+2023-03-29 10:10:36 - PIL.PngImagePlugin - DEBUG - STREAM b'cHRM' 57 32
+2023-03-29 10:10:36 - PIL.PngImagePlugin - DEBUG - STREAM b'bKGD' 101 6
+2023-03-29 10:10:36 - PIL.PngImagePlugin - DEBUG - b'bKGD' 101 6 (unknown)
+2023-03-29 10:10:36 - PIL.PngImagePlugin - DEBUG - STREAM b'pHYs' 119 9
+2023-03-29 10:10:36 - PIL.PngImagePlugin - DEBUG - STREAM b'tIME' 140 7
+2023-03-29 10:10:36 - PIL.PngImagePlugin - DEBUG - b'tIME' 140 7 (unknown)
+2023-03-29 10:10:36 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 159 32768
+2023-03-29 10:10:36 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198547 46
+2023-03-29 10:10:36 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198605 44
+2023-03-29 10:10:36 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198661 34
+2023-03-29 10:10:37 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:10:37 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 41 6583
+2023-03-29 10:10:37 - PIL.PngImagePlugin - DEBUG - STREAM b'iCCP' 6636 388
+2023-03-29 10:10:37 - PIL.PngImagePlugin - DEBUG - iCCP profile name b'ICC profile'
+2023-03-29 10:10:37 - PIL.PngImagePlugin - DEBUG - Compression method 0
+2023-03-29 10:10:37 - PIL.PngImagePlugin - DEBUG - STREAM b'iTXt' 7036 3352
+2023-03-29 10:10:37 - PIL.PngImagePlugin - DEBUG - STREAM b'PLTE' 10400 318
+2023-03-29 10:10:37 - PIL.PngImagePlugin - DEBUG - STREAM b'tRNS' 10730 1
+2023-03-29 10:10:37 - PIL.PngImagePlugin - DEBUG - STREAM b'bKGD' 10743 1
+2023-03-29 10:10:37 - PIL.PngImagePlugin - DEBUG - b'bKGD' 10743 1 (unknown)
+2023-03-29 10:10:37 - PIL.PngImagePlugin - DEBUG - STREAM b'pHYs' 10756 9
+2023-03-29 10:10:37 - PIL.PngImagePlugin - DEBUG - STREAM b'tIME' 10777 7
+2023-03-29 10:10:37 - PIL.PngImagePlugin - DEBUG - b'tIME' 10777 7 (unknown)
+2023-03-29 10:10:37 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 10796 8192
+2023-03-29 10:10:37 - App - INFO - (Credits menu)
+2023-03-29 10:10:37 - App - INFO - Switched to settings menu
+2023-03-29 10:10:37 - App - INFO - Switched to cards menu
+2023-03-29 10:10:37 - App - INFO - (Cards description window)
+2023-03-29 10:10:47 - googleapiclient.discovery - DEBUG - URL being requested: PATCH https://www.googleapis.com/upload/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=json&uploadType=resumable
+2023-03-29 10:10:48 - App - INFO - End of the program
+--------------------------------------------------------------
+2023-03-29 10:11:21 - App - INFO - Launching...
+2023-03-29 10:11:21 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:11:21 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 41 32768
+2023-03-29 10:11:23 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2023-03-29 10:11:23 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&fields=nextPageToken%2C+files%28id%2C+name%29&pageSize=10&alt=json
+2023-03-29 10:11:23 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=media
+2023-03-29 10:11:30 - App - INFO - (Main menu)
+2023-03-29 10:11:30 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:11:30 - PIL.PngImagePlugin - DEBUG - STREAM b'gAMA' 41 4
+2023-03-29 10:11:30 - PIL.PngImagePlugin - DEBUG - STREAM b'cHRM' 57 32
+2023-03-29 10:11:30 - PIL.PngImagePlugin - DEBUG - STREAM b'bKGD' 101 6
+2023-03-29 10:11:30 - PIL.PngImagePlugin - DEBUG - b'bKGD' 101 6 (unknown)
+2023-03-29 10:11:30 - PIL.PngImagePlugin - DEBUG - STREAM b'pHYs' 119 9
+2023-03-29 10:11:30 - PIL.PngImagePlugin - DEBUG - STREAM b'tIME' 140 7
+2023-03-29 10:11:30 - PIL.PngImagePlugin - DEBUG - b'tIME' 140 7 (unknown)
+2023-03-29 10:11:30 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 159 32768
+2023-03-29 10:11:30 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198547 46
+2023-03-29 10:11:30 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198605 44
+2023-03-29 10:11:30 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198661 34
+2023-03-29 10:11:30 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:11:30 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 41 32768
+2023-03-29 10:11:30 - App - INFO - (Credits menu)
+2023-03-29 10:11:30 - App - INFO - Switched to settings menu
+2023-03-29 10:11:30 - App - INFO - Switched to cards menu
+2023-03-29 10:11:31 - App - INFO - (Cards description window)
+2023-03-29 10:11:36 - googleapiclient.discovery - DEBUG - URL being requested: PATCH https://www.googleapis.com/upload/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=json&uploadType=resumable
+2023-03-29 10:11:37 - App - INFO - End of the program
+--------------------------------------------------------------
+2023-03-29 10:13:46 - App - INFO - Launching...
+2023-03-29 10:13:47 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:13:47 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 41 32768
+2023-03-29 10:13:48 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2023-03-29 10:13:48 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&fields=nextPageToken%2C+files%28id%2C+name%29&pageSize=10&alt=json
+2023-03-29 10:13:48 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=media
+2023-03-29 10:13:56 - App - INFO - (Main menu)
+2023-03-29 10:13:56 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:13:56 - PIL.PngImagePlugin - DEBUG - STREAM b'gAMA' 41 4
+2023-03-29 10:13:56 - PIL.PngImagePlugin - DEBUG - STREAM b'cHRM' 57 32
+2023-03-29 10:13:56 - PIL.PngImagePlugin - DEBUG - STREAM b'bKGD' 101 6
+2023-03-29 10:13:56 - PIL.PngImagePlugin - DEBUG - b'bKGD' 101 6 (unknown)
+2023-03-29 10:13:56 - PIL.PngImagePlugin - DEBUG - STREAM b'pHYs' 119 9
+2023-03-29 10:13:56 - PIL.PngImagePlugin - DEBUG - STREAM b'tIME' 140 7
+2023-03-29 10:13:56 - PIL.PngImagePlugin - DEBUG - b'tIME' 140 7 (unknown)
+2023-03-29 10:13:56 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 159 32768
+2023-03-29 10:13:56 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198547 46
+2023-03-29 10:13:56 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198605 44
+2023-03-29 10:13:56 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198661 34
+2023-03-29 10:13:56 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:13:56 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 41 6704
+2023-03-29 10:13:56 - PIL.PngImagePlugin - DEBUG - STREAM b'iCCP' 6757 387
+2023-03-29 10:13:56 - PIL.PngImagePlugin - DEBUG - iCCP profile name b'ICC profile'
+2023-03-29 10:13:56 - PIL.PngImagePlugin - DEBUG - Compression method 0
+2023-03-29 10:13:56 - PIL.PngImagePlugin - DEBUG - STREAM b'iTXt' 7156 3575
+2023-03-29 10:13:56 - PIL.PngImagePlugin - DEBUG - STREAM b'gAMA' 10743 4
+2023-03-29 10:13:56 - PIL.PngImagePlugin - DEBUG - STREAM b'PLTE' 10759 321
+2023-03-29 10:13:56 - PIL.PngImagePlugin - DEBUG - STREAM b'tRNS' 11092 1
+2023-03-29 10:13:56 - PIL.PngImagePlugin - DEBUG - STREAM b'pHYs' 11105 9
+2023-03-29 10:13:56 - PIL.PngImagePlugin - DEBUG - STREAM b'tIME' 11126 7
+2023-03-29 10:13:56 - PIL.PngImagePlugin - DEBUG - b'tIME' 11126 7 (unknown)
+2023-03-29 10:13:56 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 11145 8192
+2023-03-29 10:13:56 - App - INFO - (Credits menu)
+2023-03-29 10:13:56 - App - INFO - Switched to settings menu
+2023-03-29 10:13:56 - App - INFO - Switched to cards menu
+2023-03-29 10:13:56 - App - INFO - (Cards description window)
+2023-03-29 10:14:10 - googleapiclient.discovery - DEBUG - URL being requested: PATCH https://www.googleapis.com/upload/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=json&uploadType=resumable
+2023-03-29 10:14:11 - App - INFO - End of the program
+--------------------------------------------------------------
+2023-03-29 10:19:30 - App - INFO - Launching...
+2023-03-29 10:19:30 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:19:30 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 41 32768
+2023-03-29 10:19:31 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2023-03-29 10:19:31 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&fields=nextPageToken%2C+files%28id%2C+name%29&pageSize=10&alt=json
+2023-03-29 10:19:31 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=media
+2023-03-29 10:19:39 - App - INFO - (Main menu)
+2023-03-29 10:19:39 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:19:39 - PIL.PngImagePlugin - DEBUG - STREAM b'gAMA' 41 4
+2023-03-29 10:19:39 - PIL.PngImagePlugin - DEBUG - STREAM b'cHRM' 57 32
+2023-03-29 10:19:39 - PIL.PngImagePlugin - DEBUG - STREAM b'bKGD' 101 6
+2023-03-29 10:19:39 - PIL.PngImagePlugin - DEBUG - b'bKGD' 101 6 (unknown)
+2023-03-29 10:19:39 - PIL.PngImagePlugin - DEBUG - STREAM b'pHYs' 119 9
+2023-03-29 10:19:39 - PIL.PngImagePlugin - DEBUG - STREAM b'tIME' 140 7
+2023-03-29 10:19:39 - PIL.PngImagePlugin - DEBUG - b'tIME' 140 7 (unknown)
+2023-03-29 10:19:39 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 159 32768
+2023-03-29 10:19:39 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198547 46
+2023-03-29 10:19:39 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198605 44
+2023-03-29 10:19:39 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198661 34
+2023-03-29 10:19:39 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:19:39 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 41 6704
+2023-03-29 10:19:39 - PIL.PngImagePlugin - DEBUG - STREAM b'iCCP' 6757 387
+2023-03-29 10:19:39 - PIL.PngImagePlugin - DEBUG - iCCP profile name b'ICC profile'
+2023-03-29 10:19:39 - PIL.PngImagePlugin - DEBUG - Compression method 0
+2023-03-29 10:19:39 - PIL.PngImagePlugin - DEBUG - STREAM b'iTXt' 7156 3575
+2023-03-29 10:19:39 - PIL.PngImagePlugin - DEBUG - STREAM b'gAMA' 10743 4
+2023-03-29 10:19:39 - PIL.PngImagePlugin - DEBUG - STREAM b'PLTE' 10759 321
+2023-03-29 10:19:39 - PIL.PngImagePlugin - DEBUG - STREAM b'tRNS' 11092 1
+2023-03-29 10:19:39 - PIL.PngImagePlugin - DEBUG - STREAM b'pHYs' 11105 9
+2023-03-29 10:19:39 - PIL.PngImagePlugin - DEBUG - STREAM b'tIME' 11126 7
+2023-03-29 10:19:39 - PIL.PngImagePlugin - DEBUG - b'tIME' 11126 7 (unknown)
+2023-03-29 10:19:39 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 11145 8192
+2023-03-29 10:19:39 - App - INFO - (Credits menu)
+2023-03-29 10:19:39 - App - INFO - Switched to settings menu
+2023-03-29 10:19:39 - App - INFO - Switched to cards menu
+2023-03-29 10:19:39 - App - INFO - (Cards description window)
+2023-03-29 10:19:47 - googleapiclient.discovery - DEBUG - URL being requested: PATCH https://www.googleapis.com/upload/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=json&uploadType=resumable
+2023-03-29 10:19:49 - App - INFO - End of the program
+--------------------------------------------------------------
+2023-03-29 10:22:01 - App - INFO - Launching...
+2023-03-29 10:22:01 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:22:01 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 41 32768
+2023-03-29 10:22:02 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2023-03-29 10:22:02 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&fields=nextPageToken%2C+files%28id%2C+name%29&pageSize=10&alt=json
+2023-03-29 10:22:03 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=media
+2023-03-29 10:22:11 - App - INFO - (Main menu)
+2023-03-29 10:22:11 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:22:11 - PIL.PngImagePlugin - DEBUG - STREAM b'gAMA' 41 4
+2023-03-29 10:22:11 - PIL.PngImagePlugin - DEBUG - STREAM b'cHRM' 57 32
+2023-03-29 10:22:11 - PIL.PngImagePlugin - DEBUG - STREAM b'bKGD' 101 6
+2023-03-29 10:22:11 - PIL.PngImagePlugin - DEBUG - b'bKGD' 101 6 (unknown)
+2023-03-29 10:22:11 - PIL.PngImagePlugin - DEBUG - STREAM b'pHYs' 119 9
+2023-03-29 10:22:11 - PIL.PngImagePlugin - DEBUG - STREAM b'tIME' 140 7
+2023-03-29 10:22:11 - PIL.PngImagePlugin - DEBUG - b'tIME' 140 7 (unknown)
+2023-03-29 10:22:11 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 159 32768
+2023-03-29 10:22:11 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198547 46
+2023-03-29 10:22:11 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198605 44
+2023-03-29 10:22:11 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198661 34
+2023-03-29 10:22:11 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:22:11 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 41 6704
+2023-03-29 10:22:11 - PIL.PngImagePlugin - DEBUG - STREAM b'iCCP' 6757 387
+2023-03-29 10:22:11 - PIL.PngImagePlugin - DEBUG - iCCP profile name b'ICC profile'
+2023-03-29 10:22:11 - PIL.PngImagePlugin - DEBUG - Compression method 0
+2023-03-29 10:22:11 - PIL.PngImagePlugin - DEBUG - STREAM b'iTXt' 7156 3575
+2023-03-29 10:22:11 - PIL.PngImagePlugin - DEBUG - STREAM b'gAMA' 10743 4
+2023-03-29 10:22:11 - PIL.PngImagePlugin - DEBUG - STREAM b'PLTE' 10759 321
+2023-03-29 10:22:11 - PIL.PngImagePlugin - DEBUG - STREAM b'tRNS' 11092 1
+2023-03-29 10:22:11 - PIL.PngImagePlugin - DEBUG - STREAM b'pHYs' 11105 9
+2023-03-29 10:22:11 - PIL.PngImagePlugin - DEBUG - STREAM b'tIME' 11126 7
+2023-03-29 10:22:11 - PIL.PngImagePlugin - DEBUG - b'tIME' 11126 7 (unknown)
+2023-03-29 10:22:11 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 11145 8192
+2023-03-29 10:22:11 - App - INFO - (Credits menu)
+2023-03-29 10:22:11 - App - INFO - Switched to settings menu
+2023-03-29 10:22:11 - App - INFO - Switched to cards menu
+2023-03-29 10:22:11 - App - INFO - (Cards description window)
+2023-03-29 10:22:43 - googleapiclient.discovery - DEBUG - URL being requested: PATCH https://www.googleapis.com/upload/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=json&uploadType=resumable
+2023-03-29 10:22:44 - App - INFO - End of the program
+--------------------------------------------------------------
+2023-03-29 10:23:40 - App - INFO - Launching...
+2023-03-29 10:23:40 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:23:40 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 41 32768
+2023-03-29 10:23:42 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2023-03-29 10:23:42 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&fields=nextPageToken%2C+files%28id%2C+name%29&pageSize=10&alt=json
+2023-03-29 10:23:42 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=media
+2023-03-29 10:23:49 - App - INFO - (Main menu)
+2023-03-29 10:23:49 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:23:49 - PIL.PngImagePlugin - DEBUG - STREAM b'gAMA' 41 4
+2023-03-29 10:23:49 - PIL.PngImagePlugin - DEBUG - STREAM b'cHRM' 57 32
+2023-03-29 10:23:49 - PIL.PngImagePlugin - DEBUG - STREAM b'bKGD' 101 6
+2023-03-29 10:23:49 - PIL.PngImagePlugin - DEBUG - b'bKGD' 101 6 (unknown)
+2023-03-29 10:23:49 - PIL.PngImagePlugin - DEBUG - STREAM b'pHYs' 119 9
+2023-03-29 10:23:49 - PIL.PngImagePlugin - DEBUG - STREAM b'tIME' 140 7
+2023-03-29 10:23:49 - PIL.PngImagePlugin - DEBUG - b'tIME' 140 7 (unknown)
+2023-03-29 10:23:49 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 159 32768
+2023-03-29 10:23:49 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198547 46
+2023-03-29 10:23:49 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198605 44
+2023-03-29 10:23:49 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198661 34
+2023-03-29 10:23:49 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:23:49 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 41 6704
+2023-03-29 10:23:49 - PIL.PngImagePlugin - DEBUG - STREAM b'iCCP' 6757 387
+2023-03-29 10:23:49 - PIL.PngImagePlugin - DEBUG - iCCP profile name b'ICC profile'
+2023-03-29 10:23:49 - PIL.PngImagePlugin - DEBUG - Compression method 0
+2023-03-29 10:23:49 - PIL.PngImagePlugin - DEBUG - STREAM b'iTXt' 7156 3575
+2023-03-29 10:23:49 - PIL.PngImagePlugin - DEBUG - STREAM b'gAMA' 10743 4
+2023-03-29 10:23:49 - PIL.PngImagePlugin - DEBUG - STREAM b'PLTE' 10759 321
+2023-03-29 10:23:49 - PIL.PngImagePlugin - DEBUG - STREAM b'tRNS' 11092 1
+2023-03-29 10:23:49 - PIL.PngImagePlugin - DEBUG - STREAM b'pHYs' 11105 9
+2023-03-29 10:23:49 - PIL.PngImagePlugin - DEBUG - STREAM b'tIME' 11126 7
+2023-03-29 10:23:49 - PIL.PngImagePlugin - DEBUG - b'tIME' 11126 7 (unknown)
+2023-03-29 10:23:49 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 11145 8192
+2023-03-29 10:23:49 - App - INFO - (Credits menu)
+2023-03-29 10:23:49 - App - INFO - Switched to settings menu
+2023-03-29 10:23:49 - App - INFO - Switched to cards menu
+2023-03-29 10:23:49 - App - INFO - (Cards description window)
+2023-03-29 10:24:20 - googleapiclient.discovery - DEBUG - URL being requested: PATCH https://www.googleapis.com/upload/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=json&uploadType=resumable
+2023-03-29 10:24:21 - App - INFO - End of the program
+--------------------------------------------------------------
+2023-03-29 10:36:05 - App - INFO - Launching...
+2023-03-29 10:36:05 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:36:05 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 41 32768
+2023-03-29 10:36:06 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2023-03-29 10:36:06 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&fields=nextPageToken%2C+files%28id%2C+name%29&pageSize=10&alt=json
+2023-03-29 10:36:07 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=media
+2023-03-29 10:36:14 - App - INFO - (Main menu)
+2023-03-29 10:36:14 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:36:14 - PIL.PngImagePlugin - DEBUG - STREAM b'gAMA' 41 4
+2023-03-29 10:36:14 - PIL.PngImagePlugin - DEBUG - STREAM b'cHRM' 57 32
+2023-03-29 10:36:14 - PIL.PngImagePlugin - DEBUG - STREAM b'bKGD' 101 6
+2023-03-29 10:36:14 - PIL.PngImagePlugin - DEBUG - b'bKGD' 101 6 (unknown)
+2023-03-29 10:36:14 - PIL.PngImagePlugin - DEBUG - STREAM b'pHYs' 119 9
+2023-03-29 10:36:14 - PIL.PngImagePlugin - DEBUG - STREAM b'tIME' 140 7
+2023-03-29 10:36:14 - PIL.PngImagePlugin - DEBUG - b'tIME' 140 7 (unknown)
+2023-03-29 10:36:14 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 159 32768
+2023-03-29 10:36:14 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198547 46
+2023-03-29 10:36:14 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198605 44
+2023-03-29 10:36:14 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198661 34
+2023-03-29 10:36:14 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:36:14 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 41 6704
+2023-03-29 10:36:14 - PIL.PngImagePlugin - DEBUG - STREAM b'iCCP' 6757 387
+2023-03-29 10:36:14 - PIL.PngImagePlugin - DEBUG - iCCP profile name b'ICC profile'
+2023-03-29 10:36:14 - PIL.PngImagePlugin - DEBUG - Compression method 0
+2023-03-29 10:36:14 - PIL.PngImagePlugin - DEBUG - STREAM b'iTXt' 7156 3575
+2023-03-29 10:36:14 - PIL.PngImagePlugin - DEBUG - STREAM b'gAMA' 10743 4
+2023-03-29 10:36:14 - PIL.PngImagePlugin - DEBUG - STREAM b'PLTE' 10759 321
+2023-03-29 10:36:14 - PIL.PngImagePlugin - DEBUG - STREAM b'tRNS' 11092 1
+2023-03-29 10:36:14 - PIL.PngImagePlugin - DEBUG - STREAM b'pHYs' 11105 9
+2023-03-29 10:36:14 - PIL.PngImagePlugin - DEBUG - STREAM b'tIME' 11126 7
+2023-03-29 10:36:14 - PIL.PngImagePlugin - DEBUG - b'tIME' 11126 7 (unknown)
+2023-03-29 10:36:14 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 11145 8192
+2023-03-29 10:36:14 - App - INFO - (Credits menu)
+2023-03-29 10:36:14 - App - INFO - Switched to settings menu
+2023-03-29 10:36:14 - App - INFO - Switched to cards menu
+2023-03-29 10:36:14 - App - INFO - (Cards description window)
+2023-03-29 10:36:25 - googleapiclient.discovery - DEBUG - URL being requested: PATCH https://www.googleapis.com/upload/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=json&uploadType=resumable
+2023-03-29 10:36:26 - App - INFO - End of the program
+--------------------------------------------------------------
+2023-03-29 10:36:50 - App - INFO - Launching...
+2023-03-29 10:36:50 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:36:50 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 41 32768
+2023-03-29 10:36:51 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2023-03-29 10:36:51 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&fields=nextPageToken%2C+files%28id%2C+name%29&pageSize=10&alt=json
+2023-03-29 10:36:52 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=media
+2023-03-29 10:36:59 - App - INFO - (Main menu)
+2023-03-29 10:36:59 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:36:59 - PIL.PngImagePlugin - DEBUG - STREAM b'gAMA' 41 4
+2023-03-29 10:36:59 - PIL.PngImagePlugin - DEBUG - STREAM b'cHRM' 57 32
+2023-03-29 10:36:59 - PIL.PngImagePlugin - DEBUG - STREAM b'bKGD' 101 6
+2023-03-29 10:36:59 - PIL.PngImagePlugin - DEBUG - b'bKGD' 101 6 (unknown)
+2023-03-29 10:36:59 - PIL.PngImagePlugin - DEBUG - STREAM b'pHYs' 119 9
+2023-03-29 10:36:59 - PIL.PngImagePlugin - DEBUG - STREAM b'tIME' 140 7
+2023-03-29 10:36:59 - PIL.PngImagePlugin - DEBUG - b'tIME' 140 7 (unknown)
+2023-03-29 10:36:59 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 159 32768
+2023-03-29 10:36:59 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198547 46
+2023-03-29 10:36:59 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198605 44
+2023-03-29 10:36:59 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198661 34
+2023-03-29 10:36:59 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:36:59 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 41 6704
+2023-03-29 10:36:59 - PIL.PngImagePlugin - DEBUG - STREAM b'iCCP' 6757 387
+2023-03-29 10:36:59 - PIL.PngImagePlugin - DEBUG - iCCP profile name b'ICC profile'
+2023-03-29 10:36:59 - PIL.PngImagePlugin - DEBUG - Compression method 0
+2023-03-29 10:36:59 - PIL.PngImagePlugin - DEBUG - STREAM b'iTXt' 7156 3575
+2023-03-29 10:36:59 - PIL.PngImagePlugin - DEBUG - STREAM b'gAMA' 10743 4
+2023-03-29 10:36:59 - PIL.PngImagePlugin - DEBUG - STREAM b'PLTE' 10759 321
+2023-03-29 10:36:59 - PIL.PngImagePlugin - DEBUG - STREAM b'tRNS' 11092 1
+2023-03-29 10:36:59 - PIL.PngImagePlugin - DEBUG - STREAM b'pHYs' 11105 9
+2023-03-29 10:36:59 - PIL.PngImagePlugin - DEBUG - STREAM b'tIME' 11126 7
+2023-03-29 10:36:59 - PIL.PngImagePlugin - DEBUG - b'tIME' 11126 7 (unknown)
+2023-03-29 10:36:59 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 11145 8192
+2023-03-29 10:36:59 - App - INFO - (Credits menu)
+2023-03-29 10:36:59 - App - INFO - Switched to settings menu
+2023-03-29 10:36:59 - App - INFO - Switched to cards menu
+2023-03-29 10:36:59 - App - INFO - (Cards description window)
+2023-03-29 10:37:29 - googleapiclient.discovery - DEBUG - URL being requested: PATCH https://www.googleapis.com/upload/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=json&uploadType=resumable
+2023-03-29 10:37:30 - App - INFO - End of the program
+--------------------------------------------------------------
+2023-03-29 10:38:00 - App - INFO - Launching...
+2023-03-29 10:38:00 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:38:00 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 41 32768
+2023-03-29 10:38:01 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2023-03-29 10:38:01 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&fields=nextPageToken%2C+files%28id%2C+name%29&pageSize=10&alt=json
+2023-03-29 10:38:01 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=media
+2023-03-29 10:38:09 - App - INFO - (Main menu)
+2023-03-29 10:38:09 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:38:09 - PIL.PngImagePlugin - DEBUG - STREAM b'gAMA' 41 4
+2023-03-29 10:38:09 - PIL.PngImagePlugin - DEBUG - STREAM b'cHRM' 57 32
+2023-03-29 10:38:09 - PIL.PngImagePlugin - DEBUG - STREAM b'bKGD' 101 6
+2023-03-29 10:38:09 - PIL.PngImagePlugin - DEBUG - b'bKGD' 101 6 (unknown)
+2023-03-29 10:38:09 - PIL.PngImagePlugin - DEBUG - STREAM b'pHYs' 119 9
+2023-03-29 10:38:09 - PIL.PngImagePlugin - DEBUG - STREAM b'tIME' 140 7
+2023-03-29 10:38:09 - PIL.PngImagePlugin - DEBUG - b'tIME' 140 7 (unknown)
+2023-03-29 10:38:09 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 159 32768
+2023-03-29 10:38:09 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198547 46
+2023-03-29 10:38:09 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198605 44
+2023-03-29 10:38:09 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198661 34
+2023-03-29 10:38:09 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:38:09 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 41 6704
+2023-03-29 10:38:09 - PIL.PngImagePlugin - DEBUG - STREAM b'iCCP' 6757 387
+2023-03-29 10:38:09 - PIL.PngImagePlugin - DEBUG - iCCP profile name b'ICC profile'
+2023-03-29 10:38:09 - PIL.PngImagePlugin - DEBUG - Compression method 0
+2023-03-29 10:38:09 - PIL.PngImagePlugin - DEBUG - STREAM b'iTXt' 7156 3575
+2023-03-29 10:38:09 - PIL.PngImagePlugin - DEBUG - STREAM b'gAMA' 10743 4
+2023-03-29 10:38:09 - PIL.PngImagePlugin - DEBUG - STREAM b'PLTE' 10759 321
+2023-03-29 10:38:09 - PIL.PngImagePlugin - DEBUG - STREAM b'tRNS' 11092 1
+2023-03-29 10:38:09 - PIL.PngImagePlugin - DEBUG - STREAM b'pHYs' 11105 9
+2023-03-29 10:38:09 - PIL.PngImagePlugin - DEBUG - STREAM b'tIME' 11126 7
+2023-03-29 10:38:09 - PIL.PngImagePlugin - DEBUG - b'tIME' 11126 7 (unknown)
+2023-03-29 10:38:09 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 11145 8192
+2023-03-29 10:38:09 - App - INFO - (Credits menu)
+2023-03-29 10:38:09 - App - INFO - Switched to settings menu
+2023-03-29 10:38:09 - App - INFO - Switched to cards menu
+2023-03-29 10:38:09 - App - INFO - (Cards description window)
+2023-03-29 10:38:32 - googleapiclient.discovery - DEBUG - URL being requested: PATCH https://www.googleapis.com/upload/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=json&uploadType=resumable
+2023-03-29 10:38:33 - App - INFO - End of the program
+--------------------------------------------------------------
+2023-03-29 10:38:53 - App - INFO - Launching...
+2023-03-29 10:38:53 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:38:53 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 41 32768
+2023-03-29 10:38:54 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2023-03-29 10:38:54 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&fields=nextPageToken%2C+files%28id%2C+name%29&pageSize=10&alt=json
+2023-03-29 10:38:54 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=media
+2023-03-29 10:39:01 - App - INFO - (Main menu)
+2023-03-29 10:39:01 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:39:01 - PIL.PngImagePlugin - DEBUG - STREAM b'gAMA' 41 4
+2023-03-29 10:39:01 - PIL.PngImagePlugin - DEBUG - STREAM b'cHRM' 57 32
+2023-03-29 10:39:01 - PIL.PngImagePlugin - DEBUG - STREAM b'bKGD' 101 6
+2023-03-29 10:39:01 - PIL.PngImagePlugin - DEBUG - b'bKGD' 101 6 (unknown)
+2023-03-29 10:39:01 - PIL.PngImagePlugin - DEBUG - STREAM b'pHYs' 119 9
+2023-03-29 10:39:01 - PIL.PngImagePlugin - DEBUG - STREAM b'tIME' 140 7
+2023-03-29 10:39:01 - PIL.PngImagePlugin - DEBUG - b'tIME' 140 7 (unknown)
+2023-03-29 10:39:01 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 159 32768
+2023-03-29 10:39:01 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198547 46
+2023-03-29 10:39:01 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198605 44
+2023-03-29 10:39:01 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198661 34
+2023-03-29 10:39:01 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:39:01 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 41 6704
+2023-03-29 10:39:01 - PIL.PngImagePlugin - DEBUG - STREAM b'iCCP' 6757 387
+2023-03-29 10:39:01 - PIL.PngImagePlugin - DEBUG - iCCP profile name b'ICC profile'
+2023-03-29 10:39:01 - PIL.PngImagePlugin - DEBUG - Compression method 0
+2023-03-29 10:39:01 - PIL.PngImagePlugin - DEBUG - STREAM b'iTXt' 7156 3575
+2023-03-29 10:39:01 - PIL.PngImagePlugin - DEBUG - STREAM b'gAMA' 10743 4
+2023-03-29 10:39:01 - PIL.PngImagePlugin - DEBUG - STREAM b'PLTE' 10759 321
+2023-03-29 10:39:01 - PIL.PngImagePlugin - DEBUG - STREAM b'tRNS' 11092 1
+2023-03-29 10:39:01 - PIL.PngImagePlugin - DEBUG - STREAM b'pHYs' 11105 9
+2023-03-29 10:39:01 - PIL.PngImagePlugin - DEBUG - STREAM b'tIME' 11126 7
+2023-03-29 10:39:01 - PIL.PngImagePlugin - DEBUG - b'tIME' 11126 7 (unknown)
+2023-03-29 10:39:01 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 11145 8192
+2023-03-29 10:39:01 - App - INFO - (Credits menu)
+2023-03-29 10:39:01 - App - INFO - Switched to settings menu
+2023-03-29 10:39:01 - App - INFO - Switched to cards menu
+2023-03-29 10:39:02 - App - INFO - (Cards description window)
+2023-03-29 10:40:20 - googleapiclient.discovery - DEBUG - URL being requested: PATCH https://www.googleapis.com/upload/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=json&uploadType=resumable
+2023-03-29 10:40:21 - App - INFO - End of the program
+--------------------------------------------------------------
+2023-03-29 10:46:19 - App - INFO - Launching...
+2023-03-29 10:46:19 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:46:19 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 41 32768
+2023-03-29 10:46:20 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2023-03-29 10:46:20 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&fields=nextPageToken%2C+files%28id%2C+name%29&pageSize=10&alt=json
+2023-03-29 10:46:21 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=media
+2023-03-29 10:46:28 - App - INFO - (Main menu)
+2023-03-29 10:46:28 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:46:28 - PIL.PngImagePlugin - DEBUG - STREAM b'gAMA' 41 4
+2023-03-29 10:46:28 - PIL.PngImagePlugin - DEBUG - STREAM b'cHRM' 57 32
+2023-03-29 10:46:28 - PIL.PngImagePlugin - DEBUG - STREAM b'bKGD' 101 6
+2023-03-29 10:46:28 - PIL.PngImagePlugin - DEBUG - b'bKGD' 101 6 (unknown)
+2023-03-29 10:46:28 - PIL.PngImagePlugin - DEBUG - STREAM b'pHYs' 119 9
+2023-03-29 10:46:28 - PIL.PngImagePlugin - DEBUG - STREAM b'tIME' 140 7
+2023-03-29 10:46:28 - PIL.PngImagePlugin - DEBUG - b'tIME' 140 7 (unknown)
+2023-03-29 10:46:28 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 159 32768
+2023-03-29 10:46:28 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198547 46
+2023-03-29 10:46:28 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198605 44
+2023-03-29 10:46:28 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198661 34
+2023-03-29 10:46:28 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:46:28 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 41 6704
+2023-03-29 10:46:28 - PIL.PngImagePlugin - DEBUG - STREAM b'iCCP' 6757 387
+2023-03-29 10:46:28 - PIL.PngImagePlugin - DEBUG - iCCP profile name b'ICC profile'
+2023-03-29 10:46:28 - PIL.PngImagePlugin - DEBUG - Compression method 0
+2023-03-29 10:46:28 - PIL.PngImagePlugin - DEBUG - STREAM b'iTXt' 7156 3575
+2023-03-29 10:46:28 - PIL.PngImagePlugin - DEBUG - STREAM b'gAMA' 10743 4
+2023-03-29 10:46:28 - PIL.PngImagePlugin - DEBUG - STREAM b'PLTE' 10759 321
+2023-03-29 10:46:28 - PIL.PngImagePlugin - DEBUG - STREAM b'tRNS' 11092 1
+2023-03-29 10:46:28 - PIL.PngImagePlugin - DEBUG - STREAM b'pHYs' 11105 9
+2023-03-29 10:46:28 - PIL.PngImagePlugin - DEBUG - STREAM b'tIME' 11126 7
+2023-03-29 10:46:28 - PIL.PngImagePlugin - DEBUG - b'tIME' 11126 7 (unknown)
+2023-03-29 10:46:28 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 11145 8192
+2023-03-29 10:46:28 - App - INFO - (Credits menu)
+2023-03-29 10:46:34 - googleapiclient.discovery - DEBUG - URL being requested: PATCH https://www.googleapis.com/upload/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=json&uploadType=resumable
+2023-03-29 10:46:35 - App - INFO - End of the program
+--------------------------------------------------------------
+2023-03-29 10:48:45 - App - INFO - Launching...
+2023-03-29 10:48:45 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:48:45 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 41 32768
+2023-03-29 10:48:46 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2023-03-29 10:48:46 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&fields=nextPageToken%2C+files%28id%2C+name%29&pageSize=10&alt=json
+2023-03-29 10:48:46 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=media
+2023-03-29 10:48:53 - App - INFO - (Main menu)
+2023-03-29 10:48:53 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:48:53 - PIL.PngImagePlugin - DEBUG - STREAM b'gAMA' 41 4
+2023-03-29 10:48:53 - PIL.PngImagePlugin - DEBUG - STREAM b'cHRM' 57 32
+2023-03-29 10:48:53 - PIL.PngImagePlugin - DEBUG - STREAM b'bKGD' 101 6
+2023-03-29 10:48:53 - PIL.PngImagePlugin - DEBUG - b'bKGD' 101 6 (unknown)
+2023-03-29 10:48:53 - PIL.PngImagePlugin - DEBUG - STREAM b'pHYs' 119 9
+2023-03-29 10:48:53 - PIL.PngImagePlugin - DEBUG - STREAM b'tIME' 140 7
+2023-03-29 10:48:53 - PIL.PngImagePlugin - DEBUG - b'tIME' 140 7 (unknown)
+2023-03-29 10:48:53 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 159 32768
+2023-03-29 10:48:53 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198547 46
+2023-03-29 10:48:53 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198605 44
+2023-03-29 10:48:53 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198661 34
+2023-03-29 10:48:53 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:48:53 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 41 6704
+2023-03-29 10:48:53 - PIL.PngImagePlugin - DEBUG - STREAM b'iCCP' 6757 387
+2023-03-29 10:48:53 - PIL.PngImagePlugin - DEBUG - iCCP profile name b'ICC profile'
+2023-03-29 10:48:53 - PIL.PngImagePlugin - DEBUG - Compression method 0
+2023-03-29 10:48:53 - PIL.PngImagePlugin - DEBUG - STREAM b'iTXt' 7156 3575
+2023-03-29 10:48:53 - PIL.PngImagePlugin - DEBUG - STREAM b'gAMA' 10743 4
+2023-03-29 10:48:53 - PIL.PngImagePlugin - DEBUG - STREAM b'PLTE' 10759 321
+2023-03-29 10:48:53 - PIL.PngImagePlugin - DEBUG - STREAM b'tRNS' 11092 1
+2023-03-29 10:48:53 - PIL.PngImagePlugin - DEBUG - STREAM b'pHYs' 11105 9
+2023-03-29 10:48:53 - PIL.PngImagePlugin - DEBUG - STREAM b'tIME' 11126 7
+2023-03-29 10:48:53 - PIL.PngImagePlugin - DEBUG - b'tIME' 11126 7 (unknown)
+2023-03-29 10:48:53 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 11145 8192
+2023-03-29 10:48:53 - App - INFO - (Credits menu)
+2023-03-29 10:48:58 - googleapiclient.discovery - DEBUG - URL being requested: PATCH https://www.googleapis.com/upload/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=json&uploadType=resumable
+2023-03-29 10:49:00 - App - INFO - End of the program
+--------------------------------------------------------------
+2023-03-29 10:49:42 - App - INFO - Launching...
+2023-03-29 10:49:42 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:49:42 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 41 32768
+2023-03-29 10:49:43 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2023-03-29 10:49:43 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&fields=nextPageToken%2C+files%28id%2C+name%29&pageSize=10&alt=json
+2023-03-29 10:49:44 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=media
+2023-03-29 10:49:51 - App - INFO - (Main menu)
+2023-03-29 10:49:51 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:49:51 - PIL.PngImagePlugin - DEBUG - STREAM b'gAMA' 41 4
+2023-03-29 10:49:51 - PIL.PngImagePlugin - DEBUG - STREAM b'cHRM' 57 32
+2023-03-29 10:49:51 - PIL.PngImagePlugin - DEBUG - STREAM b'bKGD' 101 6
+2023-03-29 10:49:51 - PIL.PngImagePlugin - DEBUG - b'bKGD' 101 6 (unknown)
+2023-03-29 10:49:51 - PIL.PngImagePlugin - DEBUG - STREAM b'pHYs' 119 9
+2023-03-29 10:49:51 - PIL.PngImagePlugin - DEBUG - STREAM b'tIME' 140 7
+2023-03-29 10:49:51 - PIL.PngImagePlugin - DEBUG - b'tIME' 140 7 (unknown)
+2023-03-29 10:49:51 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 159 32768
+2023-03-29 10:49:51 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198547 46
+2023-03-29 10:49:51 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198605 44
+2023-03-29 10:49:51 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198661 34
+2023-03-29 10:49:51 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:49:51 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 41 6704
+2023-03-29 10:49:51 - PIL.PngImagePlugin - DEBUG - STREAM b'iCCP' 6757 387
+2023-03-29 10:49:51 - PIL.PngImagePlugin - DEBUG - iCCP profile name b'ICC profile'
+2023-03-29 10:49:51 - PIL.PngImagePlugin - DEBUG - Compression method 0
+2023-03-29 10:49:51 - PIL.PngImagePlugin - DEBUG - STREAM b'iTXt' 7156 3575
+2023-03-29 10:49:51 - PIL.PngImagePlugin - DEBUG - STREAM b'gAMA' 10743 4
+2023-03-29 10:49:51 - PIL.PngImagePlugin - DEBUG - STREAM b'PLTE' 10759 321
+2023-03-29 10:49:51 - PIL.PngImagePlugin - DEBUG - STREAM b'tRNS' 11092 1
+2023-03-29 10:49:51 - PIL.PngImagePlugin - DEBUG - STREAM b'pHYs' 11105 9
+2023-03-29 10:49:51 - PIL.PngImagePlugin - DEBUG - STREAM b'tIME' 11126 7
+2023-03-29 10:49:51 - PIL.PngImagePlugin - DEBUG - b'tIME' 11126 7 (unknown)
+2023-03-29 10:49:51 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 11145 8192
+2023-03-29 10:49:51 - App - INFO - (Credits menu)
+2023-03-29 10:49:56 - googleapiclient.discovery - DEBUG - URL being requested: PATCH https://www.googleapis.com/upload/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=json&uploadType=resumable
+2023-03-29 10:49:58 - App - INFO - End of the program
+--------------------------------------------------------------
+2023-03-29 10:50:34 - App - INFO - Launching...
+2023-03-29 10:50:34 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:50:34 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 41 32768
+2023-03-29 10:50:35 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2023-03-29 10:50:35 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&fields=nextPageToken%2C+files%28id%2C+name%29&pageSize=10&alt=json
+2023-03-29 10:50:36 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=media
+2023-03-29 10:50:43 - App - INFO - (Main menu)
+2023-03-29 10:50:43 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:50:43 - PIL.PngImagePlugin - DEBUG - STREAM b'gAMA' 41 4
+2023-03-29 10:50:43 - PIL.PngImagePlugin - DEBUG - STREAM b'cHRM' 57 32
+2023-03-29 10:50:43 - PIL.PngImagePlugin - DEBUG - STREAM b'bKGD' 101 6
+2023-03-29 10:50:43 - PIL.PngImagePlugin - DEBUG - b'bKGD' 101 6 (unknown)
+2023-03-29 10:50:43 - PIL.PngImagePlugin - DEBUG - STREAM b'pHYs' 119 9
+2023-03-29 10:50:43 - PIL.PngImagePlugin - DEBUG - STREAM b'tIME' 140 7
+2023-03-29 10:50:43 - PIL.PngImagePlugin - DEBUG - b'tIME' 140 7 (unknown)
+2023-03-29 10:50:43 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 159 32768
+2023-03-29 10:50:43 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198547 46
+2023-03-29 10:50:43 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198605 44
+2023-03-29 10:50:43 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198661 34
+2023-03-29 10:50:43 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:50:43 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 41 6704
+2023-03-29 10:50:43 - PIL.PngImagePlugin - DEBUG - STREAM b'iCCP' 6757 387
+2023-03-29 10:50:43 - PIL.PngImagePlugin - DEBUG - iCCP profile name b'ICC profile'
+2023-03-29 10:50:43 - PIL.PngImagePlugin - DEBUG - Compression method 0
+2023-03-29 10:50:43 - PIL.PngImagePlugin - DEBUG - STREAM b'iTXt' 7156 3575
+2023-03-29 10:50:43 - PIL.PngImagePlugin - DEBUG - STREAM b'gAMA' 10743 4
+2023-03-29 10:50:43 - PIL.PngImagePlugin - DEBUG - STREAM b'PLTE' 10759 321
+2023-03-29 10:50:43 - PIL.PngImagePlugin - DEBUG - STREAM b'tRNS' 11092 1
+2023-03-29 10:50:43 - PIL.PngImagePlugin - DEBUG - STREAM b'pHYs' 11105 9
+2023-03-29 10:50:43 - PIL.PngImagePlugin - DEBUG - STREAM b'tIME' 11126 7
+2023-03-29 10:50:43 - PIL.PngImagePlugin - DEBUG - b'tIME' 11126 7 (unknown)
+2023-03-29 10:50:43 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 11145 8192
+2023-03-29 10:50:43 - App - INFO - (Credits menu)
+2023-03-29 10:50:47 - googleapiclient.discovery - DEBUG - URL being requested: PATCH https://www.googleapis.com/upload/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=json&uploadType=resumable
+2023-03-29 10:50:48 - App - INFO - End of the program
+--------------------------------------------------------------
+2023-03-29 10:51:06 - App - INFO - Launching...
+2023-03-29 10:51:06 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:51:06 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 41 32768
+2023-03-29 10:51:07 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2023-03-29 10:51:07 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&fields=nextPageToken%2C+files%28id%2C+name%29&pageSize=10&alt=json
+2023-03-29 10:51:08 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=media
+2023-03-29 10:51:14 - App - INFO - (Main menu)
+2023-03-29 10:51:14 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:51:14 - PIL.PngImagePlugin - DEBUG - STREAM b'gAMA' 41 4
+2023-03-29 10:51:14 - PIL.PngImagePlugin - DEBUG - STREAM b'cHRM' 57 32
+2023-03-29 10:51:14 - PIL.PngImagePlugin - DEBUG - STREAM b'bKGD' 101 6
+2023-03-29 10:51:14 - PIL.PngImagePlugin - DEBUG - b'bKGD' 101 6 (unknown)
+2023-03-29 10:51:14 - PIL.PngImagePlugin - DEBUG - STREAM b'pHYs' 119 9
+2023-03-29 10:51:14 - PIL.PngImagePlugin - DEBUG - STREAM b'tIME' 140 7
+2023-03-29 10:51:14 - PIL.PngImagePlugin - DEBUG - b'tIME' 140 7 (unknown)
+2023-03-29 10:51:14 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 159 32768
+2023-03-29 10:51:14 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198547 46
+2023-03-29 10:51:14 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198605 44
+2023-03-29 10:51:14 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198661 34
+2023-03-29 10:51:15 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:51:15 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 41 6704
+2023-03-29 10:51:15 - PIL.PngImagePlugin - DEBUG - STREAM b'iCCP' 6757 387
+2023-03-29 10:51:15 - PIL.PngImagePlugin - DEBUG - iCCP profile name b'ICC profile'
+2023-03-29 10:51:15 - PIL.PngImagePlugin - DEBUG - Compression method 0
+2023-03-29 10:51:15 - PIL.PngImagePlugin - DEBUG - STREAM b'iTXt' 7156 3575
+2023-03-29 10:51:15 - PIL.PngImagePlugin - DEBUG - STREAM b'gAMA' 10743 4
+2023-03-29 10:51:15 - PIL.PngImagePlugin - DEBUG - STREAM b'PLTE' 10759 321
+2023-03-29 10:51:15 - PIL.PngImagePlugin - DEBUG - STREAM b'tRNS' 11092 1
+2023-03-29 10:51:15 - PIL.PngImagePlugin - DEBUG - STREAM b'pHYs' 11105 9
+2023-03-29 10:51:15 - PIL.PngImagePlugin - DEBUG - STREAM b'tIME' 11126 7
+2023-03-29 10:51:15 - PIL.PngImagePlugin - DEBUG - b'tIME' 11126 7 (unknown)
+2023-03-29 10:51:15 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 11145 8192
+2023-03-29 10:51:15 - App - INFO - (Credits menu)
+2023-03-29 10:51:15 - App - INFO - Switched to settings menu
+2023-03-29 10:51:15 - App - INFO - Switched to cards menu
+2023-03-29 10:51:15 - App - INFO - (Cards description window)
+2023-03-29 10:51:24 - googleapiclient.discovery - DEBUG - URL being requested: PATCH https://www.googleapis.com/upload/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=json&uploadType=resumable
+2023-03-29 10:51:26 - App - INFO - End of the program
+--------------------------------------------------------------
+2023-03-29 10:51:57 - App - INFO - Launching...
+2023-03-29 10:51:57 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:51:57 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 41 32768
+2023-03-29 10:51:58 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2023-03-29 10:51:59 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&fields=nextPageToken%2C+files%28id%2C+name%29&pageSize=10&alt=json
+2023-03-29 10:51:59 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=media
+2023-03-29 10:52:06 - App - INFO - (Main menu)
+2023-03-29 10:52:06 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:52:06 - PIL.PngImagePlugin - DEBUG - STREAM b'gAMA' 41 4
+2023-03-29 10:52:06 - PIL.PngImagePlugin - DEBUG - STREAM b'cHRM' 57 32
+2023-03-29 10:52:06 - PIL.PngImagePlugin - DEBUG - STREAM b'bKGD' 101 6
+2023-03-29 10:52:06 - PIL.PngImagePlugin - DEBUG - b'bKGD' 101 6 (unknown)
+2023-03-29 10:52:06 - PIL.PngImagePlugin - DEBUG - STREAM b'pHYs' 119 9
+2023-03-29 10:52:06 - PIL.PngImagePlugin - DEBUG - STREAM b'tIME' 140 7
+2023-03-29 10:52:06 - PIL.PngImagePlugin - DEBUG - b'tIME' 140 7 (unknown)
+2023-03-29 10:52:06 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 159 32768
+2023-03-29 10:52:06 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198547 46
+2023-03-29 10:52:06 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198605 44
+2023-03-29 10:52:06 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198661 34
+2023-03-29 10:52:06 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:52:06 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 41 6704
+2023-03-29 10:52:06 - PIL.PngImagePlugin - DEBUG - STREAM b'iCCP' 6757 387
+2023-03-29 10:52:06 - PIL.PngImagePlugin - DEBUG - iCCP profile name b'ICC profile'
+2023-03-29 10:52:06 - PIL.PngImagePlugin - DEBUG - Compression method 0
+2023-03-29 10:52:06 - PIL.PngImagePlugin - DEBUG - STREAM b'iTXt' 7156 3575
+2023-03-29 10:52:06 - PIL.PngImagePlugin - DEBUG - STREAM b'gAMA' 10743 4
+2023-03-29 10:52:06 - PIL.PngImagePlugin - DEBUG - STREAM b'PLTE' 10759 321
+2023-03-29 10:52:06 - PIL.PngImagePlugin - DEBUG - STREAM b'tRNS' 11092 1
+2023-03-29 10:52:06 - PIL.PngImagePlugin - DEBUG - STREAM b'pHYs' 11105 9
+2023-03-29 10:52:06 - PIL.PngImagePlugin - DEBUG - STREAM b'tIME' 11126 7
+2023-03-29 10:52:06 - PIL.PngImagePlugin - DEBUG - b'tIME' 11126 7 (unknown)
+2023-03-29 10:52:06 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 11145 8192
+2023-03-29 10:52:06 - App - INFO - (Credits menu)
+2023-03-29 10:52:06 - App - INFO - Switched to settings menu
+2023-03-29 10:52:06 - App - INFO - Switched to cards menu
+2023-03-29 10:52:07 - App - INFO - (Cards description window)
+2023-03-29 10:52:13 - googleapiclient.discovery - DEBUG - URL being requested: PATCH https://www.googleapis.com/upload/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=json&uploadType=resumable
+2023-03-29 10:52:15 - App - INFO - End of the program
+--------------------------------------------------------------
+2023-03-29 10:52:35 - App - INFO - Launching...
+2023-03-29 10:52:35 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:52:35 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 41 32768
+2023-03-29 10:52:36 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2023-03-29 10:52:37 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&fields=nextPageToken%2C+files%28id%2C+name%29&pageSize=10&alt=json
+2023-03-29 10:52:37 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=media
+2023-03-29 10:52:44 - App - INFO - (Main menu)
+2023-03-29 10:52:44 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:52:44 - PIL.PngImagePlugin - DEBUG - STREAM b'gAMA' 41 4
+2023-03-29 10:52:44 - PIL.PngImagePlugin - DEBUG - STREAM b'cHRM' 57 32
+2023-03-29 10:52:44 - PIL.PngImagePlugin - DEBUG - STREAM b'bKGD' 101 6
+2023-03-29 10:52:44 - PIL.PngImagePlugin - DEBUG - b'bKGD' 101 6 (unknown)
+2023-03-29 10:52:44 - PIL.PngImagePlugin - DEBUG - STREAM b'pHYs' 119 9
+2023-03-29 10:52:44 - PIL.PngImagePlugin - DEBUG - STREAM b'tIME' 140 7
+2023-03-29 10:52:44 - PIL.PngImagePlugin - DEBUG - b'tIME' 140 7 (unknown)
+2023-03-29 10:52:44 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 159 32768
+2023-03-29 10:52:44 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198547 46
+2023-03-29 10:52:44 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198605 44
+2023-03-29 10:52:44 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198661 34
+2023-03-29 10:52:44 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:52:44 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 41 6704
+2023-03-29 10:52:44 - PIL.PngImagePlugin - DEBUG - STREAM b'iCCP' 6757 387
+2023-03-29 10:52:44 - PIL.PngImagePlugin - DEBUG - iCCP profile name b'ICC profile'
+2023-03-29 10:52:44 - PIL.PngImagePlugin - DEBUG - Compression method 0
+2023-03-29 10:52:44 - PIL.PngImagePlugin - DEBUG - STREAM b'iTXt' 7156 3575
+2023-03-29 10:52:44 - PIL.PngImagePlugin - DEBUG - STREAM b'gAMA' 10743 4
+2023-03-29 10:52:44 - PIL.PngImagePlugin - DEBUG - STREAM b'PLTE' 10759 321
+2023-03-29 10:52:44 - PIL.PngImagePlugin - DEBUG - STREAM b'tRNS' 11092 1
+2023-03-29 10:52:44 - PIL.PngImagePlugin - DEBUG - STREAM b'pHYs' 11105 9
+2023-03-29 10:52:44 - PIL.PngImagePlugin - DEBUG - STREAM b'tIME' 11126 7
+2023-03-29 10:52:44 - PIL.PngImagePlugin - DEBUG - b'tIME' 11126 7 (unknown)
+2023-03-29 10:52:44 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 11145 8192
+2023-03-29 10:52:44 - App - INFO - (Credits menu)
+2023-03-29 10:52:44 - App - INFO - Switched to settings menu
+2023-03-29 10:52:44 - App - INFO - Switched to cards menu
+2023-03-29 10:52:44 - App - INFO - (Cards description window)
+2023-03-29 10:52:50 - googleapiclient.discovery - DEBUG - URL being requested: PATCH https://www.googleapis.com/upload/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=json&uploadType=resumable
+2023-03-29 10:52:51 - App - INFO - End of the program
+--------------------------------------------------------------
+2023-03-29 10:55:30 - App - INFO - Launching...
+2023-03-29 10:55:30 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:55:30 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 41 32768
+2023-03-29 10:55:32 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2023-03-29 10:55:32 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&fields=nextPageToken%2C+files%28id%2C+name%29&pageSize=10&alt=json
+2023-03-29 10:55:32 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=media
+2023-03-29 10:55:39 - App - INFO - (Main menu)
+2023-03-29 10:55:39 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:55:39 - PIL.PngImagePlugin - DEBUG - STREAM b'gAMA' 41 4
+2023-03-29 10:55:39 - PIL.PngImagePlugin - DEBUG - STREAM b'cHRM' 57 32
+2023-03-29 10:55:39 - PIL.PngImagePlugin - DEBUG - STREAM b'bKGD' 101 6
+2023-03-29 10:55:39 - PIL.PngImagePlugin - DEBUG - b'bKGD' 101 6 (unknown)
+2023-03-29 10:55:39 - PIL.PngImagePlugin - DEBUG - STREAM b'pHYs' 119 9
+2023-03-29 10:55:39 - PIL.PngImagePlugin - DEBUG - STREAM b'tIME' 140 7
+2023-03-29 10:55:39 - PIL.PngImagePlugin - DEBUG - b'tIME' 140 7 (unknown)
+2023-03-29 10:55:39 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 159 32768
+2023-03-29 10:55:39 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198547 46
+2023-03-29 10:55:39 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198605 44
+2023-03-29 10:55:39 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198661 34
+2023-03-29 10:55:39 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:55:39 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 41 6704
+2023-03-29 10:55:39 - PIL.PngImagePlugin - DEBUG - STREAM b'iCCP' 6757 387
+2023-03-29 10:55:39 - PIL.PngImagePlugin - DEBUG - iCCP profile name b'ICC profile'
+2023-03-29 10:55:39 - PIL.PngImagePlugin - DEBUG - Compression method 0
+2023-03-29 10:55:39 - PIL.PngImagePlugin - DEBUG - STREAM b'iTXt' 7156 3575
+2023-03-29 10:55:39 - PIL.PngImagePlugin - DEBUG - STREAM b'gAMA' 10743 4
+2023-03-29 10:55:39 - PIL.PngImagePlugin - DEBUG - STREAM b'PLTE' 10759 321
+2023-03-29 10:55:39 - PIL.PngImagePlugin - DEBUG - STREAM b'tRNS' 11092 1
+2023-03-29 10:55:39 - PIL.PngImagePlugin - DEBUG - STREAM b'pHYs' 11105 9
+2023-03-29 10:55:39 - PIL.PngImagePlugin - DEBUG - STREAM b'tIME' 11126 7
+2023-03-29 10:55:39 - PIL.PngImagePlugin - DEBUG - b'tIME' 11126 7 (unknown)
+2023-03-29 10:55:39 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 11145 8192
+2023-03-29 10:55:39 - App - INFO - (Credits menu)
+2023-03-29 10:55:39 - App - INFO - Switched to settings menu
+2023-03-29 10:55:39 - App - INFO - Switched to cards menu
+2023-03-29 10:55:39 - App - INFO - (Cards description window)
+2023-03-29 10:55:47 - googleapiclient.discovery - DEBUG - URL being requested: PATCH https://www.googleapis.com/upload/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=json&uploadType=resumable
+2023-03-29 10:55:48 - App - INFO - End of the program
+--------------------------------------------------------------
+2023-03-29 10:56:08 - App - INFO - Launching...
+2023-03-29 10:56:09 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:56:09 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 41 32768
+2023-03-29 10:56:10 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2023-03-29 10:56:10 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&fields=nextPageToken%2C+files%28id%2C+name%29&pageSize=10&alt=json
+2023-03-29 10:56:10 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=media
+2023-03-29 10:56:17 - App - INFO - (Main menu)
+2023-03-29 10:56:17 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:56:17 - PIL.PngImagePlugin - DEBUG - STREAM b'gAMA' 41 4
+2023-03-29 10:56:17 - PIL.PngImagePlugin - DEBUG - STREAM b'cHRM' 57 32
+2023-03-29 10:56:17 - PIL.PngImagePlugin - DEBUG - STREAM b'bKGD' 101 6
+2023-03-29 10:56:17 - PIL.PngImagePlugin - DEBUG - b'bKGD' 101 6 (unknown)
+2023-03-29 10:56:17 - PIL.PngImagePlugin - DEBUG - STREAM b'pHYs' 119 9
+2023-03-29 10:56:17 - PIL.PngImagePlugin - DEBUG - STREAM b'tIME' 140 7
+2023-03-29 10:56:17 - PIL.PngImagePlugin - DEBUG - b'tIME' 140 7 (unknown)
+2023-03-29 10:56:17 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 159 32768
+2023-03-29 10:56:17 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198547 46
+2023-03-29 10:56:17 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198605 44
+2023-03-29 10:56:17 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198661 34
+2023-03-29 10:56:17 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:56:17 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 41 6704
+2023-03-29 10:56:17 - PIL.PngImagePlugin - DEBUG - STREAM b'iCCP' 6757 387
+2023-03-29 10:56:17 - PIL.PngImagePlugin - DEBUG - iCCP profile name b'ICC profile'
+2023-03-29 10:56:17 - PIL.PngImagePlugin - DEBUG - Compression method 0
+2023-03-29 10:56:17 - PIL.PngImagePlugin - DEBUG - STREAM b'iTXt' 7156 3575
+2023-03-29 10:56:17 - PIL.PngImagePlugin - DEBUG - STREAM b'gAMA' 10743 4
+2023-03-29 10:56:17 - PIL.PngImagePlugin - DEBUG - STREAM b'PLTE' 10759 321
+2023-03-29 10:56:17 - PIL.PngImagePlugin - DEBUG - STREAM b'tRNS' 11092 1
+2023-03-29 10:56:17 - PIL.PngImagePlugin - DEBUG - STREAM b'pHYs' 11105 9
+2023-03-29 10:56:17 - PIL.PngImagePlugin - DEBUG - STREAM b'tIME' 11126 7
+2023-03-29 10:56:17 - PIL.PngImagePlugin - DEBUG - b'tIME' 11126 7 (unknown)
+2023-03-29 10:56:17 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 11145 8192
+2023-03-29 10:56:17 - App - INFO - (Credits menu)
+2023-03-29 10:56:17 - App - INFO - Switched to settings menu
+2023-03-29 10:56:17 - App - INFO - Switched to cards menu
+2023-03-29 10:56:17 - App - INFO - (Cards description window)
+2023-03-29 10:56:32 - googleapiclient.discovery - DEBUG - URL being requested: PATCH https://www.googleapis.com/upload/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=json&uploadType=resumable
+2023-03-29 10:56:33 - App - INFO - End of the program
+--------------------------------------------------------------
+2023-03-29 10:57:04 - App - INFO - Launching...
+2023-03-29 10:57:04 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:57:04 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 41 32768
+2023-03-29 10:57:05 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2023-03-29 10:57:05 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&fields=nextPageToken%2C+files%28id%2C+name%29&pageSize=10&alt=json
+2023-03-29 10:57:06 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=media
+2023-03-29 10:57:13 - App - INFO - (Main menu)
+2023-03-29 10:57:13 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:57:13 - PIL.PngImagePlugin - DEBUG - STREAM b'gAMA' 41 4
+2023-03-29 10:57:13 - PIL.PngImagePlugin - DEBUG - STREAM b'cHRM' 57 32
+2023-03-29 10:57:13 - PIL.PngImagePlugin - DEBUG - STREAM b'bKGD' 101 6
+2023-03-29 10:57:13 - PIL.PngImagePlugin - DEBUG - b'bKGD' 101 6 (unknown)
+2023-03-29 10:57:13 - PIL.PngImagePlugin - DEBUG - STREAM b'pHYs' 119 9
+2023-03-29 10:57:13 - PIL.PngImagePlugin - DEBUG - STREAM b'tIME' 140 7
+2023-03-29 10:57:13 - PIL.PngImagePlugin - DEBUG - b'tIME' 140 7 (unknown)
+2023-03-29 10:57:13 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 159 32768
+2023-03-29 10:57:13 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198547 46
+2023-03-29 10:57:13 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198605 44
+2023-03-29 10:57:13 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198661 34
+2023-03-29 10:57:13 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:57:13 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 41 6704
+2023-03-29 10:57:13 - PIL.PngImagePlugin - DEBUG - STREAM b'iCCP' 6757 387
+2023-03-29 10:57:13 - PIL.PngImagePlugin - DEBUG - iCCP profile name b'ICC profile'
+2023-03-29 10:57:13 - PIL.PngImagePlugin - DEBUG - Compression method 0
+2023-03-29 10:57:13 - PIL.PngImagePlugin - DEBUG - STREAM b'iTXt' 7156 3575
+2023-03-29 10:57:13 - PIL.PngImagePlugin - DEBUG - STREAM b'gAMA' 10743 4
+2023-03-29 10:57:13 - PIL.PngImagePlugin - DEBUG - STREAM b'PLTE' 10759 321
+2023-03-29 10:57:13 - PIL.PngImagePlugin - DEBUG - STREAM b'tRNS' 11092 1
+2023-03-29 10:57:13 - PIL.PngImagePlugin - DEBUG - STREAM b'pHYs' 11105 9
+2023-03-29 10:57:13 - PIL.PngImagePlugin - DEBUG - STREAM b'tIME' 11126 7
+2023-03-29 10:57:13 - PIL.PngImagePlugin - DEBUG - b'tIME' 11126 7 (unknown)
+2023-03-29 10:57:13 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 11145 8192
+2023-03-29 10:57:13 - App - INFO - (Credits menu)
+2023-03-29 10:57:13 - App - INFO - Switched to settings menu
+2023-03-29 10:57:13 - App - INFO - Switched to cards menu
+2023-03-29 10:57:13 - App - INFO - (Cards description window)
+2023-03-29 10:57:30 - googleapiclient.discovery - DEBUG - URL being requested: PATCH https://www.googleapis.com/upload/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=json&uploadType=resumable
+2023-03-29 10:57:31 - App - INFO - End of the program
+--------------------------------------------------------------
+2023-03-29 10:58:59 - App - INFO - Launching...
+2023-03-29 10:58:59 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:58:59 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 41 32768
+2023-03-29 10:59:01 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2023-03-29 10:59:01 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&fields=nextPageToken%2C+files%28id%2C+name%29&pageSize=10&alt=json
+2023-03-29 10:59:01 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=media
+2023-03-29 10:59:08 - App - INFO - (Main menu)
+2023-03-29 10:59:08 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:59:08 - PIL.PngImagePlugin - DEBUG - STREAM b'gAMA' 41 4
+2023-03-29 10:59:08 - PIL.PngImagePlugin - DEBUG - STREAM b'cHRM' 57 32
+2023-03-29 10:59:08 - PIL.PngImagePlugin - DEBUG - STREAM b'bKGD' 101 6
+2023-03-29 10:59:08 - PIL.PngImagePlugin - DEBUG - b'bKGD' 101 6 (unknown)
+2023-03-29 10:59:08 - PIL.PngImagePlugin - DEBUG - STREAM b'pHYs' 119 9
+2023-03-29 10:59:08 - PIL.PngImagePlugin - DEBUG - STREAM b'tIME' 140 7
+2023-03-29 10:59:08 - PIL.PngImagePlugin - DEBUG - b'tIME' 140 7 (unknown)
+2023-03-29 10:59:08 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 159 32768
+2023-03-29 10:59:08 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198547 46
+2023-03-29 10:59:08 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198605 44
+2023-03-29 10:59:08 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198661 34
+2023-03-29 10:59:08 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 10:59:08 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 41 6704
+2023-03-29 10:59:08 - PIL.PngImagePlugin - DEBUG - STREAM b'iCCP' 6757 387
+2023-03-29 10:59:08 - PIL.PngImagePlugin - DEBUG - iCCP profile name b'ICC profile'
+2023-03-29 10:59:08 - PIL.PngImagePlugin - DEBUG - Compression method 0
+2023-03-29 10:59:08 - PIL.PngImagePlugin - DEBUG - STREAM b'iTXt' 7156 3575
+2023-03-29 10:59:08 - PIL.PngImagePlugin - DEBUG - STREAM b'gAMA' 10743 4
+2023-03-29 10:59:08 - PIL.PngImagePlugin - DEBUG - STREAM b'PLTE' 10759 321
+2023-03-29 10:59:08 - PIL.PngImagePlugin - DEBUG - STREAM b'tRNS' 11092 1
+2023-03-29 10:59:08 - PIL.PngImagePlugin - DEBUG - STREAM b'pHYs' 11105 9
+2023-03-29 10:59:08 - PIL.PngImagePlugin - DEBUG - STREAM b'tIME' 11126 7
+2023-03-29 10:59:08 - PIL.PngImagePlugin - DEBUG - b'tIME' 11126 7 (unknown)
+2023-03-29 10:59:08 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 11145 8192
+2023-03-29 10:59:08 - App - INFO - (Credits menu)
+2023-03-29 10:59:08 - App - INFO - Switched to settings menu
+2023-03-29 10:59:08 - App - INFO - Switched to cards menu
+2023-03-29 10:59:08 - App - INFO - (Cards description window)
+2023-03-29 10:59:18 - googleapiclient.discovery - DEBUG - URL being requested: PATCH https://www.googleapis.com/upload/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=json&uploadType=resumable
+2023-03-29 10:59:19 - App - INFO - End of the program
+--------------------------------------------------------------
+2023-03-29 11:00:16 - App - INFO - Launching...
+2023-03-29 11:00:16 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 11:00:16 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 41 32768
+2023-03-29 11:00:17 - google.auth.transport.requests - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2023-03-29 11:00:17 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2023-03-29 11:00:17 - urllib3.connectionpool - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2023-03-29 11:00:17 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2023-03-29 11:00:17 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&fields=nextPageToken%2C+files%28id%2C+name%29&pageSize=10&alt=json
+2023-03-29 11:00:17 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=media
+2023-03-29 11:00:24 - App - INFO - (Main menu)
+2023-03-29 11:00:24 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 11:00:24 - PIL.PngImagePlugin - DEBUG - STREAM b'gAMA' 41 4
+2023-03-29 11:00:24 - PIL.PngImagePlugin - DEBUG - STREAM b'cHRM' 57 32
+2023-03-29 11:00:24 - PIL.PngImagePlugin - DEBUG - STREAM b'bKGD' 101 6
+2023-03-29 11:00:24 - PIL.PngImagePlugin - DEBUG - b'bKGD' 101 6 (unknown)
+2023-03-29 11:00:24 - PIL.PngImagePlugin - DEBUG - STREAM b'pHYs' 119 9
+2023-03-29 11:00:24 - PIL.PngImagePlugin - DEBUG - STREAM b'tIME' 140 7
+2023-03-29 11:00:24 - PIL.PngImagePlugin - DEBUG - b'tIME' 140 7 (unknown)
+2023-03-29 11:00:24 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 159 32768
+2023-03-29 11:00:24 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198547 46
+2023-03-29 11:00:24 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198605 44
+2023-03-29 11:00:24 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198661 34
+2023-03-29 11:00:24 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 11:00:24 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 41 6704
+2023-03-29 11:00:24 - PIL.PngImagePlugin - DEBUG - STREAM b'iCCP' 6757 387
+2023-03-29 11:00:24 - PIL.PngImagePlugin - DEBUG - iCCP profile name b'ICC profile'
+2023-03-29 11:00:24 - PIL.PngImagePlugin - DEBUG - Compression method 0
+2023-03-29 11:00:24 - PIL.PngImagePlugin - DEBUG - STREAM b'iTXt' 7156 3575
+2023-03-29 11:00:24 - PIL.PngImagePlugin - DEBUG - STREAM b'gAMA' 10743 4
+2023-03-29 11:00:24 - PIL.PngImagePlugin - DEBUG - STREAM b'PLTE' 10759 321
+2023-03-29 11:00:24 - PIL.PngImagePlugin - DEBUG - STREAM b'tRNS' 11092 1
+2023-03-29 11:00:24 - PIL.PngImagePlugin - DEBUG - STREAM b'pHYs' 11105 9
+2023-03-29 11:00:24 - PIL.PngImagePlugin - DEBUG - STREAM b'tIME' 11126 7
+2023-03-29 11:00:24 - PIL.PngImagePlugin - DEBUG - b'tIME' 11126 7 (unknown)
+2023-03-29 11:00:24 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 11145 8192
+2023-03-29 11:00:24 - App - INFO - (Credits menu)
+2023-03-29 11:00:29 - googleapiclient.discovery - DEBUG - URL being requested: PATCH https://www.googleapis.com/upload/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=json&uploadType=resumable
+2023-03-29 11:00:30 - App - INFO - End of the program
+--------------------------------------------------------------
+2023-03-29 11:00:51 - App - INFO - Launching...
+2023-03-29 11:00:51 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 11:00:51 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 41 32768
+2023-03-29 11:00:52 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2023-03-29 11:00:52 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&fields=nextPageToken%2C+files%28id%2C+name%29&pageSize=10&alt=json
+2023-03-29 11:00:52 - googleapiclient.discovery - DEBUG - URL being requested: GET https://www.googleapis.com/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=media
+2023-03-29 11:00:59 - App - INFO - (Main menu)
+2023-03-29 11:00:59 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 11:00:59 - PIL.PngImagePlugin - DEBUG - STREAM b'gAMA' 41 4
+2023-03-29 11:00:59 - PIL.PngImagePlugin - DEBUG - STREAM b'cHRM' 57 32
+2023-03-29 11:00:59 - PIL.PngImagePlugin - DEBUG - STREAM b'bKGD' 101 6
+2023-03-29 11:00:59 - PIL.PngImagePlugin - DEBUG - b'bKGD' 101 6 (unknown)
+2023-03-29 11:00:59 - PIL.PngImagePlugin - DEBUG - STREAM b'pHYs' 119 9
+2023-03-29 11:00:59 - PIL.PngImagePlugin - DEBUG - STREAM b'tIME' 140 7
+2023-03-29 11:00:59 - PIL.PngImagePlugin - DEBUG - b'tIME' 140 7 (unknown)
+2023-03-29 11:00:59 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 159 32768
+2023-03-29 11:00:59 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198547 46
+2023-03-29 11:00:59 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198605 44
+2023-03-29 11:00:59 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 198661 34
+2023-03-29 11:00:59 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2023-03-29 11:00:59 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 41 6704
+2023-03-29 11:00:59 - PIL.PngImagePlugin - DEBUG - STREAM b'iCCP' 6757 387
+2023-03-29 11:00:59 - PIL.PngImagePlugin - DEBUG - iCCP profile name b'ICC profile'
+2023-03-29 11:00:59 - PIL.PngImagePlugin - DEBUG - Compression method 0
+2023-03-29 11:00:59 - PIL.PngImagePlugin - DEBUG - STREAM b'iTXt' 7156 3575
+2023-03-29 11:00:59 - PIL.PngImagePlugin - DEBUG - STREAM b'gAMA' 10743 4
+2023-03-29 11:00:59 - PIL.PngImagePlugin - DEBUG - STREAM b'PLTE' 10759 321
+2023-03-29 11:00:59 - PIL.PngImagePlugin - DEBUG - STREAM b'tRNS' 11092 1
+2023-03-29 11:00:59 - PIL.PngImagePlugin - DEBUG - STREAM b'pHYs' 11105 9
+2023-03-29 11:00:59 - PIL.PngImagePlugin - DEBUG - STREAM b'tIME' 11126 7
+2023-03-29 11:00:59 - PIL.PngImagePlugin - DEBUG - b'tIME' 11126 7 (unknown)
+2023-03-29 11:00:59 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 11145 8192
+2023-03-29 11:00:59 - App - INFO - (Credits menu)
+2023-03-29 11:00:59 - App - INFO - Switched to settings menu
+2023-03-29 11:00:59 - App - INFO - Switched to cards menu
+2023-03-29 11:01:00 - App - INFO - (Cards description window)
+2023-03-29 11:01:14 - googleapiclient.discovery - DEBUG - URL being requested: PATCH https://www.googleapis.com/upload/drive/v3/files/1A7jERsQWFuthP96y0f9hTHwVzAAVrqBtw7ikNzcWpHJON7XB6w?alt=json&uploadType=resumable
+2023-03-29 11:01:15 - App - INFO - End of the program
+--------------------------------------------------------------
