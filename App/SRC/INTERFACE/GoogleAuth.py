@@ -24,7 +24,7 @@ class GoogleAuth:
         self.master = master
         self.creds = None
         self.file_id = None
-        self.path = os.path.join("App", "DATA", "CARDS", "cards_drive.txt")
+        self.path = os.path.join("App", "DATA", "CARDS", "cards.txt")
         self.local_fd = io.FileIO(self.path, mode="w")
         # If modifying these scopes, delete the file token.json.
         self.SCOPES = ['https://www.googleapis.com/auth/drive.metadata.readonly', 'https://www.googleapis.com/auth/drive.appdata']

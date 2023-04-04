@@ -77,7 +77,6 @@ class CardsManager:
     
     def recognize_card(self, text):
         text = ''.join([char for char in text if char.isupper() or char.isdigit()])
-        print(text)
         if "FR" in text:
             self.leng = "FR"
             self.info = self.info_fr
@@ -91,7 +90,6 @@ class CardsManager:
             finding = self.refs.get(probas[0])
             card_name = self.names.get(finding)[0 if self.leng == "EN" else 1]
             self.cards.append(Card(finding, card_name, self.info, self.leng))
-            print("Félicitation, vous avez un {} !".format(card_name))
             return finding if self.leng == "EN" else finding.replace("EN", "FR")
         else:
             tk.messagebox.showerror("Erreur", "Je n'arrive pas à reconnaître la carte...")
