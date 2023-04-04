@@ -5,7 +5,6 @@ from PIL import Image, ImageTk
 class CardDescWindow(tk.Frame):
     def __init__(self, master=None, card = None):
         super().__init__(master)
-        master.master.loggers.log.info("(Cards description window)")
         self.card = card
         self.labels = []
         self.buttons = []
@@ -43,7 +42,6 @@ class CardDescWindow(tk.Frame):
         """
         Deletes the card from the database.
         """
-        self.master.master.loggers.log.info("Card deleted")
         self.master.change_menu(menu)
         self.master.cards_manager.delete_card(self.card)
     

@@ -98,17 +98,26 @@ class CardsManager:
             print("Je n'arrive pas à reconnaître la carte...")
             return "UNKNOWN"
     
-    def get_buttons(self, text):
+    def get_buttons(self, text, select, sort):
         def display_card(card):
             self.master.son.card = card
             self.master.son.change_menu(self.master.son.card_desc_window)
         buttons = []
+        match sort:
+            case "Name":
+                self.cards.sort(key=lambda x: x.name)
+            case "Atk":
+                self.cards.sort(key=lambda x: x.atk if x.atk != None else 0, reverse=True)
+            case "Def":
+                self.cards.sort(key=lambda x: x.defense if x.defense != None else 0, reverse=True)
+        
         for card in self.cards:
-            image = self.download_card(card)
-            image = ImageTk.PhotoImage(Image.open(image))
-            image = image._PhotoImage__photo.subsample(2)
-            buttons.append(tk.Button(text, image=image, command=partial(display_card, card)))
-            buttons[-1].image = image
+            if select in card.type or select == "All":
+                image = self.download_card(card)
+                image = ImageTk.PhotoImage(Image.open(image))
+                image = image._PhotoImage__photo.subsample(2)
+                buttons.append(tk.Button(text, image=image, command=partial(display_card, card)))
+                buttons[-1].image = image
         return buttons
     
     def download_card(self, card):

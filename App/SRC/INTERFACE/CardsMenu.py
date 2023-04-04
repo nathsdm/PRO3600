@@ -14,7 +14,6 @@ from SRC.CARDS.CardsManager import CardsManager
 class CardsMenu(tk.Frame):
     def __init__(self, master=None, cards_manager=None):
         super().__init__(master)
-        master.master.loggers.log.info("Switched to cards menu")
         
         self.master = master
         self.cards_manager = cards_manager
@@ -29,11 +28,16 @@ class CardsMenu(tk.Frame):
         self.analyse_button.pack()
         self.set_code_button = tk.Button(self, text="Set code", command=lambda: self.set_code_query())
         self.set_code_button.pack()
-        self.sort_button = tk.Button(self, text="Sort", command=lambda: self.cards_manager.sort_cards())
-        self.sort_button.pack()
-    
-    def sort_cards(self):
-        pass
+        self.type_options = ["All", "Monster", "Trap", "Spell"]
+        self.type_var = tk.StringVar(self)
+        self.type_var.set(self.type_options[0])
+        self.type_button = tk.OptionMenu(self, self.type_var, *self.type_options, command=lambda x: self.update())
+        self.type_button.pack(side="top")
+        self.sort_options = ["Name", "Atk", "Def"]
+        self.sort_var = tk.StringVar(self)
+        self.sort_var.set(self.sort_options[0])
+        self.type_button_2 = tk.OptionMenu(self, self.sort_var, *self.sort_options, command=lambda x: self.update())
+        self.type_button_2.pack(side="top")
     
     def setup_text(self):
         self.text = tk.Text(self, width = self.master.winfo_screenwidth(), height = self.master.winfo_screenheight()-50, wrap="none", cursor="arrow")
@@ -76,11 +80,11 @@ class CardsMenu(tk.Frame):
         self.code_query_button.pack()
         
     
-    def display_cards(self):
+    def display_cards(self, select="All", sort="Name"):
         """
         Display the cards in the cards manager.
         """
-        self.card_buttons = self.cards_manager.get_buttons(self.text)
+        self.card_buttons = self.cards_manager.get_buttons(self.text, select, sort)
         count = 0
         for button in self.card_buttons:
             self.text.window_create("end", window=button)
@@ -96,5 +100,5 @@ class CardsMenu(tk.Frame):
         self.text.destroy()
         self.text = tk.Text(self, width = self.master.winfo_screenwidth(), height = self.master.winfo_screenheight(), wrap="none", cursor="arrow")
         self.text.pack(side="left", fill="both", expand=True)
-        self.display_cards()
+        self.display_cards(self.type_var.get(), self.sort_var.get())
        

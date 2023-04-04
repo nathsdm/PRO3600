@@ -5,6 +5,8 @@ class Card():
         self.name = name
         self.data = data
         self.card_info = None
+        self.atk = None
+        self.defense = None
         self.leng = leng
         self.set_code = set_code if self.leng == "EN" else set_code.replace("EN", "FR")
         self.find_card()
@@ -22,8 +24,16 @@ class Card():
     
     def setup_infos(self):
         for info in self.card_info.keys():
-            if info != "card_images" and info != "card_prices" and info != "card_sets" :
+            if info != "card_images" or "card_prices" or "card_sets" :
                 self.infos.append(str(info) + " : " + str(self.card_info.get(info)))
+                if info == "type":
+                    self.type = self.card_info.get(info)
+                if info == "atk":
+                    self.atk = self.card_info.get(info)
+                if info == "def":
+                    self.defense = self.card_info.get(info)
+                if info == "race":
+                    self.race = self.card_info.get(info)
             elif info == "card_sets":
                 for card_set in self.card_info.get(info):
                     set_info = ""

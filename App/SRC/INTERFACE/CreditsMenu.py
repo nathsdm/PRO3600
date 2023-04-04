@@ -16,7 +16,6 @@ class CreditsMenu(tk.Frame):
     def __init__(self, master=None):
         super().__init__(master)
         self.master = master
-        self.master.master.loggers.log.info("(Credits menu)")
         
         
         self.lorem_ipsum = """
