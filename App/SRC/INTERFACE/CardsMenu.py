@@ -33,12 +33,17 @@ class CardsMenu(tk.Frame):
         self.type_var.set(self.type_options[0])
         self.type_button = tk.OptionMenu(self, self.type_var, *self.type_options, command=lambda x: self.update())
         self.type_button.pack(side="top")
+        self.race_options = ["All", "Aqua", "Beast", "Beast-Warrior", "Creator-God", "Cyberse", "Dinosaur", "Divine-Beast", "Dragon", "Fairy", "Fiend", "Fish", "Insect", "Machine", "Plant", "Psychic", "Pyro", "Reptile", "Rock", "Sea Serpent", "Spellcaster", "Thunder", "Warrior", "Winged Beast", "Wyrm", "Zombie", "Normal", "Field", "Equip", "Continuous", "Quick-Play", "Ritual", "Counter"]
+        self.race_var = tk.StringVar(self)
+        self.race_var.set(self.race_options[0])
+        self.race_button = tk.OptionMenu(self, self.race_var, *self.race_options, command=lambda x: self.update())
+        self.race_button.pack(side="top")
         self.sort_options = ["Name", "Atk", "Def"]
         self.sort_var = tk.StringVar(self)
         self.sort_var.set(self.sort_options[0])
-        self.type_button_2 = tk.OptionMenu(self, self.sort_var, *self.sort_options, command=lambda x: self.update())
-        self.type_button_2.pack(side="top")
-    
+        self.sort_button = tk.OptionMenu(self, self.sort_var, *self.sort_options, command=lambda x: self.update())
+        self.sort_button.pack(side="top")
+        
     def setup_text(self):
         self.text = tk.Text(self, width = self.master.winfo_screenwidth(), height = self.master.winfo_screenheight()-50, wrap="none", cursor="arrow")
         self.sb = tk.Scrollbar(self, command=self.text.yview, orient="vertical", cursor="arrow", width=20, activebackground="blue")
@@ -80,11 +85,11 @@ class CardsMenu(tk.Frame):
         self.code_query_button.pack()
         
     
-    def display_cards(self, select="All", sort="Name"):
+    def display_cards(self, select="All", sort="Name", race="All"):
         """
         Display the cards in the cards manager.
         """
-        self.card_buttons = self.cards_manager.get_buttons(self.text, select, sort)
+        self.card_buttons = self.cards_manager.get_buttons(self.text, select, sort, race)
         count = 0
         for button in self.card_buttons:
             self.text.window_create("end", window=button)
@@ -98,7 +103,11 @@ class CardsMenu(tk.Frame):
         Update the cards menu.
         """
         self.text.destroy()
+        self.sb.destroy()
         self.text = tk.Text(self, width = self.master.winfo_screenwidth(), height = self.master.winfo_screenheight(), wrap="none", cursor="arrow")
+        self.sb = tk.Scrollbar(self, command=self.text.yview, orient="vertical", cursor="arrow", width=20, activebackground="blue")
+        self.sb.pack(side="right", fill="y")
         self.text.pack(side="left", fill="both", expand=True)
-        self.display_cards(self.type_var.get(), self.sort_var.get())
+        self.test.bind_all("<MouseWheel>", self._on_mousewheel)
+        self.display_cards(self.type_var.get(), self.sort_var.get(), self.race_var.get())
        

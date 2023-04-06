@@ -13,5 +13,4 @@ from SRC.App import App
 if __name__ == "__main__":
     print("Starting Yugi...")
     app = App()
-    app.start()
     print("Yugi stopped.")
