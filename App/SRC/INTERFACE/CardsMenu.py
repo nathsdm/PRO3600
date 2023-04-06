@@ -23,27 +23,39 @@ class CardsMenu(tk.Frame):
         self.setup_text()
         
     def setup_buttons(self):
-        self.back_button = tk.Button(self, text="Back", command=lambda: self.master.change_menu(self.master.main_menu))
-        self.back_button.pack()
         self.analyse_button = tk.Button(self, text="Analyse", command=lambda: self.cards_manager.analyse_card())
         self.analyse_button.pack()
         self.set_code_button = tk.Button(self, text="Set code", command=lambda: self.set_code_query())
         self.set_code_button.pack()
+        
+        self.buttons_frame = tk.Frame(self)
+        self.type_label = tk.Label(self.buttons_frame, text="Type:")
+        self.type_label.pack(side="left", padx=10)
         self.type_options = ["All", "Monster", "Trap", "Spell"]
         self.type_var = tk.StringVar(self)
         self.type_var.set(self.type_options[0])
-        self.type_button = tk.OptionMenu(self, self.type_var, *self.type_options, command=lambda x: self.update())
-        self.type_button.pack(side="top")
+        self.type_button = tk.OptionMenu(self.buttons_frame, self.type_var, *self.type_options, command=lambda x: self.update())
+        self.type_button.pack(side="left", padx=(0, 50))
+        
+        self.race_label = tk.Label(self.buttons_frame, text="Race:")
+        self.race_label.pack(side="left", padx=10)
         self.race_options = ["All", "Aqua", "Beast", "Beast-Warrior", "Creator-God", "Cyberse", "Dinosaur", "Divine-Beast", "Dragon", "Fairy", "Fiend", "Fish", "Insect", "Machine", "Plant", "Psychic", "Pyro", "Reptile", "Rock", "Sea Serpent", "Spellcaster", "Thunder", "Warrior", "Winged Beast", "Wyrm", "Zombie", "Normal", "Field", "Equip", "Continuous", "Quick-Play", "Ritual", "Counter"]
         self.race_var = tk.StringVar(self)
         self.race_var.set(self.race_options[0])
-        self.race_button = tk.OptionMenu(self, self.race_var, *self.race_options, command=lambda x: self.update())
-        self.race_button.pack(side="top")
+        self.race_button = tk.OptionMenu(self.buttons_frame, self.race_var, *self.race_options, command=lambda x: self.update())
+        self.race_button.pack(side="left", padx=(0, 50))
+        
+        self.sort_label = tk.Label(self.buttons_frame, text="Sort by:")
+        self.sort_label.pack(side="left", padx=10)
         self.sort_options = ["Name", "Atk", "Def"]
         self.sort_var = tk.StringVar(self)
         self.sort_var.set(self.sort_options[0])
-        self.sort_button = tk.OptionMenu(self, self.sort_var, *self.sort_options, command=lambda x: self.update())
-        self.sort_button.pack(side="top")
+        self.sort_button = tk.OptionMenu(self.buttons_frame, self.sort_var, *self.sort_options, command=lambda x: self.update())
+        self.sort_button.pack(side="left", padx=(0, 50))
+        
+        self.back_button = tk.Button(self.buttons_frame, text="Back", command=lambda: self.master.change_menu(self.master.main_menu))
+        self.back_button.pack(side="left", padx=(150, 0))
+        self.buttons_frame.pack(side="top")
         
     def setup_text(self, select="All", sort="Name", race="All"):
         tk_images = self.cards_manager.get_buttons(select, sort, race)
