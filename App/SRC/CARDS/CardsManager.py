@@ -96,7 +96,7 @@ class CardsManager:
             print("Je n'arrive pas à reconnaître la carte...")
             return "UNKNOWN"
     
-    def get_buttons(self, text, select, sort, race):
+    def get_buttons(self, select, sort, race):
         def display_card(card):
             self.master.son.card = card
             self.master.son.change_menu(self.master.son.card_desc_window)
@@ -113,10 +113,10 @@ class CardsManager:
             if select in card.type or select == "All":
                 if race in card.race or race == "All":
                     image = self.download_card(card)
-                    image = ImageTk.PhotoImage(Image.open(image))
-                    image = image._PhotoImage__photo.subsample(2)
-                    buttons.append(tk.Button(text, image=image, command=partial(display_card, card)))
-                    buttons[-1].image = image
+                    image = Image.open(image)
+                    image = image.resize((int(image.width/1.95), int(image.height/1.95)), Image.ANTIALIAS)
+                    image = ImageTk.PhotoImage(image)
+                    buttons.append(image)
         return buttons
     
     def download_card(self, card):

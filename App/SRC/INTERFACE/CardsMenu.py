@@ -9,6 +9,8 @@ Configure the BT settings page.
 import tkinter as tk
 from SRC.CARDS.CardsManager import CardsManager
 
+from SRC.INTERFACE.ScrollableImageList import ScrollableImageList
+
 #-------------------------------------------------------------------#
 
 class CardsMenu(tk.Frame):
@@ -19,7 +21,6 @@ class CardsMenu(tk.Frame):
         self.cards_manager = cards_manager
         self.setup_buttons()
         self.setup_text()
-        self.display_cards()
         
     def setup_buttons(self):
         self.back_button = tk.Button(self, text="Back", command=lambda: self.master.change_menu(self.master.main_menu))
@@ -44,12 +45,12 @@ class CardsMenu(tk.Frame):
         self.sort_button = tk.OptionMenu(self, self.sort_var, *self.sort_options, command=lambda x: self.update())
         self.sort_button.pack(side="top")
         
-    def setup_text(self):
-        self.text = tk.Text(self, width = self.master.winfo_screenwidth(), height = self.master.winfo_screenheight()-50, wrap="none", cursor="arrow")
-        self.sb = tk.Scrollbar(self, command=self.text.yview, orient="vertical", cursor="arrow", width=20, activebackground="blue")
-        self.sb.pack(side="right", fill="y")
-        self.text.pack(side="left", fill="both", expand=True)
-        self.text.configure(yscrollcommand=self.sb.set)
+    def setup_text(self, select="All", sort="Name", race="All"):
+        tk_images = self.cards_manager.get_buttons(select, sort, race)
+        self.scrollable_frame = tk.Frame(self)
+        self.scrollable_frame.pack(side="left", fill="both", expand=True)
+        self.canvas = ScrollableImageList(self.scrollable_frame, tk_images, num_columns=7)
+        self.canvas.pack(side="left", fill="both", expand=True)
         
     def set_code_query(self):
         """
@@ -84,30 +85,12 @@ class CardsMenu(tk.Frame):
         self.code_query_button = tk.Button(self.code_query, text="Ok", command=set_code)
         self.code_query_button.pack()
         
-    
-    def display_cards(self, select="All", sort="Name", race="All"):
-        """
-        Display the cards in the cards manager.
-        """
-        self.card_buttons = self.cards_manager.get_buttons(self.text, select, sort, race)
-        count = 0
-        for button in self.card_buttons:
-            self.text.window_create("end", window=button)
-            count += 1
-            if count % 7 == 0:
-                self.text.insert("end", "\n")
-        self.text.configure(state="disabled")
         
     def update(self):
         """
         Update the cards menu.
         """
-        self.text.destroy()
-        self.sb.destroy()
-        self.text = tk.Text(self, width = self.master.winfo_screenwidth(), height = self.master.winfo_screenheight(), wrap="none", cursor="arrow")
-        self.sb = tk.Scrollbar(self, command=self.text.yview, orient="vertical", cursor="arrow", width=20, activebackground="blue")
-        self.sb.pack(side="right", fill="y")
-        self.text.pack(side="left", fill="both", expand=True)
-        self.test.bind_all("<MouseWheel>", self._on_mousewheel)
-        self.display_cards(self.type_var.get(), self.sort_var.get(), self.race_var.get())
+        self.scrollable_frame.destroy()
+        self.canvas.destroy()
+        self.setup_text(self.type_var.get(), self.sort_var.get(), self.race_var.get())
        
