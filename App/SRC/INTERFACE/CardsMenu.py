@@ -20,12 +20,12 @@ class CardsMenu(tk.Frame):
         self.master = master
         self.cards_manager = cards_manager
         self.setup_buttons()
-        self.setup_text()
+        self.setup_scroll()
         
     def setup_buttons(self):
-        self.analyse_button = tk.Button(self, text="Analyse", command=lambda: self.cards_manager.analyse_card())
+        self.analyse_button = tk.Button(self, text="Analyse photo", command=lambda: self.cards_manager.analyse_card())
         self.analyse_button.pack()
-        self.set_code_button = tk.Button(self, text="Set code", command=lambda: self.set_code_query())
+        self.set_code_button = tk.Button(self, text="Enter code", command=lambda: self.set_code_query())
         self.set_code_button.pack()
         
         self.buttons_frame = tk.Frame(self)
@@ -57,7 +57,7 @@ class CardsMenu(tk.Frame):
         self.back_button.pack(side="left", padx=(150, 0))
         self.buttons_frame.pack(side="top")
         
-    def setup_text(self, select="All", sort="Name", race="All"):
+    def setup_scroll(self, select="All", sort="Name", race="All"):
         tk_images = self.cards_manager.get_buttons(select, sort, race)
         self.scrollable_frame = tk.Frame(self)
         self.scrollable_frame.pack(side="left", fill="both", expand=True)
@@ -81,6 +81,9 @@ class CardsMenu(tk.Frame):
         self.code_query.title("Set code")
         self.code_query.geometry("300x100")
         self.code_query.protocol("WM_DELETE_WINDOW", cancel_code_query)
+        self.code_query.resizable(False, False)
+        self.code_query.focus_force()
+        self.code_query.attributes("-topmost", True)
         self.code_query_label = tk.Label(self.code_query, text="Enter the code of the card:")
         self.code_query_label.pack()
         
@@ -104,5 +107,5 @@ class CardsMenu(tk.Frame):
         """
         self.scrollable_frame.destroy()
         self.canvas.destroy()
-        self.setup_text(self.type_var.get(), self.sort_var.get(), self.race_var.get())
+        self.setup_scroll(self.type_var.get(), self.sort_var.get(), self.race_var.get())
        

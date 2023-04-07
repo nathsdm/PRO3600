@@ -98,8 +98,8 @@ class CardsManager:
     
     def get_buttons(self, select, sort, race):
         def display_card(card):
-            self.master.son.card = card
-            self.master.son.change_menu(self.master.son.card_desc_window)
+            self.master.card = card
+            self.master.change_menu(self.master.card_desc_window)
         buttons = []
         match sort:
             case "Name":
@@ -116,7 +116,7 @@ class CardsManager:
                     image = Image.open(image)
                     image = image.resize((int(image.width/1.95), int(image.height/1.95)), Image.ANTIALIAS)
                     image = ImageTk.PhotoImage(image)
-                    buttons.append(image)
+                    buttons.append([image, partial(display_card, card)])
         return buttons
     
     def download_card(self, card):
@@ -146,7 +146,7 @@ class CardsManager:
         with open(self.cards_path, 'a') as f:
             f.write('\n')
             f.write(card)
-        self.master.son.cards_menu.update()
+        self.master.cards_menu.update()
         
     def delete_card(self, card):
         with open(os.path.join("App", "DATA", "CARDS", "cards.txt"), "r") as f:
