@@ -47,7 +47,7 @@ class CardsMenu(tk.Frame):
         
         self.sort_label = tk.Label(self.buttons_frame, text="Sort by:")
         self.sort_label.pack(side="left", padx=10)
-        self.sort_options = ["Name", "Atk", "Def"]
+        self.sort_options = ["Name", "Atk", "Def", "Level"]
         self.sort_var = tk.StringVar(self)
         self.sort_var.set(self.sort_options[0])
         self.sort_button = tk.OptionMenu(self.buttons_frame, self.sort_var, *self.sort_options, command=lambda x: self.update())

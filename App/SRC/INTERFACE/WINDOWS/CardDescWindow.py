@@ -6,6 +6,7 @@ class CardDescWindow(tk.Frame):
     def __init__(self, master=None, card = None):
         super().__init__(master)
         self.card = card
+        self.frames = []
         self.labels = []
         self.buttons = []
         self.images = []
@@ -24,17 +25,27 @@ class CardDescWindow(tk.Frame):
         """
         Defines the labels used in the cards description window.
         """
-        for info in self.card.infos:
+        for i in range(len(self.card.infos)):
+            info=self.card.infos[i]
+            if info == "Sets":
+                sets = self.card.infos[i+1:len(self.card.infos)]
+                break
             self.labels.append(tk.Label(self, text=info, width=300, wraplength=1000, justify=tk.LEFT, anchor=tk.NW, font=("Matrix-Bold", 12)))
-        for label in self.labels:
-            label.pack()
+            self.labels[-1].pack()
+        
+        for j in range(len(sets)):
+            if j%4 == 0:
+                self.frames.append(tk.Frame(self))
+                self.frames[-1].pack(fill="x")
+            self.labels.append(tk.Label(self.frames[-1], text=sets[j], wraplength=250, justify=tk.LEFT, anchor=tk.NW, font=("Matrix-Bold", 12)))
+            self.labels[-1].pack(side="left", padx=(0, 30))
         
     def setup_buttons(self):
         """
         Defines the buttons used in the cards description window.
         """
-        self.buttons.append(tk.Button(self, text="Back", command=lambda: self.master.change_menu(self.master.cards_menu)))
         self.buttons.append(tk.Button(self, text="Delete", command=lambda: self.delete(self.master.cards_menu)))
+        self.buttons.append(tk.Button(self, text="Back", command=lambda: self.master.change_menu(self.master.cards_menu)))
         for button in self.buttons:
             button.pack()
     
@@ -54,6 +65,8 @@ class CardDescWindow(tk.Frame):
             self.setup_buttons()
             
     def clear(self):
+        for frame in self.frames:
+            frame.destroy()
         for label in self.labels:
             label.destroy()
         for button in self.buttons:

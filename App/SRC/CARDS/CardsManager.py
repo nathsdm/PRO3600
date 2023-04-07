@@ -108,7 +108,9 @@ class CardsManager:
                 self.cards.sort(key=lambda x: x.atk if x.atk != None else 0, reverse=True)
             case "Def":
                 self.cards.sort(key=lambda x: x.defense if x.defense != None else 0, reverse=True)
-        
+            case "Level":
+                self.cards.sort(key=lambda x: x.level if x.level != None else 0, reverse=True)
+                
         for card in self.cards:
             if select in card.type or select == "All":
                 if race in card.race or race == "All":
