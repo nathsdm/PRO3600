@@ -164,4 +164,4 @@ class CardsManager:
             if k.set_code == card.set_code:
                 self.cards.remove(k)
                 break
-        self.master.son.cards_menu.update()
+        self.master.cards_menu.update()
