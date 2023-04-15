@@ -27,7 +27,7 @@ class GoogleAuth:
         self.path = os.path.join("App", "DATA", "CARDS", "cards.txt")
         self.local_fd = io.FileIO(self.path, mode="w")
         # If modifying these scopes, delete the file token.json.
-        self.SCOPES = ['https://www.googleapis.com/auth/drive.metadata.readonly', 'https://www.googleapis.com/auth/drive.appdata']
+        self.SCOPES = ['https://www.googleapis.com/auth/drive.appdata']
         # The file token.json stores the user's access and refresh tokens, and is
         # created automatically when the authorization flow completes for the first
         # time.

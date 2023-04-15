@@ -1,9 +1,11 @@
 from slugify import slugify
 
 class Card():
-    def __init__(self, set_code, name, data, leng):
+    def __init__(self, set_code, name, data, leng, quantity=1):
         self.name = name
         self.data = data
+        self.sets = []
+        self.quantity = quantity
         self.card_info = None
         self.atk = None
         self.defense = None
@@ -47,6 +49,7 @@ class Card():
             elif info == "card_sets":
                 self.infos.append("Sets")
                 for card_set in self.card_info.get(info):
+                    self.sets.append(card_set.get("set_code"))
                     set_info = ""
                     for k in card_set.keys():
                         set_info += str(k) + " : " + str(card_set.get(k)) + "\n"
@@ -55,3 +58,6 @@ class Card():
     def display_infos(self):
         for k in self.card_info.keys():
             print(k, " : ", self.card_info.get(k))
+            
+    def add_quantity(self, quantity):
+        self.quantity += quantity

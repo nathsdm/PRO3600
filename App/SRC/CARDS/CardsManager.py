@@ -50,8 +50,16 @@ class CardsManager:
     
     def start(self):
         self.setup_cards()
+        index = 0
         for k in self.cards_ref:
-            self.recognize_card(k)
+            if k in self.cards_ref[:index]:
+                for card in self.cards:
+                    if card.set_code == k:
+                        card.add_quantity(1)
+            else:
+                self.recognize_card(k)
+            
+            index+=1
         
     def setup_refs(self):
         for ref in self.names.keys():
@@ -116,8 +124,6 @@ class CardsManager:
                 if race in card.race or race == "All":
                     image = self.download_card(card)
                     image = Image.open(image)
-                    image = image.resize((int(image.width/1.95), int(image.height/1.95)), Image.ANTIALIAS)
-                    image = ImageTk.PhotoImage(image)
                     buttons.append([image, partial(display_card, card)])
         return buttons
     
@@ -142,12 +148,14 @@ class CardsManager:
         analyser = Analyser(image_path)
         analyser.analyse()
         ref = self.recognize_card(analyser.result)
-        self.add_card(ref)
+        if ref != "UNKNOWN":
+            self.add_card(ref)
         
     def add_card(self, card):
         with open(self.cards_path, 'a') as f:
             f.write('\n')
             f.write(card)
+        self.master.authentifier.update_filedata()
         self.master.cards_menu.update()
         
     def delete_card(self, card):

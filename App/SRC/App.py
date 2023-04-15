@@ -32,7 +32,6 @@ class App(tk.Tk):
         super().__init__()
         self.master = master
         self.card = None
-        self.loading()
     
     def loading(self):
         self.title("Loading...")
@@ -59,7 +58,7 @@ class App(tk.Tk):
         
         self.center()
             
-        self.after(1000, self.setup_window)
+        self.after(100, self.setup_window)
         
         self.mainloop()
     
@@ -94,7 +93,10 @@ class App(tk.Tk):
         except:
             pass
         self.title("Yugi")
-        self.attributes('-fullscreen',True)
+        photo = Image.open(os.path.join("APP", "DATA", "IMAGES", "icone.png"))
+        photo = ImageTk.PhotoImage(photo)
+        self.iconphoto(True, photo)
+        self.attributes("-fullscreen", True)
         self.resizable(False, False)
         # Creating a Font object of "TkDefaultFont"
         self.defaultFont = font.nametofont("TkDefaultFont")
@@ -105,7 +107,6 @@ class App(tk.Tk):
                                    size=19,
                                    weight=font.BOLD)
         self.protocol("WM_DELETE_WINDOW", self.quit)
-        self.center()
         self.focus_force()
         self.setup_menus()
         

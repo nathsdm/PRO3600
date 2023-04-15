@@ -19,6 +19,7 @@ class CardsMenu(tk.Frame):
         
         self.master = master
         self.cards_manager = cards_manager
+        self.mode = 0
         self.setup_buttons()
         self.setup_scroll()
         
@@ -26,9 +27,13 @@ class CardsMenu(tk.Frame):
         self.analyse_button = tk.Button(self, text="Analyse photo", command=lambda: self.cards_manager.analyse_card())
         self.analyse_button.pack()
         self.set_code_button = tk.Button(self, text="Enter code", command=lambda: self.set_code_query())
-        self.set_code_button.pack()
+        self.set_code_button.pack()        
         
         self.buttons_frame = tk.Frame(self)
+        
+        self.view_button = tk.Button(self.buttons_frame, text="Change view", command=lambda: self.change_view())
+        self.view_button.pack(side = "left", padx=10)
+        
         self.type_label = tk.Label(self.buttons_frame, text="Type:")
         self.type_label.pack(side="left", padx=10)
         self.type_options = ["All", "Monster", "Trap", "Spell"]
@@ -57,22 +62,50 @@ class CardsMenu(tk.Frame):
         self.back_button.pack(side="left", padx=(150, 0))
         self.buttons_frame.pack(side="top")
         
+    def change_view(self):
+        self.mode = (self.mode + 1) % 2
+        self.canvas.change_view(self.mode)
+        
     def setup_scroll(self, select="All", sort="Name", race="All"):
         tk_images = self.cards_manager.get_buttons(select, sort, race)
         self.scrollable_frame = tk.Frame(self)
         self.scrollable_frame.pack(side="left", fill="both", expand=True)
-        self.canvas = ScrollableImageList(self.scrollable_frame, tk_images, num_columns=7)
+        if len(tk_images) == 0:
+            return
+        self.canvas = ScrollableImageList(self.scrollable_frame, tk_images, num_columns=7, mode=self.mode)
         self.canvas.pack(side="left", fill="both", expand=True)
         
     def set_code_query(self):
         """
         Ask the user to enter the code of the card.
         """
+        def center(window):
+            """
+            Centers a Tkinter window on the screen.
+            """
+            window.update_idletasks()
+            width = window.winfo_width()
+            height = window.winfo_height()
+            
+            frm_width = window.winfo_rootx() - window.winfo_x()
+            frm_height = window.winfo_rooty() - window.winfo_y()
+            
+            win_width = width + 2 * frm_width
+            win_height = height + frm_height + frm_width
+            
+            x = window.winfo_screenwidth() // 2 - win_width // 2
+            y = window.winfo_screenheight() // 2 - win_height // 2
+            
+            window.geometry(f'{width}x{height}+{x}+{y}')
+            window.deiconify()
+            
         def set_code():
             code = self.code_query_entry.get()
             self.code_query.destroy()
-            self.cards_manager.recognize_card(code)
-            self.update()
+            code = self.cards_manager.recognize_card(code)
+            if code == "UNKNOWN":
+                return
+            self.cards_manager.add_card(code)
         
         def cancel_code_query():
             self.code_query.destroy()
@@ -99,6 +132,8 @@ class CardsMenu(tk.Frame):
         self.code_query_entry.pack()
         self.code_query_button = tk.Button(self.code_query, text="Ok", command=set_code)
         self.code_query_button.pack()
+        
+        center(self.code_query)
         
         
     def update(self):
