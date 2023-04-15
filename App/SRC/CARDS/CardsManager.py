@@ -43,7 +43,7 @@ class CardsManager:
             os.makedirs(name=os.path.join("App", "DATA", "CARDS"))
         if os.path.isfile(self.cards_path):
             for ref in open(file=os.path.join("App", "DATA", "CARDS", "cards.txt"), mode="r"):
-                if ref != "UNKNOWN" and ref != "":
+                if ref != "UNKNOWN" and ref != "" and ref != " " and ref != '\n':
                     self.cards_ref.append(ref.rstrip('\n'))
         else:
             print("No cards found")
@@ -97,7 +97,7 @@ class CardsManager:
         if len(probas) > 0:
             finding = self.refs.get(probas[0])
             card_name = self.names.get(finding)[0 if self.leng == "EN" else 1]
-            self.cards.append(Card(finding, card_name, self.info, self.leng))
+            self.cards.append(Card(self, finding, card_name, self.info, self.leng))
             return finding if self.leng == "EN" else finding.replace("EN", "FR")
         else:
             tk.messagebox.showerror("Erreur", "Je n'arrive pas à reconnaître la carte...")
@@ -150,6 +150,9 @@ class CardsManager:
         ref = self.recognize_card(analyser.result)
         if ref != "UNKNOWN":
             self.add_card(ref)
+            
+    
+    
         
     def add_card(self, card):
         with open(self.cards_path, 'a') as f:
@@ -158,7 +161,7 @@ class CardsManager:
         self.master.authentifier.update_filedata()
         self.master.cards_menu.update()
         
-    def delete_card(self, card):
+    def delete_card(self, card, mode=0):
         with open(os.path.join("App", "DATA", "CARDS", "cards.txt"), "r") as f:
             lines = f.readlines()
         with open(os.path.join("App", "DATA", "CARDS", "cards.txt"), "w") as f:
@@ -168,8 +171,24 @@ class CardsManager:
                     count += 1
                 else:
                     f.write(line)
-        for k in self.cards:
-            if k.set_code == card.set_code:
-                self.cards.remove(k)
-                break
+        if mode == 0:
+            self.cards.remove(card)
+            print(self.cards)
         self.master.cards_menu.update()
+        
+    def update_quantity(self, card, quantity):
+        count = 0
+        for card_ref in self.cards:
+            if card_ref.set_code == card.set_code:
+                card_ref.quantity_update(quantity)
+                break
+    
+    def reset(self):
+        message = "Êtes-vous sûr de vouloir réinitialiser votre collection ?"
+        if tk.messagebox.askyesno("Réinitialiser", message):
+            with open(os.path.join("App", "DATA", "CARDS", "cards.txt"), "w") as f:
+                f.write("")
+            self.cards = []
+            self.cards_ref = []
+            self.master.cards_menu.update()
+            self.master.authentifier.update_filedata()

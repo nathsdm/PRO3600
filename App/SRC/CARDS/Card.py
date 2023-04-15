@@ -1,7 +1,8 @@
 from slugify import slugify
 
 class Card():
-    def __init__(self, set_code, name, data, leng, quantity=1):
+    def __init__(self, master, set_code, name, data, leng, quantity=1):
+        self.master = master
         self.name = name
         self.data = data
         self.sets = []
@@ -61,3 +62,10 @@ class Card():
             
     def add_quantity(self, quantity):
         self.quantity += quantity
+    
+    def quantity_update(self, quantity):
+        self.quantity = quantity
+        if self.quantity == 0:
+            self.master.delete_card(self, mode=0)
+            return
+        self.master.delete_card(self, mode=1)

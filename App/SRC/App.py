@@ -123,6 +123,12 @@ class App(tk.Tk):
         self.main_menu.pack(fill=tk.BOTH, expand=True)
         self.current_menu = self.main_menu
         
+    def reset(self):
+        """
+        Reset the application cards.
+        """
+        self.cards_manager.reset()
+        
         
     def center(self):
         """

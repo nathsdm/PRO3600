@@ -14,7 +14,7 @@ class CardDescWindow(tk.Frame):
         # Définir une variable pour stocker la valeur de la Spinbox
         value = tk.IntVar()
         # Configurer la Spinbox
-        self.spin_box = ttk.Spinbox(self.frames[0], from_=0, to=1000000, increment=1, textvariable=value)
+        self.spin_box = ttk.Spinbox(self.frames[0], from_=0, to=1000000, increment=1, textvariable=value, command = lambda: self.update_quantity(value.get()))
         
     def setup_images(self):
         """
@@ -83,6 +83,17 @@ class CardDescWindow(tk.Frame):
         """
         self.master.change_menu(menu)
         self.master.cards_manager.delete_card(self.card)
+        
+    def update_quantity(self, quantity):
+        """
+        Updates the quantity of the card.
+        """
+        self.master.cards_manager.update_quantity(self.card, quantity)    
+        
+        
+        
+    
+    
     
     def update(self, card):
         self.card = card
