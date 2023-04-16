@@ -36,7 +36,7 @@ class MainMenu(tk.Frame):
         Defines the labels used in the main menu.
         """
         self.title_label = tk.Label(self, text="Yu-gi-oh app", font=("Matrix-Bold" , 50), fg="white", bg="#103188")
-        self.title_label.pack()	
+        self.title_label.pack(pady=50)	
     
     def setup_buttons(self):
         """
@@ -48,7 +48,7 @@ class MainMenu(tk.Frame):
         self.settings_btn = tk.Button(self, text="Settings", command=lambda: self.master.change_menu(self.master.settings_menu), bg="#103188", fg="white", border=0, cursor="hand2")
         self.quit_btn = tk.Button(self, text="Quit", command=self.master.quit, bg="#103188", fg="white", border=0, cursor="hand2")
         
-        self.play_btn.pack(pady=300)
+        self.play_btn.pack(pady=250)
         self.credits_btn.pack()
         self.settings_btn.pack()
         self.quit_btn.pack()

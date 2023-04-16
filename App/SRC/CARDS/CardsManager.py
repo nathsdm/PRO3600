@@ -97,6 +97,10 @@ class CardsManager:
         if len(probas) > 0:
             finding = self.refs.get(probas[0])
             card_name = self.names.get(finding)[0 if self.leng == "EN" else 1]
+            for card in self.cards:
+                if card.name == card_name:
+                    card.add_quantity(1)
+                    return finding if self.leng == "EN" else finding.replace("EN", "FR")
             self.cards.append(Card(self, finding, card_name, self.info, self.leng))
             return finding if self.leng == "EN" else finding.replace("EN", "FR")
         else:
@@ -104,7 +108,7 @@ class CardsManager:
             print("Je n'arrive pas à reconnaître la carte...")
             return "UNKNOWN"
     
-    def get_buttons(self, select, sort, race):
+    def get_buttons(self, select="All", sort="Name", race="All"):
         def display_card(card):
             self.master.card = card
             self.master.change_menu(self.master.card_desc_window)
@@ -118,13 +122,14 @@ class CardsManager:
                 self.cards.sort(key=lambda x: x.defense if x.defense != None else 0, reverse=True)
             case "Level":
                 self.cards.sort(key=lambda x: x.level if x.level != None else 0, reverse=True)
+            case "Price":
+                self.cards.sort(key=lambda x: float(x.price) if x.price != None else 0, reverse=True)
                 
         for card in self.cards:
             if select in card.type or select == "All":
                 if race in card.race or race == "All":
                     image = self.download_card(card)
-                    image = Image.open(image)
-                    buttons.append([image, partial(display_card, card)])
+                    buttons.append([card, partial(display_card, card)])
         return buttons
     
     def download_card(self, card):
@@ -156,9 +161,8 @@ class CardsManager:
         
     def add_card(self, card):
         with open(self.cards_path, 'a') as f:
-            f.write('\n')
             f.write(card)
-        self.master.authentifier.update_filedata()
+            f.write("\n")
         self.master.cards_menu.update()
         
     def delete_card(self, card, mode=0):
@@ -173,7 +177,6 @@ class CardsManager:
                     f.write(line)
         if mode == 0:
             self.cards.remove(card)
-            print(self.cards)
         self.master.cards_menu.update()
         
     def update_quantity(self, card, quantity):
@@ -191,4 +194,3 @@ class CardsManager:
             self.cards = []
             self.cards_ref = []
             self.master.cards_menu.update()
-            self.master.authentifier.update_filedata()

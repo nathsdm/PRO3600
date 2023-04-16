@@ -14,7 +14,7 @@ class CardDescWindow(tk.Frame):
         # Définir une variable pour stocker la valeur de la Spinbox
         value = tk.IntVar()
         # Configurer la Spinbox
-        self.spin_box = ttk.Spinbox(self.frames[0], from_=0, to=1000000, increment=1, textvariable=value, command = lambda: self.update_quantity(value.get()))
+        self.spin_box = ttk.Spinbox(self.frames[0], from_=0, to=10000, increment=1, textvariable=value, command = lambda: self.update_quantity(value.get()), width=5)
         
     def setup_images(self):
         """
@@ -26,7 +26,7 @@ class CardDescWindow(tk.Frame):
         for image in self.images:
             image.pack(side=tk.LEFT, padx=10)
     
-    def setup_label(self):
+    def setup_labels(self):
         """
         Defines the labels used in the cards description window.
         """
@@ -37,17 +37,21 @@ class CardDescWindow(tk.Frame):
                 break
             self.labels.append(tk.Label(self, text=info, width=300, wraplength=1000, justify=tk.LEFT, anchor=tk.NW, font=("Matrix-Bold", 12)))
             self.labels[-1].pack()
-        length = len(self.labels)
+        length = len(self.labels)+2
         
+        self.labels.append(tk.Label(self.frames[0], text="Set:", justify=tk.LEFT, anchor=tk.NW, font=("Matrix-Bold", 12)))
+        self.labels[-1].pack(side="left", padx=(300, 30))
         self.edition = tk.StringVar()
         self.editions = self.card.sets
         self.buttons.append(ttk.OptionMenu(self.frames[0], self.edition, *self.editions, command=lambda num: self.edition_display(sets, self.editions.index(self.edition.get()), length)))
-        self.edition.set(self.editions[0])
-        self.buttons[0].pack(side="left", padx=(300, 30))
+        self.edition.set(self.card.set_code)
+        self.buttons[0].pack(side="left", padx=(0, 30))
+        self.labels.append(tk.Label(self.frames[0], text="Quantity:", justify=tk.LEFT, anchor=tk.NW, font=("Matrix-Bold", 12)))
+        self.labels[-1].pack(side="left", padx=(100, 30))
         self.spin_box.set(self.card.quantity)
         self.spin_box.pack(side="left")
-        self.frames[0].pack(fill="x")
-        self.edition_display(sets, 0, length)
+        self.frames[0].pack(fill="x", pady=(20, 0))
+        self.edition_display(sets, self.editions.index(self.card.set_code), length)
     
     def edition_display(self, sets, num, length):
         if len(self.labels) > length:
@@ -67,13 +71,28 @@ class CardDescWindow(tk.Frame):
             self.buttons[2].pack()
         except:
             pass
+        if self.card.set_code != self.edition.get():
+            with open(os.path.join("App", "DATA", "CARDS", "cards.txt"), "r") as file:
+                lines = file.readlines()
+            with open(os.path.join("App", "DATA", "CARDS", "cards.txt"), "w") as file:
+                for line in lines:
+                    if line.strip("\n") == self.card.set_code:
+                        file.write(self.edition.get())
+                        file.write("\n")
+                    else:
+                        file.write(line)
+            self.card.set_code = self.edition.get()
+            self.card.update()
         
     def setup_buttons(self):
         """
         Defines the buttons used in the cards description window.
         """
+        def back():
+            self.master.cards_menu.update()
+            self.master.change_menu(self.master.cards_menu)
         self.buttons.append(tk.Button(self, text="Delete", command=lambda: self.delete(self.master.cards_menu)))
-        self.buttons.append(tk.Button(self, text="Back", command=lambda: self.master.change_menu(self.master.cards_menu)))
+        self.buttons.append(tk.Button(self, text="Back", command=back))
         for button in self.buttons:
             button.pack()
     
@@ -100,7 +119,7 @@ class CardDescWindow(tk.Frame):
         if self.card != None:
             self.clear()
             self.setup_images()
-            self.setup_label()
+            self.setup_labels()
             self.setup_buttons()
             
     def clear(self):

@@ -21,7 +21,16 @@ class CardsMenu(tk.Frame):
         self.cards_manager = cards_manager
         self.mode = 0
         self.setup_buttons()
+        self.scrollable_frame = tk.Frame(self)
+        self.tk_images = self.cards_manager.get_buttons()
+        self.canvas = ScrollableImageList(self.scrollable_frame, self.tk_images, num_columns=7, mode=self.mode)
+        
+        self.setup_frame()
         self.setup_scroll()
+    
+    def setup_frame(self):
+        self.scrollable_frame.pack(side="left", fill="both", expand=True)
+        self.canvas.pack(side="left", fill="both", expand=True)
         
     def setup_buttons(self):
         self.analyse_button = tk.Button(self, text="Analyse photo", command=lambda: self.cards_manager.analyse_card())
@@ -32,7 +41,7 @@ class CardsMenu(tk.Frame):
         self.buttons_frame = tk.Frame(self)
         
         self.view_button = tk.Button(self.buttons_frame, text="Change view", command=lambda: self.change_view())
-        self.view_button.pack(side = "left", padx=10)
+        self.view_button.pack(side = "left", padx=(0,150))
         
         self.type_label = tk.Label(self.buttons_frame, text="Type:")
         self.type_label.pack(side="left", padx=10)
@@ -52,7 +61,7 @@ class CardsMenu(tk.Frame):
         
         self.sort_label = tk.Label(self.buttons_frame, text="Sort by:")
         self.sort_label.pack(side="left", padx=10)
-        self.sort_options = ["Name", "Atk", "Def", "Level"]
+        self.sort_options = ["Name", "Atk", "Def", "Level", "Price"]
         self.sort_var = tk.StringVar(self)
         self.sort_var.set(self.sort_options[0])
         self.sort_button = tk.OptionMenu(self.buttons_frame, self.sort_var, *self.sort_options, command=lambda x: self.update())
@@ -67,13 +76,10 @@ class CardsMenu(tk.Frame):
         self.canvas.change_view(self.mode)
         
     def setup_scroll(self, select="All", sort="Name", race="All"):
-        tk_images = self.cards_manager.get_buttons(select, sort, race)
-        self.scrollable_frame = tk.Frame(self)
-        self.scrollable_frame.pack(side="left", fill="both", expand=True)
-        if len(tk_images) == 0:
+        self.tk_images = self.cards_manager.get_buttons(select, sort, race)
+        if len(self.tk_images) == 0:
             return
-        self.canvas = ScrollableImageList(self.scrollable_frame, tk_images, num_columns=7, mode=self.mode)
-        self.canvas.pack(side="left", fill="both", expand=True)
+        self.canvas.update(self.tk_images)
         
     def set_code_query(self):
         """
@@ -140,7 +146,5 @@ class CardsMenu(tk.Frame):
         """
         Update the cards menu.
         """
-        self.scrollable_frame.destroy()
-        self.canvas.destroy()
         self.setup_scroll(self.type_var.get(), self.sort_var.get(), self.race_var.get())
        

@@ -1,4 +1,5 @@
 from slugify import slugify
+import os
 
 class Card():
     def __init__(self, master, set_code, name, data, leng, quantity=1):
@@ -16,6 +17,7 @@ class Card():
         self.find_card()
         self.image = self.card_info.get("card_images")[0].get("image_url")
         self.image_name = slugify(self.name)
+        self.image_path = os.path.join(os.getcwd(), "App", "DATA", "CARDS", "IMAGES", self.image_name + ".jpg")
         self.infos = []
         self.setup_infos()
         
@@ -51,6 +53,8 @@ class Card():
                 self.infos.append("Sets")
                 for card_set in self.card_info.get(info):
                     self.sets.append(card_set.get("set_code"))
+                    if card_set.get("set_code") == self.set_code:
+                        self.price = card_set.get("set_price")
                     set_info = ""
                     for k in card_set.keys():
                         set_info += str(k) + " : " + str(card_set.get(k)) + "\n"
@@ -64,8 +68,21 @@ class Card():
         self.quantity += quantity
     
     def quantity_update(self, quantity):
+        previous_quantity = self.quantity
         self.quantity = quantity
         if self.quantity == 0:
             self.master.delete_card(self, mode=0)
             return
-        self.master.delete_card(self, mode=1)
+        while self.quantity < previous_quantity:
+            self.master.delete_card(self, mode=1)
+            previous_quantity -= 1
+        while self.quantity > previous_quantity:
+            self.master.add_card(self.set_code)
+            previous_quantity += 1
+    
+    def update(self):
+        for info in self.card_info.keys():
+            if info == "card_sets":
+                for card_set in self.card_info.get(info):
+                    if card_set.get("set_code") == self.set_code:
+                        self.price = card_set.get("set_price")
