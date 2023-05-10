@@ -77,7 +77,6 @@ class CardsManager:
     
     def recognize_card(self, text):
         text = ''.join([char for char in text if char.isupper() or char.isdigit()])
-        print(text)
         if "FR" in text:
             self.leng = "FR"
             self.info = self.info_fr
@@ -91,24 +90,35 @@ class CardsManager:
             finding = self.refs.get(probas[0])
             card_name = self.names.get(finding)[0 if self.leng == "EN" else 1]
             self.cards.append(Card(finding, card_name, self.info, self.leng))
-            print("Félicitation, vous avez un {} !".format(card_name))
             return finding if self.leng == "EN" else finding.replace("EN", "FR")
         else:
             tk.messagebox.showerror("Erreur", "Je n'arrive pas à reconnaître la carte...")
             print("Je n'arrive pas à reconnaître la carte...")
             return "UNKNOWN"
     
-    def get_buttons(self, text):
+    def get_buttons(self, select, sort, race):
         def display_card(card):
-            self.master.son.card = card
-            self.master.son.change_menu(self.master.son.card_desc_window)
+            self.master.card = card
+            self.master.change_menu(self.master.card_desc_window)
         buttons = []
+        match sort:
+            case "Name":
+                self.cards.sort(key=lambda x: x.name)
+            case "Atk":
+                self.cards.sort(key=lambda x: x.atk if x.atk != None else 0, reverse=True)
+            case "Def":
+                self.cards.sort(key=lambda x: x.defense if x.defense != None else 0, reverse=True)
+            case "Level":
+                self.cards.sort(key=lambda x: x.level if x.level != None else 0, reverse=True)
+                
         for card in self.cards:
-            image = self.download_card(card)
-            image = ImageTk.PhotoImage(Image.open(image))
-            image = image._PhotoImage__photo.subsample(2)
-            buttons.append(tk.Button(text, image=image, command=partial(display_card, card)))
-            buttons[-1].image = image
+            if select in card.type or select == "All":
+                if race in card.race or race == "All":
+                    image = self.download_card(card)
+                    image = Image.open(image)
+                    image = image.resize((int(image.width/1.95), int(image.height/1.95)), Image.ANTIALIAS)
+                    image = ImageTk.PhotoImage(image)
+                    buttons.append([image, partial(display_card, card)])
         return buttons
     
     def download_card(self, card):
@@ -138,7 +148,7 @@ class CardsManager:
         with open(self.cards_path, 'a') as f:
             f.write('\n')
             f.write(card)
-        self.master.son.cards_menu.update()
+        self.master.cards_menu.update()
         
     def delete_card(self, card):
         with open(os.path.join("App", "DATA", "CARDS", "cards.txt"), "r") as f:
@@ -154,4 +164,4 @@ class CardsManager:
             if k.set_code == card.set_code:
                 self.cards.remove(k)
                 break
-        self.master.son.cards_menu.update()
+        self.master.cards_menu.update()

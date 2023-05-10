@@ -14,7 +14,6 @@ class SettingsMenu(tk.Frame):
     def __init__(self, master=None):
         super().__init__(master)
         self.configure(bg="red")
-        master.master.loggers.log.info("Switched to settings menu")
         
         self.settings = "day/night mode\nvolume\nmode dev\n"
         self.settings_label = tk.Label(self, text=self.settings, bg="red")

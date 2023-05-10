@@ -15,7 +15,6 @@ import os
 class MainMenu(tk.Frame):
     def __init__(self, master=None):
         super().__init__(master)
-        master.master.loggers.log.info("(Main menu)")
         self.setup_images()
         self.setup_label()
         self.setup_buttons()
