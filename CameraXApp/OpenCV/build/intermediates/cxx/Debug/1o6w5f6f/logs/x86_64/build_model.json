@@ -126,7 +126,7 @@
         "rootBuildGradleFolder": "C:\\Users\\cleme\\AndroidStudioProjects\\CameraXApp",
         "sdkFolder": "C:\\Users\\cleme\\AppData\\Local\\Android\\Sdk",
         "isBuildOnlyTargetAbiEnabled": true,
-        "ideBuildTargetAbi": "x86_64",
+        "ideBuildTargetAbi": "x86_64,x86",
         "isCmakeBuildCohabitationEnabled": false,
         "isPrefabEnabled": false
       },
