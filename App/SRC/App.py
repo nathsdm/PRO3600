@@ -88,6 +88,7 @@ class App(tk.Tk):
         for w in self.winfo_children():
             w.destroy()
         self.overrideredirect(False)
+        self.wm_attributes("-topmost", False)
         try:
             self.wm_attributes("-disabled", False)
         except:

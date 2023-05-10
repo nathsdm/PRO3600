@@ -51,7 +51,7 @@ class CardDescWindow(tk.Frame):
         self.spin_box.set(self.card.quantity)
         self.spin_box.pack(side="left")
         self.frames[0].pack(fill="x", pady=(20, 0))
-        self.edition_display(sets, self.editions.index(self.card.set_code), length)
+        self.edition_display(sets, self.editions.index(self.card.set_code.replace("FR", "EN")), length)
     
     def edition_display(self, sets, num, length):
         if len(self.labels) > length:

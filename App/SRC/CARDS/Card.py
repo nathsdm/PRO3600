@@ -29,6 +29,7 @@ class Card():
                 break
     
     def setup_infos(self):
+        self.price = "???"
         for info in self.card_info.keys():
             if info not in ["card_images", "card_sets", "card_prices"] :
                 self.infos.append(str(info) + " : " + str(self.card_info.get(info)))

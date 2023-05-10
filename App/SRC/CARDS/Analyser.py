@@ -69,44 +69,68 @@ class Analyser():
 			# Read image using opencv
 			img = cv2.imread(img_path)
 
-			# Rescale the image, if needed.
+			# Rescale the image
 			img = cv2.resize(img, None, fx=3, fy=3, interpolation=cv2.INTER_CUBIC)
-			# Convert to gray
+
+			# Adjust contrast
+			alpha = 1.5
+			mean_luminosity = cv2.mean(img)[0]
+			beta = - 100 * mean_luminosity / 255  # Scale beta based on mean luminosity
+			img = cv2.convertScaleAbs(img, alpha=alpha, beta=beta)
+
+			# Convert to grayscale
 			img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
-			# Apply dilation and erosion to remove some noise
-			kernel = np.ones((1, 1), np.uint8)
-			img = cv2.dilate(img, kernel, iterations=1)
-			img = cv2.erode(img, kernel, iterations=1)
+			# Apply dilation and erosion to remove noise
+			kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (1, 1))
+			img = cv2.dilate(img, kernel, iterations=10)
+			img = cv2.erode(img, kernel, iterations=10)
+
 			# Apply threshold to get image with only black and white
-			img = cv2.adaptiveThreshold(cv2.medianBlur(img, 5), 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 31, 2)
+			img = cv2.adaptiveThreshold(cv2.medianBlur(img, 7), 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 31, 2)
+
 			# Recognize text with tesseract for python
 			result = pytesseract.image_to_string(img, config='--psm 11')
 			return result
 
 		image = cv2.imread(self.image)
-		orig = image.copy()
 		scale_percent = 40 # percent of original size
 		width = int(image.shape[1] * scale_percent / 100)
 		height = int(image.shape[0] * scale_percent / 100)
 		dim = (width, height)
 		image = cv2.resize(image,  dim, interpolation = cv2.INTER_AREA)
+		orig = image.copy()
 
 		# Step 1, find edges
-		gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-		blur = cv2.GaussianBlur(gray, (5,5), 0)
-		edged = cv2.Canny(blur, 35, 200)
+		# adjust contrast
+		alpha = 1.7
+		mean_luminosity = cv2.mean(image)[0]
+		beta = - 200 * mean_luminosity / 255  # Scale beta based on mean luminosity
+		image = cv2.convertScaleAbs(image, alpha=alpha, beta=beta)
 
-		print("STEP 1: Edge Detection")
+		# Perform Gaussian blur on the input image
+		blur = cv2.GaussianBlur(image, (3, 3), 0)
+
+		# Convert the input image to grayscale
+		gray = cv2.cvtColor(blur, cv2.COLOR_BGR2GRAY)
+
+		# Apply Canny edge detection with limited non-linear edge detection
+		edged = cv2.Canny(blur, 0, 350, L2gradient=True)
+
+		# Create a structuring element for morphological operations
+		kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3))
+
+		# Apply morphological closing to the binary image to close small gaps in the edges
+		closed_image = cv2.morphologyEx(edged, cv2.MORPH_CLOSE, kernel)
 
 		# Step 2, find countours and sort in order of the area. 
 		# We assume the card is the focus of the picture so it should have the largest area
-		cnts = cv2.findContours(edged.copy(), cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
+		cnts = cv2.findContours(closed_image.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
 		cnts = cnts[0] if len(cnts) == 2 else cnts[1]
 		cnts = sorted(cnts, key = cv2.contourArea, reverse = True)[:5]
-		
+
 		# loop over the contours
-		screenCnt = 0
+		screenCnt = []
 		for c in cnts:
 			# approximate the contour
 			peri = cv2.arcLength(c, True)
@@ -115,27 +139,24 @@ class Analyser():
 			# can assume that we have found our card
 			if len(approx) == 4:
 				screenCnt = approx
-				break
-
-		
-		# show the contour (outline) of the card
-		print("STEP 2: draw contours of card")
-		cv2.drawContours(image, [screenCnt], -1, (0, 255, 0), 2)
 
 		#Step 3
-		# Map the found coordinates of the countour into a 483x300 image
-
+		# apply the four point transform to obtain a top-down
 		pts=[]
+		if len(screenCnt) == 0:
+			print("No card found")
+			exit()
+			
 		for k in screenCnt:
 			tup = tuple(k[0])
 			pts.append(tup)
 
-		warped = four_point_transform(image, pts = np.array(eval("{}".format(pts)), dtype = "float32"))
+		warped = four_point_transform(orig, pts = np.array(eval("{}".format(pts)), dtype = "float32"))
 
 		cv2.imwrite(os.path.join("App", "DATA", "CARDS", "IMAGES", "test.jpg"), warped)
 
 		w,h = warped.shape[:2]
-		cropped = warped[45*w//64:3*w//4, 2*h//3:49*h//50]
+		cropped = warped[23*w//32:3*w//4, 2*h//3:49*h//50]
   
 		cv2.imwrite("ocr.jpg", cropped)
   

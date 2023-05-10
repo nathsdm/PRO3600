@@ -12,6 +12,9 @@ from PIL import Image, ImageTk
 from functools import partial
 from SRC.CARDS.Analyser import Analyser
 from tkinter import filedialog as fd
+import cv2
+import numpy as np
+import jellyfish
 
 
 class CardsManager:
@@ -56,6 +59,7 @@ class CardsManager:
                 for card in self.cards:
                     if card.set_code == k:
                         card.add_quantity(1)
+                    break
             else:
                 self.recognize_card(k)
             
@@ -83,7 +87,7 @@ class CardsManager:
             else:
                 pass
     
-    def recognize_card(self, text):
+    def recognize_card(self, text, image_path=None):
         text = ''.join([char for char in text if char.isupper() or char.isdigit()])
         if "FR" in text:
             self.leng = "FR"
@@ -92,8 +96,21 @@ class CardsManager:
         else:
             self.leng = "EN"
             self.info = self.info_en  
-            text = text.replace("EN", "")        
-        probas = difflib.get_close_matches(text, self.refs.keys(), cutoff=0.4)
+            text = text.replace("EN", "")
+        
+        def get_closest_match(word, candidates):
+            # Compute the Damerau-Levenshtein and Jaro-Winkler distances for the candidates
+            dl_distances = [jellyfish.damerau_levenshtein_distance(word, candidate) for candidate in candidates]
+            jw_distances = [jellyfish.jaro_winkler(word, candidate) for candidate in candidates]
+            
+            # Combine the distances into a single score using a weighted sum
+            scores = [0.5 * dl + 0.5 * jw for dl, jw in zip(dl_distances, jw_distances)]
+            
+            # Return the match with the smallest score
+            min_score_index = scores.index(min(scores))
+            return list(candidates)[min_score_index]
+        probas = [get_closest_match(text, self.refs.keys())]
+        
         if len(probas) > 0:
             finding = self.refs.get(probas[0])
             card_name = self.names.get(finding)[0 if self.leng == "EN" else 1]
@@ -102,10 +119,26 @@ class CardsManager:
                     card.add_quantity(1)
                     return finding if self.leng == "EN" else finding.replace("EN", "FR")
             self.cards.append(Card(self, finding, card_name, self.info, self.leng))
+            self.download_card(self.cards[-1])
+            # Check if the card is correctly recognized
+            def mse(img1, img2):
+                h, w, z = img1.shape
+                img2 = cv2.resize(img2, (w, h))
+                img1 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
+                img2 = cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY)
+                diff = cv2.subtract(img1, img2)
+                err = np.sum(diff**2)
+                mse = err/(float(h*w))
+                return mse
+            if image_path != None:
+                print(mse(cv2.imread(self.cards[-1].image_path), cv2.imread(image_path)))
+                if mse(cv2.imread(self.cards[-1].image_path), cv2.imread(image_path)) > 55:
+                    tk.messagebox.showerror("Erreur", "Je n'arrive pas à reconnaître la carte...")
+                    return "UNKNOWN"
+                
             return finding if self.leng == "EN" else finding.replace("EN", "FR")
         else:
             tk.messagebox.showerror("Erreur", "Je n'arrive pas à reconnaître la carte...")
-            print("Je n'arrive pas à reconnaître la carte...")
             return "UNKNOWN"
     
     def get_buttons(self, select="All", sort="Name", race="All"):
@@ -152,7 +185,7 @@ class CardsManager:
             return
         analyser = Analyser(image_path)
         analyser.analyse()
-        ref = self.recognize_card(analyser.result)
+        ref = self.recognize_card(analyser.result, image_path)
         if ref != "UNKNOWN":
             self.add_card(ref)
             
