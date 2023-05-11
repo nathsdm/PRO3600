@@ -33,10 +33,14 @@ class CardsMenu(tk.Frame):
         self.canvas.pack(side="left", fill="both", expand=True)
         
     def setup_buttons(self):
-        self.analyse_button = tk.Button(self, text="Analyse photo", command=lambda: self.cards_manager.analyse_card())
-        self.analyse_button.pack()
-        self.set_code_button = tk.Button(self, text="Enter code", command=lambda: self.set_code_query())
-        self.set_code_button.pack()        
+        self.top_frame = tk.Frame(self)
+        self.analyse_button = tk.Button(self.top_frame, text="Analyse photo", command=lambda: self.cards_manager.analyse_card())
+        self.analyse_button.pack(side="left", padx=(0, 50))
+        self.top_label = tk.Label(self.top_frame, text="or")
+        self.top_label.pack(side="left", padx=(0, 50))
+        self.set_code_button = tk.Button(self.top_frame, text="Enter code", command=lambda: self.set_code_query())
+        self.set_code_button.pack(side="left", padx=(0, 50))     
+        self.top_frame.pack(side="top", pady=(50, 0))
         
         self.buttons_frame = tk.Frame(self)
         
@@ -69,7 +73,7 @@ class CardsMenu(tk.Frame):
         
         self.back_button = tk.Button(self.buttons_frame, text="Back", command=lambda: self.master.change_menu(self.master.main_menu))
         self.back_button.pack(side="left", padx=(150, 0))
-        self.buttons_frame.pack(side="top")
+        self.buttons_frame.pack(side="top", pady=(25, 25))
         
     def change_view(self):
         self.mode = (self.mode + 1) % 2
