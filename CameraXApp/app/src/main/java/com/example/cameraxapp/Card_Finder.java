@@ -1,84 +1,100 @@
 package com.example.cameraxapp;
 
 
-
 import static com.example.cameraxapp.MainActivityKt.saveDebugImageToMediaStore;
-import static com.example.cameraxapp.MainActivityKt.saveMatToMediaStore;
 
 import android.content.Context;
 
 import org.opencv.core.*;
+import org.opencv.imgproc.CLAHE;
 import org.opencv.imgproc.Imgproc;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-
 public class Card_Finder {
 
     static {
-        System.loadLibrary("opencv_java4");
         Core.setNumThreads(Core.getNumberOfCPUs());
     }
 
     public static Mat Card(Mat im, boolean debug, Context context) {
-        double scaleFactor = 0.5;
-        Imgproc.resize(im, im, new Size(), scaleFactor, scaleFactor, Imgproc.INTER_AREA);
+        // Sauvegarder les dimensions de l'image d'origine
+        Size originalSize = new Size(im.width(), im.height());
+        double ratioim = im.height() / 500.0;
+        Size newSize = new Size(im.width() / ratioim, 500);
+        Imgproc.resize(im, im, newSize, 0, 0, Imgproc.INTER_AREA);
+
 
         Size imShape = new Size(im.width(), im.height());
         double imArea = imShape.width * imShape.height;
 
-        // Convert color to gray
         Mat imOrig = im.clone();
-        Imgproc.cvtColor(im, im, Imgproc.COLOR_BGR2GRAY);
+        if(debug){
+            saveDebugImageToMediaStore(context, "/imageOriginel.png", im);
+        }
+        // Convert the input image to grayscale
+        Mat gray = new Mat();
+        Imgproc.cvtColor(im, gray, Imgproc.COLOR_BGR2GRAY);
 
-// Slightly blur image to reduce noise
-        Imgproc.GaussianBlur(im, im, new Size(0, 0), 2);
 
-// Get gradient
-        Mat imGrad = imGradient(im, 3);
-// Convert to CV_8UC1
-        imGrad.convertTo(imGrad, CvType.CV_8UC1);
+        //Histogramme adaptative
+        Mat equalizedImage = new Mat();
+        CLAHE clahe = Imgproc.createCLAHE();
+        clahe.setClipLimit(4);
+        clahe.apply(gray, equalizedImage);
 
+        // Perform Gaussian blur on the input image
+        Mat blur = new Mat();
+        Imgproc.bilateralFilter(equalizedImage,blur, 11, 17, 17);
         if (debug) {
-            saveDebugImageToMediaStore(context, "/grad.png", imGrad);
+            saveDebugImageToMediaStore(context, "/blur.png", blur);
         }
 
-        // Thresholding
-        Imgproc.threshold(imGrad, imGrad, 15, 255, Imgproc.THRESH_BINARY + Imgproc.THRESH_OTSU);
-
+        Mat edged = new Mat();
+        Imgproc.Canny(blur, edged, 70, 200);
         if (debug) {
-            saveDebugImageToMediaStore(context, "/threshold.png", imGrad);
+            saveDebugImageToMediaStore(context, "/edged.png", edged);
         }
-
-// Morphological closing to take out small elements
-        Mat kernel = Imgproc.getStructuringElement(Imgproc.MORPH_RECT, new Size(5, 5));
-        Imgproc.morphologyEx(imGrad, imGrad, Imgproc.MORPH_CLOSE, kernel);
+        // Create a structuring element for morphological operations
+        Mat kernel = Imgproc.getStructuringElement(Imgproc.MORPH_RECT, new Size(3,3));
+        Imgproc.dilate(edged,edged, kernel, new Point(-1, -1));
         if (debug) {
-            saveDebugImageToMediaStore(context, "/morph.png", imGrad);
+            saveDebugImageToMediaStore(context, "/dilate.png", edged);
         }
-
-        // Find contours
-        List<MatOfPoint> contours = new ArrayList<>();
-        Mat hierarchy = new Mat();
-
-        Imgproc.findContours(imGrad, contours, hierarchy, Imgproc.RETR_EXTERNAL, Imgproc.CHAIN_APPROX_SIMPLE);
+        // Apply morphological closing to the binary image to close small gaps in the edges
+        Mat closed_image = new Mat();
+        Imgproc.morphologyEx(edged, closed_image, Imgproc.MORPH_CLOSE, kernel);
         if (debug) {
-            saveDebugImageToMediaStore(context, "/preprocess.png", imGrad);
+            saveDebugImageToMediaStore(context, "/closed.png", closed_image);
         }
+        gray.release();
+        equalizedImage.release();
+        blur.release();
+        edged.release(); // libère la mémoire
 
-        double minShape = 0.2 * imArea;
-        double maxShape = 0.8 * imArea;
+        double minShape = 0.05 * imArea;
+        double maxShape = 0.95 * imArea;
 
         double realCardRatio = 63.0 / 88.0;
         double margeRatio = 0.1;
         double lowerBound = realCardRatio - margeRatio;
         double upperBound = realCardRatio + margeRatio;
 
+
+        // Find contours
+        List<MatOfPoint> contours = new ArrayList<>();
+        Mat hierarchy = new Mat();
+
+        Imgproc.findContours(closed_image, contours, hierarchy, Imgproc.RETR_LIST, Imgproc.CHAIN_APPROX_NONE);
+
+
         if (debug) {
             // Create a copy of the original image
             Mat imWithContours = imOrig.clone();
             // Draw all the contours in red
-            Imgproc.drawContours(imWithContours, contours, -1, new Scalar(0, 0, 255), 2);
+            Imgproc.drawContours(imWithContours, contours, -1, new Scalar(0, 0, 255), 5);
             saveDebugImageToMediaStore(context, "/all_contours.png", imWithContours);
             System.out.println("Nombre de contours détectés: " + contours.size());
             imWithContours.release();
@@ -86,6 +102,7 @@ public class Card_Finder {
 
         Mat imContourCandidates = Mat.zeros(im.rows(), im.cols(), CvType.CV_8UC1);
         List<MatOfPoint> candidateContours = new ArrayList<>();
+
         for (MatOfPoint contour : contours) {
             RotatedRect rect = Imgproc.minAreaRect(new MatOfPoint2f(contour.toArray()));
             Point[] box = new Point[4];
@@ -114,11 +131,14 @@ public class Card_Finder {
                 System.out.println("upperBound: " + upperBound);
                 System.out.println("lowerBound: " + lowerBound);
 
+
+
                 if (minRatio >= lowerBound && minRatio <= upperBound) {
                     candidateContours.add(contour);
                 }
             }
         }
+
         if (debug) {
             saveDebugImageToMediaStore(context, "/contour_candidates.png", imContourCandidates);
         }
@@ -139,8 +159,12 @@ public class Card_Finder {
             // Appliquer la transformation de perspective pour redresser la carte
             Mat warpMat = Imgproc.getPerspectiveTransform(new MatOfPoint2f(srcPoints), new MatOfPoint2f(dstPoints));
             Mat card = new Mat((int) cardRect.size.height, (int) cardRect.size.width, CvType.CV_8UC1);
-            Imgproc.warpPerspective(im, card, warpMat, card.size());
-            return card;
+            Imgproc.warpPerspective(imOrig, card, warpMat, card.size());
+            // Redimensionner la carte pour qu'elle ait la taille de l'image d'origine
+            Mat resizedCard = new Mat();
+            Imgproc.resize(card, resizedCard, originalSize, 0, 0, Imgproc.INTER_LINEAR);
+
+            return resizedCard;
         }
 
         if(candidateContours.size() >= 2){
@@ -181,8 +205,18 @@ public class Card_Finder {
             // Appliquer la transformation de perspective pour redresser la carte
             Mat warpMat = Imgproc.getPerspectiveTransform(new MatOfPoint2f(srcPoints), new MatOfPoint2f(dstPoints));
             Mat card = new Mat((int) cardRect.size.height, (int) cardRect.size.width, CvType.CV_8UC1);
-            Imgproc.warpPerspective(im, card, warpMat, card.size());
-            return card;
+            Imgproc.warpPerspective(imOrig, card, warpMat, card.size());
+
+            // Redimensionner la carte pour qu'elle ait la taille de l'image d'origine
+            Mat resizedCard = new Mat();
+            Imgproc.resize(card, resizedCard, originalSize, 0, 0, Imgproc.INTER_LINEAR);
+
+            // Convertir l'image en niveaux de gris (si ce n'est pas déjà fait)
+            Mat grayCard = new Mat();
+            Imgproc.cvtColor(resizedCard, grayCard, Imgproc.COLOR_BGR2GRAY);
+
+
+            return resizedCard;
         }
         return null;
     }
@@ -236,41 +270,8 @@ public class Card_Finder {
         return minIdx;
     }
 
-    private static int maxIndex(double[] values) {
-        int maxIdx = 0;
-        for (int i = 1; i < values.length; i++) {
-            if (values[i] > values[maxIdx]) {
-                maxIdx = i;
-            }
-        }
-        return maxIdx;
-    }
-
-
-    public static Mat imGradient(Mat img, int sobelKernelSize) {
-            Mat sobelx = new Mat();
-            Mat sobely = new Mat();
-            Mat result = new Mat();
-
-            // Compute the Sobel gradients in the x and y directions
-            Imgproc.Sobel(img, sobelx, CvType.CV_64F, 1, 0, sobelKernelSize);
-            Imgproc.Sobel(img, sobely, CvType.CV_64F, 0, 1, sobelKernelSize);
-
-            // Compute the magnitude of the gradient
-            Core.multiply(sobelx, sobelx, sobelx);
-            Core.multiply(sobely, sobely, sobely);
-            Core.add(sobelx, sobely, result);
-            Core.sqrt(result, result);
-
-            sobelx.release();
-            sobely.release();
-
-            return result;
-        }
-
-
     public static double distance(double[] pt1, double[] pt2) {
         return Math.hypot(pt1[0] - pt2[0], pt1[1] - pt2[1]);
     }
-    }
+}
 
