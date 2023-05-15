@@ -27,6 +27,7 @@ class CardsManager:
         self.info_fr = cardinfo.info_fr["data"]
         self.info_en = cardinfo.info_en["data"]
         self.refs = {}
+        self.price = 0
         path = os.path.join("App", "DATA", "CARDS", "IMAGES")        
         if os.path.isdir(path):
             print("Images folder found")
@@ -35,6 +36,19 @@ class CardsManager:
         self.setup_names()
         self.setup_refs()
         self.start()
+        
+    def collection_price(self):
+        self.get_price()
+        self.master.cards_menu.price_label.config(text="Collection price : " + str(self.price) + " $")
+    
+    def get_price(self):
+        self.price = 0
+        for card in self.cards:
+            self.price += float(card.price)*card.quantity
+        self.price = round(self.price, 2)
+        return str(self.price)
+        
+            
 
     def setup_cards(self):
         """
@@ -67,7 +81,7 @@ class CardsManager:
             index+=1
         
     def setup_refs(self):
-        for ref in self.names.keys():
+        for ref in self.names.values():
             self.refs[''.join([char for char in ref if char.isupper() or char.isdigit()])] = ref
     
     def setup_names(self):
@@ -100,21 +114,19 @@ class CardsManager:
         if "FR" in ref:
             self.leng = "FR"
             self.info = self.info_fr
-            ref = ref.replace("FR", "EN")
         else:
             self.leng = "EN"
             self.info = self.info_en
-        print(ref)
-        if self.leng == "EN":
-            card_name = [k for k in self.names.keys() if ref in self.names.get(k)][0]
-        else:
-            card_name = [k for k in self.names.keys() if ref in self.names.get(k)][1]
+        card_name = [k for k in self.names.keys() if ref in self.names.get(k)]
+        if len(card_name) == 0:
+            return "UNKNOWN"
+        card_name = card_name[0]
         self.cards.append(Card(self, ref, card_name, self.info, self.leng))
         self.download_card(self.cards[-1])
+        return ref
     
     def recognize_card(self, ref, name=None, image_path=None):
-        
-        probas = difflib.get_close_matches(ref, self.refs.keys(), n=1, cutoff=0.6)
+        probas = difflib.get_close_matches(ref, self.refs.keys(), n=1, cutoff=0.5)
         if name != None:
             print('name:')
             print(name)
@@ -126,13 +138,14 @@ class CardsManager:
         
         if len(probas) == 0:
             probas = [""]
+            
         finding = self.refs.get(probas[0], None)
             
-        if finding in self.names.get(closest):
-            print("Nice")
-        else:
-            print("Not nice")
-            finding = self.names.get(closest)[0]
+        if finding not in self.names.get(closest):
+            finding = difflib.get_close_matches(ref, self.names.get(closest), n=1, cutoff=0.5)
+            if len(finding) == 0:
+                finding = self.names.get(closest)
+            finding = finding[0]
         
         if "FR" in finding:
             self.leng = "FR"
@@ -206,6 +219,7 @@ class CardsManager:
             f.write(card)
             f.write("\n")
         self.master.cards_menu.update()
+        self.collection_price()
         
     def delete_card(self, card, mode=0):
         with open(os.path.join("App", "DATA", "CARDS", "cards.txt"), "r") as f:
@@ -220,6 +234,7 @@ class CardsManager:
         if mode == 0:
             self.cards.remove(card)
         self.master.cards_menu.update()
+        self.collection_price()
         
     def update_quantity(self, card, quantity):
         count = 0
@@ -227,6 +242,7 @@ class CardsManager:
             if card_ref.set_code == card.set_code:
                 card_ref.quantity_update(quantity)
                 break
+        self.collection_price()
     
     def reset(self):
         message = "Êtes-vous sûr de vouloir réinitialiser votre collection ?"
@@ -237,3 +253,4 @@ class CardsManager:
             self.cards_ref = []
             self.master.authentifier.update_filedata()
             self.master.cards_menu.update()
+            self.collection_price()

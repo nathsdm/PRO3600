@@ -64,9 +64,9 @@ def four_point_transform(image, pts):
     return warped
 
 
-def get_id(img, w, h):
+def get_id(w, h):
     
-    img = img[45*w//64:49*w//64, 2*h//3:49*h//50]
+    img = cv2.imread(os.path.join("App", "SRC", "CARDS", "TOOLS", "id.jpg"))
 
     # Rescale the image
     img = cv2.resize(img, None, fx=3, fy=3, interpolation=cv2.INTER_CUBIC)
@@ -93,7 +93,11 @@ def get_id(img, w, h):
     
 
     # Recognize text with tesseract for python
-    result = pytesseract.image_to_string(img, config='--psm 11')
+    pre_result = pytesseract.image_to_string(img, config='--psm 11')
+    result = ''
+    for char in pre_result:
+        if char.isupper() or char.isdigit():
+            result += char
     return result
 
 def get_name(w, h):
@@ -188,13 +192,3 @@ def make_parallelogram(points):
     p4 = (p3[0] - diffx, p3[1] - diffy)
     
     return [p1, p2, p3, p4]
-
-def mse(img1, img2):
-    h, w, z = img1.shape
-    img2 = cv2.resize(img2, (w, h))
-    img1 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
-    img2 = cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY)
-    diff = cv2.subtract(img1, img2)
-    err = np.sum(diff**2)
-    mse = err/(float(h*w))
-    return mse

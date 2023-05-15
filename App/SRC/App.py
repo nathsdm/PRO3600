@@ -93,7 +93,7 @@ class App(tk.Tk):
             self.wm_attributes("-disabled", False)
         except:
             pass
-        self.title("Yugi")
+        self.title("Yugioh trading app")
         photo = Image.open(os.path.join("APP", "DATA", "IMAGES", "icone.png"))
         photo = ImageTk.PhotoImage(photo)
         self.iconphoto(True, photo)

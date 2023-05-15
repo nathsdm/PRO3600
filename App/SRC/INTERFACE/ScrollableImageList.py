@@ -105,8 +105,7 @@ class ScrollableImageList(tk.Canvas):
         if not cards_list:
             self.image_list = []
             self.command_list = []
-            label = tk.Label(self, text="No cards to display.", font=("Matrix-Bold", 20, "italic"))
-            label.pack(fill="both", expand=True)
+            self.empty_label.pack(fill="both", expand=True)
         else:
             self.cards_list = cards_list
             self.setup()

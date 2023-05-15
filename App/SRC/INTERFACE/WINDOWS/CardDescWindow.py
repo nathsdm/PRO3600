@@ -4,55 +4,90 @@ from PIL import Image, ImageTk
 from tkinter import ttk
 
 class CardDescWindow(tk.Frame):
-    def __init__(self, master=None, card = None):
+    def __init__(self, master=None, card=None):
         super().__init__(master)
         self.card = card
         self.frames = [tk.Frame(self)]
         self.labels = []
         self.buttons = []
         self.images = []
-        # Définir une variable pour stocker la valeur de la Spinbox
+
+        # Define a variable to store the value of the Spinbox
         value = tk.IntVar()
-        # Configurer la Spinbox
-        self.spin_box = ttk.Spinbox(self.frames[0], from_=0, to=10000, increment=1, textvariable=value, command = lambda: self.update_quantity(value.get()), width=5)
-        
+
+        # Configure the Spinbox
+        self.spin_box = ttk.Spinbox(
+            self.frames[0], 
+            from_=0, to=10000, increment=1, 
+            textvariable=value, 
+            command=lambda: self.update_quantity(value.get()), 
+            width=5, 
+            state="readonly"
+        )
+
     def setup_images(self):
-        """
-        Defines the images used in the cards description window.
-        """
-        card_img = ImageTk.PhotoImage(Image.open(os.path.join("App", "DATA", "CARDS", "IMAGES", self.card.image_name + ".jpg")))
+        """Define the images used in the card description window."""
+        card_img = ImageTk.PhotoImage(
+            Image.open(os.path.join("App", "DATA", "CARDS", "IMAGES", self.card.image_name + ".jpg"))
+        )
         self.images.append(tk.Label(self, image=card_img))
         self.images[-1].image = card_img
         for image in self.images:
             image.pack(side=tk.LEFT, padx=10)
-    
+
     def setup_labels(self):
-        """
-        Defines the labels used in the cards description window.
-        """
+        """Define the labels used in the card description window."""
         for i in range(len(self.card.infos)):
-            info=self.card.infos[i]
+            info = self.card.infos[i]
             if info == "Sets":
                 sets = self.card.infos[i+1:len(self.card.infos)]
                 break
-            self.labels.append(tk.Label(self, text=info, width=300, wraplength=1000, justify=tk.LEFT, anchor=tk.NW, font=("Matrix-Bold", 12)))
+            self.labels.append(
+                tk.Label(self, 
+                    text=info, width=300, 
+                    wraplength=1000, justify=tk.LEFT, 
+                    anchor=tk.NW, 
+                    font=("Matrix-Bold", 12)
+                )
+            )
             self.labels[-1].pack()
         length = len(self.labels)+2
-        
-        self.labels.append(tk.Label(self.frames[0], text="Set:", justify=tk.LEFT, anchor=tk.NW, font=("Matrix-Bold", 12)))
+
+        self.labels.append(
+            tk.Label(
+                self.frames[0], 
+                text="Set:", justify=tk.LEFT, 
+                anchor=tk.NW, 
+                font=("Matrix-Bold", 12)
+            )
+        )
         self.labels[-1].pack(side="left", padx=(300, 30))
         self.edition = tk.StringVar()
         self.editions = self.card.sets
-        self.buttons.append(ttk.OptionMenu(self.frames[0], self.edition, *self.editions, command=lambda num: self.edition_display(sets, self.editions.index(self.edition.get()), length)))
+        self.buttons.append(
+            ttk.OptionMenu(
+                self.frames[0], 
+                self.edition, *self.editions, 
+                command=lambda num: self.edition_display(sets, self.editions.index(self.edition.get()), length)
+            )
+        )
         self.edition.set(self.card.set_code)
         self.buttons[0].pack(side="left", padx=(0, 30))
-        self.labels.append(tk.Label(self.frames[0], text="Quantity:", justify=tk.LEFT, anchor=tk.NW, font=("Matrix-Bold", 12)))
+        self.labels.append(
+            tk.Label(
+                self.frames[0], 
+                text="Quantity:", 
+                justify=tk.LEFT, 
+                anchor=tk.NW, 
+                font=("Matrix-Bold", 12)
+            )
+        )
         self.labels[-1].pack(side="left", padx=(100, 30))
         self.spin_box.set(self.card.quantity)
         self.spin_box.pack(side="left")
         self.frames[0].pack(fill="x", pady=(20, 0))
         self.edition_display(sets, self.editions.index(self.card.set_code.replace("FR", "EN")), length)
-    
+
     def edition_display(self, sets, num, length):
         if len(self.labels) > length:
             self.labels[-1].destroy()
@@ -62,6 +97,7 @@ class CardDescWindow(tk.Frame):
             self.buttons[2].pack_forget()
         except:
             pass
+        
         for j in range(len(sets)):
             if j == num:
                 self.labels.append(tk.Label(self, text=sets[j], wraplength=250, justify=tk.LEFT, anchor=tk.NW, font=("Matrix-Bold", 12)))

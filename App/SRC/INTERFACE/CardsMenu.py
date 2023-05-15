@@ -39,7 +39,9 @@ class CardsMenu(tk.Frame):
         self.top_label = tk.Label(self.top_frame, text="or")
         self.top_label.pack(side="left", padx=(0, 50))
         self.set_code_button = tk.Button(self.top_frame, text="Enter code", command=lambda: self.set_code_query())
-        self.set_code_button.pack(side="left", padx=(0, 50))     
+        self.set_code_button.pack(side="left", padx=(0, 50))
+        self.price_label = tk.Label(self.top_frame, text="Collection price : " + self.master.cards_manager.get_price() + " $")
+        self.price_label.pack(side="left", padx=(0, 50))
         self.top_frame.pack(side="top", pady=(50, 0))
         
         self.buttons_frame = tk.Frame(self)
@@ -81,8 +83,6 @@ class CardsMenu(tk.Frame):
         
     def setup_scroll(self, select="All", sort="Name", race="All"):
         self.tk_images = self.cards_manager.get_buttons(select, sort, race)
-        if len(self.tk_images) == 0:
-            return
         self.canvas.update(self.tk_images)
         
     def set_code_query(self):
@@ -112,8 +112,9 @@ class CardsMenu(tk.Frame):
         def set_code():
             code = self.code_query_entry.get()
             self.code_query.destroy()
-            code = self.cards_manager.recognize_card(code)
+            code = self.cards_manager.find_card(code)
             if code == "UNKNOWN":
+                tk.messagebox.showerror("Error", "The code you entered is not valid.")
                 return
             self.cards_manager.add_card(code)
         

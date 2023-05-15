@@ -54,7 +54,7 @@ class Card():
                 self.infos.append("Sets")
                 for card_set in self.card_info.get(info):
                     self.sets.append(card_set.get("set_code"))
-                    if card_set.get("set_code") == self.set_code:
+                    if card_set.get("set_code") == self.set_code.replace("FR", "EN"):
                         self.price = card_set.get("set_price")
                     set_info = ""
                     for k in card_set.keys():
