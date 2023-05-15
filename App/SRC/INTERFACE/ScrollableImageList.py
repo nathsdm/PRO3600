@@ -7,16 +7,29 @@ class ScrollableImageList(tk.Canvas):
         super().__init__(master, **kwargs)
 
         self.mode = mode
-        self.cards_list = [card[0] for card in cards_list]
-        self.image_list = [Image.open(card[0].image_path) for card in cards_list]
-        self.command_list = [command[1] for command in cards_list]
-        self.button_width = int(self.image_list[0].width/1.95)
-        self.button_height = int(self.image_list[0].height/1.95)
         self.num_columns = num_columns
-
+        self.cards_list = cards_list
+        
         # Create scrollbar
         self.scrollbar = tk.Scrollbar(self, orient="vertical", command=self.yview, width=20)
         self.scrollbar.pack(side="right", fill="y")
+        self.empty_label = tk.Label(self, text="No cards to display.", font=("Matrix-Bold", 20, "italic"))
+        
+        if not self.cards_list:
+            self.image_list = []
+            self.command_list = []
+            self.empty_label.pack(fill="both", expand=True)
+        else:
+            self.setup()
+        
+    def setup(self):
+        self.empty_label.pack_forget()
+        self.cards = [card[0] for card in self.cards_list]
+        self.image_list = [Image.open(card[0].image_path) for card in self.cards_list]
+        self.command_list = [command[1] for command in self.cards_list]
+        
+        self.button_width = int(self.image_list[0].width/1.95)
+        self.button_height = int(self.image_list[0].height/1.95)
 
         # Connect scrollbar to canvas
         self.configure(yscrollcommand=self.scrollbar.set)
@@ -54,7 +67,7 @@ class ScrollableImageList(tk.Canvas):
                 button = tk.Button(self, image=image, width=image.width(), height=image.height(), command=command, border=0, cursor="hand2")
                 button.image = image
                 self.create_window(((self.winfo_width()//2)*(row%2), (row-row%2)//2*image.height()), window=button, anchor="nw")
-                label = tk.Label(self, text=self.cards_list[row].name + ", " + self.cards_list[row].set_code + ", " + self.cards_list[row].price + " $", font=("Matrix-Bold", 20))
+                label = tk.Label(self, text=self.cards[row].name + ", " + self.cards[row].set_code + ", " + self.cards[row].price + " $", font=("Matrix-Bold", 20))
                 label.bind("<Enter>", lambda event, label=label: label.configure(fg="blue", cursor="hand2", font=("Matrix-Bold", 20, "underline")))
                 label.bind("<Leave>", lambda event, label=label: label.configure(fg="black", font=("Matrix-Bold", 20)))
                 label.bind("<Button-1>", lambda event, command=command: command())
@@ -89,7 +102,12 @@ class ScrollableImageList(tk.Canvas):
         self.yview_scroll(int(-1*(event.delta/120)), "units")
     
     def update(self, cards_list):
-        self.cards_list = [card[0] for card in cards_list]
-        self.image_list = [Image.open(card[0].image_path) for card in cards_list]
-        self.command_list = [command[1] for command in cards_list]
+        if not cards_list:
+            self.image_list = []
+            self.command_list = []
+            label = tk.Label(self, text="No cards to display.", font=("Matrix-Bold", 20, "italic"))
+            label.pack(fill="both", expand=True)
+        else:
+            self.cards_list = cards_list
+            self.setup()
         self.change_view(self.mode)

@@ -5,6 +5,7 @@ import pytesseract
 import os
 import math
 from SRC.CARDS.TOOLS.Tools import *
+import tkinter as tk
 
 class Analyser():
 	def __init__(self, image):
@@ -70,7 +71,7 @@ class Analyser():
 		pts=[]
 		if len(screenCnt) == 0:
 			print("No card found")
-			exit()
+			tk.messagebox.showerror("Error", "No card found")
 			
 		for k in screenCnt:
 			tup = tuple(k[0]*100//scale_percent)
@@ -86,10 +87,6 @@ class Analyser():
 			w,h = warped.shape[:2]
    
 		cv2.imwrite(os.path.join("App", "DATA", "CARDS", "IMAGES", "test.jpg"), warped)
-
-		
-		cropped = warped[45*w//64:49*w//64, 2*h//3:49*h//50]
-
-		cv2.imwrite("ocr.jpg", cropped)
-
-		self.result = (get_id("ocr.jpg"), get_name("ocr.jpg"))
+		img = warped[0:w//8, 0:h]
+		cv2.imwrite(os.path.join("App", "SRC", "CARDS", "TOOLS", "name.jpg"), img)
+		self.result = (get_id(warped, w, h), get_name(w, h))

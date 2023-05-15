@@ -121,7 +121,7 @@ def get_string(img_path):
 	return result
 
 
-image = cv2.imread(os.path.join("App", "SRC", "CARDS", "black.jpg"))
+image = cv2.imread(os.path.join("App", "SRC", "CARDS", "tocrop2.jpg"))
 orig = image.copy()
 scale_percent = 50 # percent of original size
 width = int(image.shape[1] * scale_percent / 100)
@@ -267,7 +267,7 @@ cv2.imwrite(os.path.join("App", "DATA", "CARDS", "IMAGES", "test.jpg"), warped)
 
 
 cropped = warped[45*w//64:49*w//64, 33*h//48:49*h//50]
-cropped = warped[0:w//8, 0:10*h//11]
+cropped = warped[0:w//8, 0:h]
 cv2.imwrite("ocr.jpg", cropped)
 
 result = get_string("ocr.jpg")

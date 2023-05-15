@@ -64,9 +64,9 @@ def four_point_transform(image, pts):
     return warped
 
 
-def get_id(img_path):
-    # Read image using opencv
-    img = cv2.imread(img_path)
+def get_id(img, w, h):
+    
+    img = img[45*w//64:49*w//64, 2*h//3:49*h//50]
 
     # Rescale the image
     img = cv2.resize(img, None, fx=3, fy=3, interpolation=cv2.INTER_CUBIC)
@@ -96,39 +96,39 @@ def get_id(img_path):
     result = pytesseract.image_to_string(img, config='--psm 11')
     return result
 
-def get_name(img_path):
-	# Read image using opencv
-	img = cv2.imread(img_path)
-
-	# Adjust contrast
-	alpha = 1.5
-	beta = 0
-	img = cv2.convertScaleAbs(img, alpha=alpha, beta=beta)
-
-	# Convert to grayscale
-	img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-
-	# Apply threshold to get image with only black and white
-	img = cv2.adaptiveThreshold(img, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 91, 5)
-	img = invert_if_needed(img, 50)
+def get_name(w, h):
     
- 	# Apply dilation and erosion to remove noise
-	kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5, 5))
-	
-	img = cv2.dilate(img, kernel, iterations=2)
-	img = cv2.erode(img, kernel, iterations=2)
-	
-	kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3))
-	img = cv2.dilate(img, kernel, iterations=3)
-	img = cv2.erode(img, kernel, iterations=2)
- 
-	# Recognize text with tesseract for python
-	pre_result = pytesseract.image_to_string(img, config='--psm 11')
-	result = ""
-	for char in pre_result:
-		if char.isupper():
-			result += char
-	return result
+    img = cv2.imread(os.path.join("App", "SRC", "CARDS", "TOOLS", "name.jpg"))
+
+    # Adjust contrast
+    alpha = 1.5
+    beta = 0
+    img = cv2.convertScaleAbs(img, alpha=alpha, beta=beta)
+
+    # Convert to grayscale
+    img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+    # Apply threshold to get image with only black and white
+    img = cv2.adaptiveThreshold(img, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 91, 5)
+    img = invert_if_needed(img, 50)
+
+    # Apply dilation and erosion to remove noise
+    kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5, 5))
+
+    img = cv2.dilate(img, kernel, iterations=2)
+    img = cv2.erode(img, kernel, iterations=2)
+
+    kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3))
+    img = cv2.dilate(img, kernel, iterations=3)
+    img = cv2.erode(img, kernel, iterations=2)
+
+    # Recognize text with tesseract for python
+    pre_result = pytesseract.image_to_string(img, config='--psm 11')
+    result = ""
+    for char in pre_result:
+        if char.isupper():
+            result += char
+    return result
 
 def invert_if_needed(img, threshold=60):
     if img.shape[0]*img.shape[1] < 10000000:
@@ -188,20 +188,6 @@ def make_parallelogram(points):
     p4 = (p3[0] - diffx, p3[1] - diffy)
     
     return [p1, p2, p3, p4]
-
-
-def get_closest_match(word, candidates):
-    # Compute the Levenshtein, Jaro-Winkler and ShapeWriter distances for the candidates
-    l_distances = [jellyfish.levenshtein_distance(word, candidate) for candidate in candidates]
-    jw_distances = [jellyfish.jaro_winkler(word, candidate) for candidate in candidates]
-    sw_distances = [jellyfish.damerau_levenshtein_distance(jellyfish.soundex(word), jellyfish.soundex(candidate)) for candidate in candidates]
-
-    # Combine the distances into a single score using a weighted sum
-    scores = [0.4 * l + 0.3 * jw + 0.3 * sw for l, jw, sw in zip(l_distances, jw_distances, sw_distances)]
-
-    # Return the match with the smallest score
-    min_score_index = scores.index(min(scores))
-    return list(candidates)[min_score_index]
 
 def mse(img1, img2):
     h, w, z = img1.shape

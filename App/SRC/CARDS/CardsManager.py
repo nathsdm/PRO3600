@@ -21,7 +21,7 @@ class CardsManager:
     def __init__(self, master=None):
         self.master = master
         self.cards = []
-        self.cards_names = []
+        self.cards_names = {}
         self.names = {}
         self.cards_path = os.path.join("App", "DATA", "CARDS", "cards.txt")
         self.info_fr = cardinfo.info_fr["data"]
@@ -62,72 +62,94 @@ class CardsManager:
                         card.add_quantity(1)
                     break
             else:
-                self.recognize_card(k)
+                self.find_card(k)
             
             index+=1
         
     def setup_refs(self):
         for ref in self.names.keys():
-            self.refs[''.join([char for char in ref if char.isupper() or char.isdigit()]).replace("EN" or "FR", "")] = ref
+            self.refs[''.join([char for char in ref if char.isupper() or char.isdigit()])] = ref
     
     def setup_names(self):
         for k in self.info_en:
             if k.get("card_sets") != None:
                 for num in range(len(k.get("card_sets"))):
-                    self.names[k.get("card_sets")[num]["set_code"]] = [k.get("name")]
+                    if k.get('name') in self.names.keys():
+                        self.names[k.get("name")] += [k.get("card_sets")[num]["set_code"]]
+                    else:
+                        self.names[k.get("name")] = [k.get("card_sets")[num]["set_code"]]
                     if k.get('name') not in self.cards_names:
-                        self.cards_names.append(k.get('name'))
+                        self.cards_names[k.get('name').replace(" ","").upper()] = k.get('name')
             else:
                 pass
             
         for k in self.info_fr:
             if k.get("card_sets") != None:
                 for num in range(len(k.get("card_sets"))):
-                    if k.get("card_sets")[num]["set_code"] in self.names.keys():
-                        self.names[k.get("card_sets")[num]["set_code"]] += [k.get("name")]
+                    if k.get('name') in self.names.keys():
+                        self.names[k.get("name")] += [k.get("card_sets")[num]["set_code"].replace("EN", "FR")]
                     else:
-                        self.names[k.get("card_sets")[num]["set_code"]] = [k.get("name")]
+                        self.names[k.get("name")] = [k.get("card_sets")[num]["set_code"].replace("EN", "FR")]
                         
                     if k.get('name') not in self.cards_names:
-                        self.cards_names.append(k.get('name'))
+                        self.cards_names[k.get('name').replace(" ","").upper()] = k.get('name')
             else:
                 pass
-        self.cards_names = [card.replace(" ", "").upper() for card in self.cards_names]
     
-    def recognize_card(self, ref, name=None, image_path=None):
-        ref = ''.join([char for char in ref if char.isupper() or char.isdigit()])
+    def find_card(self, ref):
         if "FR" in ref:
             self.leng = "FR"
             self.info = self.info_fr
-            ref = ref.replace("FR", "")
+            ref = ref.replace("FR", "EN")
+        else:
+            self.leng = "EN"
+            self.info = self.info_en
+        print(ref)
+        if self.leng == "EN":
+            card_name = [k for k in self.names.keys() if ref in self.names.get(k)][0]
+        else:
+            card_name = [k for k in self.names.keys() if ref in self.names.get(k)][1]
+        self.cards.append(Card(self, ref, card_name, self.info, self.leng))
+        self.download_card(self.cards[-1])
+    
+    def recognize_card(self, ref, name=None, image_path=None):
+        
+        probas = difflib.get_close_matches(ref, self.refs.keys(), n=1, cutoff=0.6)
+        if name != None:
+            print('name:')
+            print(name)
+            print('closest:')
+            closest = difflib.get_close_matches(name, self.cards_names.keys(), n=1, cutoff=0.5)[0]
+            closest = self.cards_names.get(closest)
+            print(closest)
+            print(self.names.get(closest))
+        
+        if len(probas) == 0:
+            probas = [""]
+        finding = self.refs.get(probas[0], None)
+            
+        if finding in self.names.get(closest):
+            print("Nice")
+        else:
+            print("Not nice")
+            finding = self.names.get(closest)[0]
+        
+        if "FR" in finding:
+            self.leng = "FR"
+            self.info = self.info_fr
         else:
             self.leng = "EN"
             self.info = self.info_en  
-            ref = ref.replace("EN", "")
             
-        probas = [get_closest_match(ref, self.refs.keys())]
-        if name != None:
-            print(get_closest_match(name, self.cards_names))
-        
-        if len(probas) > 0:
-            finding = self.refs.get(probas[0])
-            card_name = self.names.get(finding)[0 if self.leng == "EN" else 1]
-            for card in self.cards:
-                if card.name == card_name:
-                    card.add_quantity(1)
-                    return finding if self.leng == "EN" else finding.replace("EN", "FR")
-            self.cards.append(Card(self, finding, card_name, self.info, self.leng))
-            self.download_card(self.cards[-1])
-            if image_path != None:
-                print(mse(cv2.imread(self.cards[-1].image_path), cv2.imread(image_path)))
-                if mse(cv2.imread(self.cards[-1].image_path), cv2.imread(image_path)) > 55:
-                    tk.messagebox.showerror("Erreur", "Je n'arrive pas à reconnaître la carte...")
-                    return "UNKNOWN"
-                
-            return finding if self.leng == "EN" else finding.replace("EN", "FR")
-        else:
-            tk.messagebox.showerror("Erreur", "Je n'arrive pas à reconnaître la carte...")
-            return "UNKNOWN"
+        card_name = closest
+        for card in self.cards:
+            if card.name == card_name:
+                card.add_quantity(1)
+                return finding if self.leng == "EN" else finding.replace("EN", "FR")
+        self.cards.append(Card(self, finding, card_name, self.info, self.leng))
+        self.download_card(self.cards[-1])
+            
+        return finding if self.leng == "EN" else finding.replace("EN", "FR")
     
     def get_buttons(self, select="All", sort="Name", race="All"):
         def display_card(card):
@@ -149,7 +171,6 @@ class CardsManager:
         for card in self.cards:
             if select in card.type or select == "All":
                 if race in card.race or race == "All":
-                    image = self.download_card(card)
                     buttons.append([card, partial(display_card, card)])
         return buttons
     
@@ -214,4 +235,5 @@ class CardsManager:
                 f.write("")
             self.cards = []
             self.cards_ref = []
+            self.master.authentifier.update_filedata()
             self.master.cards_menu.update()
