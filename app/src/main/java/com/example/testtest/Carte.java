@@ -139,6 +139,11 @@ public class Carte {
         this.lien_cm=get_CMlink();
     }
 
+    @Override
+    public String toString() {
+        return this.getName();  // this will be displayed in the dropdown
+    }
+
     public static Object attempt_card(String name_in, String code_in)throws IOException{
         String lang_id = code_in.substring(code_in.indexOf('-')+1);
         lang_id = lang_id.replaceAll("\\d","");

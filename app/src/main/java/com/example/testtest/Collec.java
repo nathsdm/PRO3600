@@ -20,6 +20,17 @@ public class Collec {
         return collection;
     }
 
+    public ArrayList<String> getCollectionNames() {
+
+        ArrayList<String> collec = new ArrayList<>();
+        for (Carte carte : this.getCollection()){
+            collec.add(carte.getName());
+        }
+        return collec;
+
+
+    }
+
     public double getPrix() {
         return prix;
     }

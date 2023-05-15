@@ -24,5 +24,15 @@
         android:scaleType="fitCenter"
         android:layout_alignParentRight="true"/>
 
+    <AutoCompleteTextView
+        android:id="@+id/search_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/dropdown_menu_button"
+        android:layout_toStartOf="@+id/switch_button"/>
+
+
+
+
 
 </RelativeLayout>

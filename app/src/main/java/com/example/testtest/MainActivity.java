@@ -1,5 +1,9 @@
 package com.example.testtest;
 
+import com.example.testtest.MainActivity;
+
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,6 +16,9 @@ import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -19,6 +26,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -28,9 +36,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 
 public class MainActivity extends AppCompatActivity {
+
+
+    AutoCompleteTextView searchBar;
 
     Collec collec = new Collec();
     int bellowCard1 = 0;
@@ -510,6 +523,29 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.main_menu:
+                    startActivity(new Intent(MainActivity.this, MainActivity.class));
+                    return true;
+                case R.id.camera_menu:
+                    startActivity(new Intent(MainActivity.this, MainActivity4.class));
+                    return true;
+            }
+            return false;
+        }
+    };
+
+
+
+
+
+
+
 
 
     @Override
@@ -517,8 +553,27 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        BottomNavigationView navView = findViewById(R.id.nav_view);
+        navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+
+        Button buttonCamera = findViewById(R.id.button_camera);
+        buttonCamera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, com.example.testtest.MainActivity4.class);
+                startActivity(intent);
+            }
+        });
+
+
+
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.custom_action_bar);
+
+        View actionBarView = getSupportActionBar().getCustomView();
+
+        searchBar = findViewById(R.id.search_bar);
 
         ImageButton switchButton = findViewById(R.id.switch_button);
         switchButton.setOnClickListener(new View.OnClickListener() {
@@ -586,5 +641,34 @@ public class MainActivity extends AppCompatActivity {
         fetchDataTask.execute();
 
 
-    }
-}
+        ArrayList<Carte> cards = collec.getCollection();
+
+        ArrayAdapter<Carte> adapter = new ArrayAdapter<>(
+                this,
+                android.R.layout.simple_dropdown_item_1line, cards);
+
+        searchBar.setAdapter(adapter);
+
+
+        searchBar.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Carte selectedCard = (Carte) parent.getItemAtPosition(position);
+                searchBar.setText("");
+
+                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                intent.putExtra("cardName1", selectedCard.getName().replace(" ","_").replace("-","_"));
+                intent.putExtra("cardName2", selectedCard.getName());
+                intent.putExtra("edition", selectedCard.getSet_long());
+                intent.putExtra("price", String.valueOf(selectedCard.getPrix()));
+                intent.putExtra("rarete", selectedCard.getRarete());
+                intent.putExtra("desc", selectedCard.getDescription());
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            }
+        });
+
+
+
+
+    }}
