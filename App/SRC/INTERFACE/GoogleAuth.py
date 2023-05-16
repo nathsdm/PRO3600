@@ -134,9 +134,25 @@ class GoogleAuth:
         self.service.files().update(fileId=self.file_id, media_body=MediaFileUpload(os.path.join("App", "DATA", "CARDS", "cards.txt"), mimetype='text/txt', resumable=True)).execute()
         for filename in os.listdir(os.path.join("App", "DATA", "COLLECTIONS")):
             if filename.startswith("COLLECTION_"):
-                self.file_id = [file.get('id') for file in self.list_appdata() if file.get('name') == filename][0]
-                self.service.files().update(fileId=self.file_id, media_body=MediaFileUpload(os.path.join("App", "DATA", "CARDS", filename), mimetype='text/txt', resumable=True)).execute()
-
+                self.file_id = [file.get('id') for file in self.list_appdata() if file.get('name') == filename]
+                if self.file_id:
+                    self.file_id = self.file_id[0]
+                    self.service.files().update(fileId=self.file_id, media_body=MediaFileUpload(os.path.join("App", "DATA", "CARDS", filename), mimetype='text/txt', resumable=True)).execute()
+                else:
+                    try:
+                        file_metadata = {
+                            'name': filename,
+                            'parents': ['appDataFolder']
+                        }
+                        media = MediaFileUpload(os.path.join("App", "DATA", "COLECTIONS", filename),
+                                                mimetype='text/txt',
+                                                resumable=True)
+                        file = self.service.files().create(body=file_metadata, media_body=media,
+                                                    fields='id').execute()
+                    except HttpError as error:
+                        print(F'An error occurred: {error}')
+                        file = None
+                        
     def list_appdata(self):
         """
         List all files inserted in the application data folder
