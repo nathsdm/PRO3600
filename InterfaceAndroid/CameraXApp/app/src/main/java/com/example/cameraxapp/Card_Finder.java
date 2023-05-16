@@ -339,26 +339,36 @@ public class Card_Finder {
         int totalPixels = img.cols() * img.rows();
 
         if (totalPixels < 10000000) {
+            int blackPixels = 0;
             int whitePixels = 0;
 
-            // Loop over the pixels in the thresholded image
+            // Loop over the pixels in the image
             for (int i = 0; i < img.rows(); i++) {
                 for (int j = 0; j < img.cols(); j++) {
                     // Get the pixel value at position (i,j)
                     double[] pixelValue = img.get(i, j);
 
+                    // Check if pixel is black
+                    if (pixelValue[0] == 0) {
+                        blackPixels += 1;
+                    }
+
+                    // Check if pixel is white
                     if (pixelValue[0] == 255) {
                         whitePixels += 1;
                     }
                 }
             }
 
+            // Calculate the percentage of black pixels
+            double blackPercent = (double) blackPixels / totalPixels * 100;
+
             // Calculate the percentage of white pixels
             double whitePercent = (double) whitePixels / totalPixels * 100;
 
-            // Check if the percentage of white pixels is above the threshold
-            if (whitePercent > 60) {
-                // Revert the colors
+            // Check if the percentage of black pixels or white pixels is above the threshold
+            if (blackPercent > 60 || whitePercent > 60) {
+                // Invert the colors
                 Core.bitwise_not(img, img);
             }
         }
