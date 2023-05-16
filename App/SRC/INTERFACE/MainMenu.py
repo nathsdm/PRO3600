@@ -36,20 +36,16 @@ class MainMenu(tk.Frame):
         Defines the labels used in the main menu.
         """
         self.title_label = tk.Label(self, text="Yu-gi-oh app", font=("Matrix-Bold" , 50), fg="white", bg="#103188")
-        self.title_label.pack(pady=50)	
+        self.title_label.place(x=200, y=200, width=400, height=100)	
     
     def setup_buttons(self):
         """
         Defines the buttons used in the main menu.
         """
         play_btn_image = ImageTk.PhotoImage(Image.open(os.path.join("App", "DATA", "IMAGES", "Play_btn.png")))
-        self.play_btn = tk.Button(self, text="View cards", command=lambda: self.master.change_menu(self.master.cards_menu), bg="#103188", fg="white", border=0, cursor="hand2")
-        self.credits_btn = tk.Button(self, text="Credits", command=lambda: self.master.change_menu(self.master.credits_menu), bg="#103188", fg="white", border=0, cursor="hand2")
-        self.settings_btn = tk.Button(self, text="Settings", command=lambda: self.master.change_menu(self.master.settings_menu), bg="#103188", fg="white", border=0, cursor="hand2")
-        self.quit_btn = tk.Button(self, text="Quit", command=self.master.quit, bg="#103188", fg="white", border=0, cursor="hand2")
+        self.play_btn = tk.Button(self, text="View cards", command=lambda: self.master.change_menu(self.master.cards_menu), bg="#103188", fg="white", border=0, cursor="hand2", activebackground="#103188")
+        self.quit_btn = tk.Button(self, text="Quit", command=self.master.quit, bg="#103188", fg="white", border=0, cursor="hand2", activebackground="#103188")
         
-        self.play_btn.pack(pady=250)
-        self.credits_btn.pack()
-        self.settings_btn.pack()
-        self.quit_btn.pack()
+        self.play_btn.place(x=200, y=400, width=400, height=100)
+        self.quit_btn.place(x=200, y=500, width=400, height=100)
         

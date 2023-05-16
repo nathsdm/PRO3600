@@ -1,5 +1,3 @@
-from __future__ import print_function
-
 import os.path
 
 import io
@@ -62,11 +60,26 @@ class GoogleAuth:
             else:
                 self.file_id = [file.get('id') for file in list_files if file.get('name') == "CARDS.txt"][0]
                 self.download_file()
-            
+            self.get_collections()
         except HttpError as error:
-            # TODO(developer) - Handle errors from drive API.
+            tk.messagebox.showerror(title="Error", message="An error occured while downloading the file. Check your connection and please try again.")
             print(f'An error occurred: {error}')
 
+    def get_collections(self):
+        done = False
+        collection_id = 0
+        while not done:
+            list_files = self.list_appdata()
+            if not F"COLLECTION_{collection_id}.txt" in [file.get('name') for file in list_files]:
+                done = True
+            else:
+                self.path = os.path.join("App", "DATA", "CARDS", F"COLLECTION_{collection_id}.txt")
+                self.local_fd = io.FileIO(self.path, mode="w")
+                self.file_id = [file.get('id') for file in list_files if file.get('name') == F"COLLECTION_{collection_id}.txt"][0]
+                self.download_file()
+                collection_id += 1
+            
+    
     def upload_appdata(self):
         """
         Insert a file in the application data folder and prints file Id.
@@ -79,7 +92,7 @@ class GoogleAuth:
                 'name': 'CARDS.txt',
                 'parents': ['appDataFolder']
             }
-            media = MediaFileUpload(os.path.join("App", "DATA", "CARDS", "cards.txt"),
+            media = MediaFileUpload(self.path,
                                     mimetype='text/txt',
                                     resumable=True)
             file = self.service.files().create(body=file_metadata, media_body=media,
@@ -116,20 +129,17 @@ class GoogleAuth:
             if done:
                 print('Download Complete')
                 return
-        self.update_localdata()
-        
-    def update_localdata(self):
-        with open(os.path.join("App", "DATA", "CARDS", "cards_drive.txt"), "r") as file:
-            data = file.read()
-        with open(os.path.join("App", "DATA", "CARDS", "cards.txt"), "w") as file:
-            file.write(data)
-        os.remove(os.path.join("App", "DATA", "CARDS", "cards_drive.txt"))
 
     def update_filedata(self):
         self.service.files().update(fileId=self.file_id, media_body=MediaFileUpload(os.path.join("App", "DATA", "CARDS", "cards.txt"), mimetype='text/txt', resumable=True)).execute()
+        for filename in os.listdir(os.path.join("App", "DATA", "COLLECTIONS")):
+            if filename.startswith("COLLECTION_"):
+                self.file_id = [file.get('id') for file in self.list_appdata() if file.get('name') == filename][0]
+                self.service.files().update(fileId=self.file_id, media_body=MediaFileUpload(os.path.join("App", "DATA", "CARDS", filename), mimetype='text/txt', resumable=True)).execute()
 
     def list_appdata(self):
-        """List all files inserted in the application data folder
+        """
+        List all files inserted in the application data folder
         prints file titles with Ids.
         Returns : List of items
 

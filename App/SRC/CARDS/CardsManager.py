@@ -1,5 +1,3 @@
-from tkinter.filedialog import askopenfilenames
-
 import SRC.CARDS.cardinfo as cardinfo
 from SRC.CARDS.Card import Card
 import os
@@ -28,6 +26,7 @@ class CardsManager:
         self.info_en = cardinfo.info_en["data"]
         self.refs = {}
         self.price = 0
+        self.collections = []
         path = os.path.join("App", "DATA", "CARDS", "IMAGES")        
         if os.path.isdir(path):
             print("Images folder found")
@@ -61,7 +60,7 @@ class CardsManager:
             os.makedirs(name=os.path.join("App", "DATA", "CARDS"))
         if os.path.isfile(self.cards_path):
             for ref in open(file=os.path.join("App", "DATA", "CARDS", "cards.txt"), mode="r"):
-                if ref != "UNKNOWN" and ref != "" and ref != " " and ref != '\n':
+                if ref != "UNKNOWN":
                     self.cards_ref.append(ref.rstrip('\n'))
         else:
             print("No cards found")
@@ -128,13 +127,8 @@ class CardsManager:
     def recognize_card(self, ref, name=None, image_path=None):
         probas = difflib.get_close_matches(ref, self.refs.keys(), n=1, cutoff=0.5)
         if name != None:
-            print('name:')
-            print(name)
-            print('closest:')
             closest = difflib.get_close_matches(name, self.cards_names.keys(), n=1, cutoff=0.5)[0]
             closest = self.cards_names.get(closest)
-            print(closest)
-            print(self.names.get(closest))
         
         if len(probas) == 0:
             probas = [""]
@@ -164,7 +158,7 @@ class CardsManager:
             
         return finding if self.leng == "EN" else finding.replace("EN", "FR")
     
-    def get_buttons(self, select="All", sort="Name", race="All"):
+    def get_buttons(self, select="All", sort="Name", race="All", attribute="All", collection="Global"):
         def display_card(card):
             self.master.card = card
             self.master.change_menu(self.master.card_desc_window)
@@ -180,11 +174,14 @@ class CardsManager:
                 self.cards.sort(key=lambda x: x.level if x.level != None else 0, reverse=True)
             case "Price":
                 self.cards.sort(key=lambda x: float(x.price) if x.price != None else 0, reverse=True)
-                
+        if len(self.collections) != 0 and collection != "Global":
+            collection = [col[1] for col in self.collections if col[0] == collection][0]
         for card in self.cards:
             if select in card.type or select == "All":
                 if race in card.race or race == "All":
-                    buttons.append([card, partial(display_card, card)])
+                    if attribute in card.attribute or attribute == "All":
+                        if card.set_code in collection or collection == "Global":
+                            buttons.append([card, partial(display_card, card)])
         return buttons
     
     def download_card(self, card):
@@ -211,12 +208,125 @@ class CardsManager:
         if ref != "UNKNOWN":
             self.add_card(ref)
             
+    def create_collection(self):
+        collection_window = tk.Toplevel(self.master)
+        collection_window.title("Create Collection")
+        collection_window.geometry("800x600")
+        collection_window.resizable(False, False)
+        collection_window.iconbitmap(os.path.join("App", "DATA", "IMAGES", "icone.ico"))
+        collection_window.config(bg="#1e1e1e")
+        collection_window.focus_force()
+        collection_window.grab_set()
+
+        selected_cards = []
+
+        def update_collection_checkboxes():
+            for card, var in checkbox_vars.items():
+                var.set(card in selected_cards)
+
+        def update_selected_cards():
+            selected_cards.clear()
+            for card, var in checkbox_vars.items():
+                if var.get():
+                    selected_cards.append(card)
+
+        def create_selected_collection():
+            collection_name = collection_entry.get().strip()
+            if collection_name in [col[0] for col in self.collections]:
+                tk.messagebox.showerror("Collection Name Error", f"Collection '{collection_name}' already exists!")
+                return
+            if collection_name and selected_cards:
+                selected_collection = [card.set_code for card in selected_cards]
+                self.collections.append([collection_name, selected_collection])
+                # Save the selected collection to a file or perform any other desired operation
+                print(f"Selected Collection '{collection_name}': {selected_collection}")
+                self.master.cards_menu.update_collections(self.collections)
+                collection_window.destroy()
+                tk.messagebox.showinfo("Collection Created", f"Collection '{collection_name}' created successfully!")
+                if not os.path.isdir(os.path.join("App", "DATA", "COLLECTIONS")):
+                    os.mkdir(os.path.join("App", "DATA", "COLLECTIONS"))
+                with open(os.path.join("App", "DATA", "COLLECTIONS", "COLLECTION_" + str(len(self.collections)) + ".txt"), "w") as f:
+                    f.write("nom:" + collection_name + "\n")
+                    for card in selected_cards:
+                        f.write(card.set_code + "\n")
+                
+
+        collection_label = tk.Label(collection_window, text="Select Cards for Collection:")
+        collection_label.pack(pady=10)
+
+        collection_frame = tk.Frame(collection_window)
+        collection_frame.pack(padx=10, pady=10, fill=tk.BOTH, expand=True)
+
+        canvas = tk.Canvas(collection_frame, bg="#1e1e1e")
+        canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+
+        checkbox_frame = tk.Frame(canvas, bg="#1e1e1e")
+        canvas.create_window((0, 0), window=checkbox_frame, anchor=tk.NW)
+
+        scrollbar = tk.Scrollbar(collection_frame, orient=tk.VERTICAL, command=canvas.yview)
+        scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
+        canvas.config(yscrollcommand=scrollbar.set)
+        
+        
+        
+        def configure_canvas(event):
+            canvas.configure(scrollregion=canvas.bbox("all"))
+
+        def mousewheel(event):
+            canvas.yview_scroll(int(-1*(event.delta/120)), "units")
+            
+        # Bind mousewheel event to scrollbar
+        canvas.bind("<Configure>", configure_canvas)
+        canvas.bind_all("<MouseWheel>", mousewheel)
+        
+        checkbox_vars = {}
+        for card in self.cards:
+            var = tk.BooleanVar()
+            checkbox_vars[card] = var
+            checkbox = tk.Checkbutton(checkbox_frame, text=f"{card.name} ({card.quantity})", variable=var,
+                                    onvalue=True, offvalue=False, command=update_selected_cards,
+                                    bg="#1e1e1e", fg="white", activebackground="#1e1e1e", selectcolor="#1e1e1e")
+            checkbox.pack(anchor=tk.W)
+
+        update_collection_checkboxes()
+
+        collection_entry_frame = tk.Frame(collection_window)
+        collection_entry_frame.pack()
+
+        collection_entry_label = tk.Label(collection_entry_frame, text="Collection Name:")
+        collection_entry_label.pack(side=tk.LEFT)
+
+        collection_entry = tk.Entry(collection_entry_frame, width=40)
+        collection_entry.pack(side=tk.LEFT)
+
+        create_button = tk.Button(collection_window, text="Create Collection", command=create_selected_collection)
+        create_button.pack(pady=10)
+
+
+
+
+
+
     
+    
+    def import_cards(self):
+        file = fd.askopenfilename(title = "Choose a file", filetypes=[("Text files", ".txt")])
+        with open(file, "r") as f:
+            lines = f.readlines()
+        for line in lines:
+            ref = self.find_card(line.strip("\n"))
+            self.add_card(ref)
+            
+    def export_cards(self):
+        file = fd.asksaveasfile(title = "Choose a file", filetypes=[("Text files", ".txt")])
+        for card in self.cards:
+            file.write(card.set_code)
+            file.write("\n")
     
         
-    def add_card(self, card):
+    def add_card(self, ref):
         with open(self.cards_path, 'a') as f:
-            f.write(card)
+            f.write(ref)
             f.write("\n")
         self.master.cards_menu.update()
         self.collection_price()

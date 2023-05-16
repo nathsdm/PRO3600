@@ -12,6 +12,7 @@ class Card():
         self.atk = None
         self.defense = None
         self.level = None
+        self.attribute = []
         self.leng = leng
         self.set_code = set_code if self.leng == "EN" else set_code.replace("EN", "FR")
         self.find_card()
@@ -49,7 +50,7 @@ class Card():
                     case "level":
                         self.level = self.card_info.get(info)
                     case "attribute":
-                        self.attribute = self.card_info.get(info)
+                        self.attribute = self.card_info.get(info)[0] + self.card_info.get(info)[1:].lower()
             elif info == "card_sets":
                 self.infos.append("Sets")
                 for card_set in self.card_info.get(info):

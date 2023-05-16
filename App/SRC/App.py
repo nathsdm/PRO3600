@@ -74,7 +74,13 @@ class App(tk.Tk):
         
         if next_menu == self.card_desc_window:
             self.card_desc_window.update(self.card)
-        
+        if next_menu == self.cards_menu:
+            self.menubar.entryconfig("Cards", state="normal")
+            self.menubar.entryconfig("View", state="normal")
+        else:
+            self.menubar.entryconfig("Cards", state="disabled")
+            self.menubar.entryconfig("View", state="disabled")
+            
         next_menu.pack(fill=tk.BOTH, expand=True)
         # Update the current menu reference
         self.current_menu = next_menu
@@ -115,6 +121,29 @@ class App(tk.Tk):
         """
         Setup the different menus of the application.
         """
+        self.menubar = tk.Menu(self)
+        self.config(menu=self.menubar)
+        
+        file_menu = tk.Menu(self.menubar, tearoff=0)
+        file_menu.add_command(label="Import cards", command=lambda: self.cards_menu.cards_manager.import_cards())
+        file_menu.add_command(label="Export cards", command=lambda: self.cards_menu.cards_manager.export_cards())
+        file_menu.add_command(label="Reset", command=self.reset)
+        file_menu.add_separator()
+        file_menu.add_command(label="Exit", command=self.quit)
+        
+        add_menu = tk.Menu(self.menubar, tearoff=0)
+        add_menu.add_command(label="Add card with image", command=lambda: self.cards_menu.cards_manager.analyse_card())
+        add_menu.add_command(label="Add card with code", command=lambda: self.cards_menu.set_code_query())
+        add_menu.add_command(label="Create collection", command=lambda: self.cards_menu.create_collection())
+        
+        view_menu = tk.Menu(self.menubar, tearoff=0)
+        view_menu.add_command(label="Change view", command=lambda: self.cards_menu.change_view())
+        
+        
+        self.menubar.add_cascade(label="File", menu=file_menu)
+        self.menubar.add_cascade(label="Cards", menu=add_menu, state="disabled")
+        self.menubar.add_cascade(label="View", menu=view_menu, state="disabled")
+        
         self.main_menu = MainMenu(self)
         self.credits_menu = CreditsMenu(self)
         self.settings_menu = SettingsMenu(self)
