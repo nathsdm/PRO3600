@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.*
 import android.net.Uri
 import android.os.Bundle
@@ -13,6 +14,8 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import com.example.cameraxapp.OCR.TextRecognitionCallback
 import org.opencv.android.Utils
@@ -21,11 +24,13 @@ import org.opencv.core.CvType
 import org.opencv.core.Mat
 import org.opencv.imgproc.Imgproc
 import java.io.File
-import java.io.FileOutputStream
-import java.io.IOException
+import com.example.cameraxapp.Nom.getCardNames
 import java.io.OutputStream
 import java.text.SimpleDateFormat
 import java.util.*
+import android.Manifest
+import com.example.cameraxapp.Nom.findClosestName
+import com.example.cameraxapp.Nom.findCodesForName
 
 
 //debug
@@ -74,22 +79,42 @@ class MainActivity : AppCompatActivity() {
     val SELECT_PHOTO = 2
     lateinit var imageView: ImageView
     lateinit var photoFile: File
+    lateinit var cards: MutableList<String>
+    companion object {
+        private const val REQUEST_CAMERA_PERMISSION = 100
+        private const val REQUEST_STORAGE_PERMISSION = 101
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         System.loadLibrary("opencv_java4")
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        cards = getCardNames(this@MainActivity)
 
         imageView = findViewById(R.id.imageView)
         val takePhotoButton: Button = findViewById(R.id.takePhotoButton)
         val selectPhotoButton: Button = findViewById(R.id.selectPhotoButton)
 
+        // Check for camera permissions
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            // Request camera permissions
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA), REQUEST_CAMERA_PERMISSION)
+        }
+
+        // Check for write storage permissions
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            // Request write storage permissions
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), REQUEST_STORAGE_PERMISSION)
+        }
+
         takePhotoButton.setOnClickListener {
-            Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
-                photoFile = createImageFile()
-                val photoURI: Uri = FileProvider.getUriForFile(this, "${BuildConfig.APPLICATION_ID}.provider", photoFile)
-                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
-                startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
+            // Check for camera permissions again in case they were not granted initially
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
+                // Camera permissions already granted, proceed with camera intent
+                startCameraIntent()
+            } else {
+                Toast.makeText(this, "Permission de la caméra requise", Toast.LENGTH_LONG).show()
             }
         }
 
@@ -99,6 +124,17 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
+
+    private fun startCameraIntent() {
+        Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
+            photoFile = createImageFile()
+            val photoURI: Uri = FileProvider.getUriForFile(this, "${this.packageName}.provider", photoFile)
+            takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
+            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
+        }
+    }
+
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -138,57 +174,84 @@ class MainActivity : AppCompatActivity() {
         // Convert the image from BGR to RGB
         Imgproc.cvtColor(image, image, Imgproc.COLOR_BGR2RGB)
 
-        val result = Card_Finder.Card(image, true, this)
-        if (result != null) {
-            // Convert the result image from RGB back to BGR
-            Imgproc.cvtColor(result, result, Imgproc.COLOR_RGB2BGR)
-            Core.rotate(result, result, Core.ROTATE_90_CLOCKWISE)
-            val resultBitmap = Bitmap.createBitmap(result.cols(), result.rows(), Bitmap.Config.ARGB_8888)
-            Utils.matToBitmap(result, resultBitmap)
+        val results = Card_Finder.Card(image, true, this)
+        val recognizedTexts = mutableListOf<String>()
 
-            OCR.recognizeText(resultBitmap, object : TextRecognitionCallback {
-                override fun onSuccess(text: String) {
-                    // Utiliser le texte reconnu
-                    Toast.makeText(this@MainActivity, text, Toast.LENGTH_SHORT).show()
+        if (results != null && results.isNotEmpty()) {
+            // Process each result
+            for (i in results.indices) {
+                // Convert the result image from RGB back to BGR
+                Imgproc.cvtColor(results[i], results[i], Imgproc.COLOR_RGB2BGR)
+                Core.rotate(results[i], results[i], Core.ROTATE_90_CLOCKWISE)
+                val resultBitmap = Bitmap.createBitmap(results[i].cols(), results[i].rows(), Bitmap.Config.ARGB_8888)
+                Utils.matToBitmap(results[i], resultBitmap)
+
+                OCR.recognizeText(resultBitmap, object : TextRecognitionCallback {
+                    override fun onSuccess(text: String) {
+                        Toast.makeText(this@MainActivity, "Texte reconnu : $text", Toast.LENGTH_SHORT).show()
+                        recognizedTexts.add(text)
+
+                        // Check if recognizedTexts has at least 2 elements
+                        if (recognizedTexts.size >= 2) {
+                            val closestName = findClosestName(recognizedTexts[1], cards)
+                            Toast.makeText(this@MainActivity, "Le nom le plus proche est : $closestName", Toast.LENGTH_SHORT).show()
+                            val CodesName = findCodesForName(closestName,this@MainActivity)
+                            if (CodesName.isEmpty()) {
+                                println("La liste cardNames est vide.")
+                            } else {
+                                println("La liste cardNames n'est pas vide. Elle contient ${CodesName.size} éléments.")
+                            }
+                            val CodeName = findClosestName(recognizedTexts[0], CodesName)
+                            Toast.makeText(this@MainActivity, "Le code le plus proche est : $CodeName", Toast.LENGTH_SHORT).show()
+
+                        }
+                    }
+
+                    override fun onFailure(e: Exception) {
+                        Toast.makeText(this@MainActivity, "Erreur de détection pour l'image $i", Toast.LENGTH_SHORT).show()
+                    }
+                })
+
+                // Afficher la première image uniquement
+                if (i == 0) {
+                    imageView.setImageBitmap(resultBitmap)
                 }
 
-                override fun onFailure(e: Exception) {
-                    Toast.makeText(this@MainActivity, "Erreur de détection", Toast.LENGTH_SHORT).show()
+                // Save the image file
+                val savedImageUri = saveImage(resultBitmap)
+                if (savedImageUri != null) {
+                    Toast.makeText(this@MainActivity, "Image $i enregistrée", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(this@MainActivity, "Erreur pour enregistrer l'image $i", Toast.LENGTH_SHORT).show()
                 }
-            })
-
-            imageView.setImageBitmap(resultBitmap)
-
-            // Save the image file
-            val savedImageUri = saveImage(resultBitmap)
-            if (savedImageUri != null) {
-                Toast.makeText(this@MainActivity, "Image enregistré", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this@MainActivity, "Erreur pour enregistré l'image", Toast.LENGTH_SHORT).show()
             }
         } else {
             imageView.setImageDrawable(null)
-            Toast.makeText(this@MainActivity, "Carte non detecté", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@MainActivity, "Carte non détectée", Toast.LENGTH_SHORT).show()
         }
     }
+
 
 
     private fun saveImage(bitmap: Bitmap): Uri? {
-        val imagesDirectory = getExternalFilesDir(Environment.DIRECTORY_PICTURES)
-        val imageName = "image_${System.currentTimeMillis()}.png"
-        val imageFile = File(imagesDirectory, imageName)
 
-        return try {
-            val outputStream = FileOutputStream(imageFile)
-            bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
-            outputStream.flush()
-            outputStream.close()
-            FileProvider.getUriForFile(this, "${BuildConfig.APPLICATION_ID}.provider", imageFile)
-        } catch (e: IOException) {
-            e.printStackTrace()
-            null
+        val values = ContentValues().apply {
+            put(MediaStore.Images.Media.DISPLAY_NAME, "image_${System.currentTimeMillis()}.png")
+            put(MediaStore.Images.Media.MIME_TYPE, "image/png")
+            put(MediaStore.Images.Media.RELATIVE_PATH, Environment.DIRECTORY_PICTURES)
         }
+
+        val uri = contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values)
+
+        uri?.let {
+            val outputStream = contentResolver.openOutputStream(it)
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
+            outputStream?.close()
+        }
+
+        return uri
     }
+
 
 }
 

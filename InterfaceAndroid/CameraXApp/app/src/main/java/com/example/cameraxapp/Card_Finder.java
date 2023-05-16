@@ -2,14 +2,10 @@ package com.example.cameraxapp;
 
 
 import static com.example.cameraxapp.MainActivityKt.saveDebugImageToMediaStore;
-
 import android.content.Context;
-
 import org.opencv.core.*;
 import org.opencv.imgproc.CLAHE;
 import org.opencv.imgproc.Imgproc;
-import org.opencv.photo.Photo;
-
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -19,7 +15,7 @@ public class Card_Finder {
         Core.setNumThreads(Core.getNumberOfCPUs());
     }
 
-    public static Mat Card(Mat im, boolean debug, Context context) {
+    public static Mat[] Card(Mat im, boolean debug, Context context) {
         // Sauvegarder les dimensions de l'image d'origine
         Size originalSize = new Size(im.width(), im.height());
         double ratioim = im.height() / 500.0;
@@ -275,23 +271,36 @@ public class Card_Finder {
         return Math.hypot(pt1[0] - pt2[0], pt1[1] - pt2[1]);
     }
 
-    public static Mat CodeCard(Mat image) {
+    public static Mat[] CodeCard(Mat image) {
         // Récupérer les dimensions de l'image
         int width = image.width();
         int height = image.height();
+
+        // dimension pour chopper le code
         int x = width - width / 3 ;
         int y = 0;
         int cropWidth = width / 10;
         int cropHeight = height / 3;
 
-        Rect roi = new Rect(x, y, cropWidth, cropHeight);
+        // dimension pour chopper le nom
+        int xc = 0 ;
+        int yc = 0;
+        int cropWidthc = width /4;
+        int cropHeightc = height;
+
+        Rect nom  = new Rect(xc, yc, cropWidthc, cropHeightc);
+        Rect code = new Rect(x, y, cropWidth, cropHeight);
 
         // Effectuer le découpage
-        Mat croppedImage = new Mat(image, roi);
+        Mat croppedCode = new Mat(image, code);
+        Mat croppedNom = new Mat(image, nom);
 
-        Mat code = OCRtraitement(croppedImage);
-        return code;
+        Mat OCRcode = OCRtraitement(croppedCode);
+        Mat OCRnom = OCRtraitement(croppedNom);
+
+        return new Mat[]{OCRcode, OCRnom};
     }
+
 
     public static Mat OCRtraitement(Mat img) {
         // Dimensions actuelles de l'image
@@ -316,11 +325,14 @@ public class Card_Finder {
         Imgproc.erode(img, img, kernel);
 
         Imgproc.medianBlur(img, img, 5);
-        Imgproc.adaptiveThreshold(img, img, 255, Imgproc.ADAPTIVE_THRESH_GAUSSIAN_C, Imgproc.THRESH_BINARY_INV, 31, 2);
-
+        Mat invert;
+        invert = invertIfNeeded(img);
+        Imgproc.adaptiveThreshold(invert, invert, 255, Imgproc.ADAPTIVE_THRESH_GAUSSIAN_C, Imgproc.THRESH_BINARY_INV, 31, 2);
         Mat closingKernel = Imgproc.getStructuringElement(Imgproc.MORPH_RECT, new Size(3, 3));
-        Imgproc.morphologyEx(img, img, Imgproc.MORPH_CLOSE, closingKernel);
-        return img;
+        Imgproc.morphologyEx(invert, invert, Imgproc.MORPH_CLOSE, closingKernel);
+
+
+        return invert;
     }
 
     public static Mat invertIfNeeded(Mat img) {
