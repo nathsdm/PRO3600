@@ -2,7 +2,7 @@
   {
     "level_": 0,
     "message_": "Start JSON generation. Platform version: 21 min SDK version: arm64-v8a",
-    "file_": "C:\\Users\\cleme\\AndroidStudioProjects\\CameraXApp\\OpenCV\\libcxx_helper\\CMakeLists.txt",
+    "file_": "C:\\Users\\cleme\\AndroidStudioProjects\\CameraXApp - Copie\\OpenCV\\libcxx_helper\\CMakeLists.txt",
     "tag_": "debug|arm64-v8a",
     "diagnosticCode_": 0,
     "memoizedIsInitialized": 1,
@@ -11,12 +11,12 @@
       "fieldsDescending": {}
     },
     "memoizedSize": -1,
-    "memoizedHashCode": -102133984
+    "memoizedHashCode": 2046620901
   },
   {
     "level_": 0,
-    "message_": "JSON \u0027C:\\Users\\cleme\\AndroidStudioProjects\\CameraXApp\\OpenCV\\.cxx\\Debug\\1o6w5f6f\\arm64-v8a\\android_gradle_build.json\u0027 was up-to-date",
-    "file_": "C:\\Users\\cleme\\AndroidStudioProjects\\CameraXApp\\OpenCV\\libcxx_helper\\CMakeLists.txt",
+    "message_": "JSON \u0027C:\\Users\\cleme\\AndroidStudioProjects\\CameraXApp - Copie\\OpenCV\\.cxx\\Debug\\1o6w5f6f\\arm64-v8a\\android_gradle_build.json\u0027 was up-to-date",
+    "file_": "C:\\Users\\cleme\\AndroidStudioProjects\\CameraXApp - Copie\\OpenCV\\libcxx_helper\\CMakeLists.txt",
     "tag_": "debug|arm64-v8a",
     "diagnosticCode_": 0,
     "memoizedIsInitialized": 1,
@@ -25,12 +25,12 @@
       "fieldsDescending": {}
     },
     "memoizedSize": -1,
-    "memoizedHashCode": 835766484
+    "memoizedHashCode": 1799357416
   },
   {
     "level_": 0,
     "message_": "JSON generation completed without problems",
-    "file_": "C:\\Users\\cleme\\AndroidStudioProjects\\CameraXApp\\OpenCV\\libcxx_helper\\CMakeLists.txt",
+    "file_": "C:\\Users\\cleme\\AndroidStudioProjects\\CameraXApp - Copie\\OpenCV\\libcxx_helper\\CMakeLists.txt",
     "tag_": "debug|arm64-v8a",
     "diagnosticCode_": 0,
     "memoizedIsInitialized": 1,
@@ -39,6 +39,6 @@
       "fieldsDescending": {}
     },
     "memoizedSize": -1,
-    "memoizedHashCode": 1000572095
+    "memoizedHashCode": -1145640316
   }
 ]

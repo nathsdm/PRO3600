@@ -14,4 +14,4 @@
 -- Detecting CXX compile features - done
 -- Configuring done
 -- Generating done
--- Build files have been written to: C:/Users/cleme/AndroidStudioProjects/CameraXApp/OpenCV/.cxx/Debug/1o6w5f6f/armeabi-v7a
+-- Build files have been written to: C:/Users/cleme/AndroidStudioProjects/CameraXApp - Copie/OpenCV/.cxx/Debug/1o6w5f6f/armeabi-v7a
