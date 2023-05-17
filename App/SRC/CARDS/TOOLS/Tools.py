@@ -171,13 +171,13 @@ def find_best_points(points):
     best_points = []
     best_angle_diff = None
     for i, point1 in enumerate(points):
-        for j, point2 in enumerate(points[i+1:], start=i+1):
-            for k, point3 in enumerate(points[j+1:], start=j+1):
-                angle = calculate_angle(point1, point2, point3)
-                angle_diff = abs(90 - angle)
-                if best_angle_diff is None or angle_diff < best_angle_diff:
-                    best_angle_diff = angle_diff
-                    best_points = [point1, point2, point3]
+        point2 = points[(i+1)%4]
+        point3 = points[(i+2)%4]
+        angle = calculate_angle(point1, point2, point3)
+        angle_diff = abs(90 - angle)
+        if best_angle_diff is None or angle_diff < best_angle_diff:
+            best_angle_diff = angle_diff
+            best_points = [point1, point2, point3]
     return best_points
 
 # Define a function to rearrange the three points into a parallelogram
@@ -186,8 +186,8 @@ def make_parallelogram(points):
     p2 = points[1]
     p3 = points[2]
     
-    diffx = p2[0] - p1[0]
-    diffy = p2[1] - p1[1]
+    diffx = abs(p2[0] - p1[0])
+    diffy = abs(p2[1] - p1[1])
     
     p4 = (p3[0] - diffx, p3[1] - diffy)
     

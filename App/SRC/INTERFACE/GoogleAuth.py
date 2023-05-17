@@ -146,17 +146,13 @@ class GoogleAuth:
                 return
 
     def update_filedata(self):
-        self.file_id = [file.get('id') for file in self.list_appdata() if file.get('name') == "CARDS.txt"][0]
-        self.service.files().update(fileId=self.file_id, media_body=MediaFileUpload(os.path.join("App", "DATA", "CARDS", "cards.txt"), mimetype='text/txt', resumable=True)).execute()
+        self.reset()
+        self.path = os.path.join("App", "DATA", "CARDS", "CARDS.txt")
+        self.upload_appdata(target="CARDS.txt")
         for filename in os.listdir(os.path.join("App", "DATA", "COLLECTIONS")):
             if filename.startswith("COLLECTION_"):
-                self.file_id = [file.get('id') for file in self.list_appdata() if file.get('name') == filename]
-                if self.file_id:
-                    self.file_id = self.file_id[0]
-                    self.service.files().update(fileId=self.file_id, media_body=MediaFileUpload(os.path.join("App", "DATA", "COLLECTIONS", filename), mimetype='text/txt', resumable=True)).execute()
-                else:
-                    self.path = os.path.join("App", "DATA", "COLLECTIONS", filename)
-                    self.upload_appdata(filename)
+                self.path = os.path.join("App", "DATA", "COLLECTIONS", filename)
+                self.upload_appdata(filename)
                         
     def list_appdata(self):
         """

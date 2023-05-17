@@ -8,8 +8,9 @@ from SRC.CARDS.TOOLS.Tools import *
 import tkinter as tk
 
 class Analyser():
-	def __init__(self, image):
+	def __init__(self, image, debug=False):
 		
+		self.debug = debug
 		self.image = image
 		self.result = None
 	
@@ -24,6 +25,12 @@ class Analyser():
 		dim = (width, height)
 		image = cv2.resize(image,  dim, interpolation = cv2.INTER_AREA)
 
+		if self.debug:
+			show = image.copy()
+			show = cv2.resize(show, (0,0), fx=0.5, fy=0.5)
+			cv2.imshow("Original", show)
+			cv2.waitKey(0)
+			cv2.destroyAllWindows()
 
 		# Step 1, find edges
 		# adjust contrast
@@ -49,6 +56,13 @@ class Analyser():
 
 		closed_image = invert_if_needed(closed_image)
   
+		if self.debug:
+			show = closed_image.copy()
+			show = cv2.resize(show, (0,0), fx=0.5, fy=0.5)
+			cv2.imshow("Closed Image", show)
+			cv2.waitKey(0)
+			cv2.destroyAllWindows()
+   
 		# Step 2, find countours and sort in order of the area. 
 		# We assume the card is the focus of the picture so it should have the largest area
 		cnts = cv2.findContours(closed_image.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
@@ -66,6 +80,14 @@ class Analyser():
 			if len(approx) == 4:
 				screenCnt = approx
 
+		if self.debug:
+			show = image.copy()
+			cv2.drawContours(show, [screenCnt], -1, (0, 255, 0), 2)
+			show = cv2.resize(show, (0,0), fx=0.5, fy=0.5)
+			cv2.imshow("Outline", show)
+			cv2.waitKey(0)
+			cv2.destroyAllWindows()	
+      
 		#Step 3
 		# apply the four point transform to obtain a top-down
 		pts=[]
@@ -77,14 +99,27 @@ class Analyser():
 			tup = tuple(k[0]*100//scale_percent)
 			pts.append(tup)
 
-		best_points = find_best_points(pts)
-		parallelogram_points = make_parallelogram(best_points)
+		best_points = np.array(eval("{}".format(make_parallelogram(find_best_points(pts)))), dtype = "float32")
+
+		if self.debug:
+			show = orig.copy()
+			cv2.drawContours(show, [best_points.astype(int)], -1, (0, 255, 0), 2)
+			show = cv2.resize(show, (0,0), fx=0.5, fy=0.5)
+			cv2.imshow("Outline corrected", show)
+			cv2.waitKey(0)
   
-		warped = four_point_transform(orig, pts = np.array(eval("{}".format(make_parallelogram(find_best_points(pts)))), dtype = "float32"))
+		warped = four_point_transform(orig, pts = best_points)
 		w,h = warped.shape[:2]
 		if h > w:
 			warped = cv2.rotate(warped, cv2.ROTATE_90_CLOCKWISE)
 			w,h = warped.shape[:2]
+   
+		if self.debug:
+			show = warped.copy()
+			show = cv2.resize(show, (0,0), fx=0.3, fy=0.3)
+			cv2.imshow("Warped", show)
+			cv2.waitKey(0)
+			cv2.destroyAllWindows()
    
 		cv2.imwrite(os.path.join("App", "DATA", "CARDS", "IMAGES", "test.jpg"), warped)
 		img = warped[0:w//8, 0:h]
