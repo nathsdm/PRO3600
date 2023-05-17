@@ -13,6 +13,7 @@ from SRC.CARDS.TOOLS.Tools import *
 from tkinter import filedialog as fd
 import cv2
 import numpy as np
+from tkinter import ttk
 
 
 class CardsManager:
@@ -47,7 +48,19 @@ class CardsManager:
         self.price = round(self.price, 2)
         return str(self.price)
         
-            
+    def setup_collections(self):
+        if os.path.isfile(os.path.join("App", "DATA", "COLLECTIONS", "COLLECTION_1.txt")):
+            for filename in os.listdir(os.path.join("App", "DATA", "COLLECTIONS")):
+                collection = []
+                with open(file=os.path.join("App", "DATA", "COLLECTIONS", filename), mode="r") as f:
+                    for line in f:
+                        collection.append(line.rstrip('\n'))
+                self.collections.append([collection[0][4:], collection[1:]])
+            return self.collections
+
+        else:
+            return []
+            print("No collections found")
 
     def setup_cards(self):
         """
@@ -204,6 +217,8 @@ class CardsManager:
             return
         analyser = Analyser(image_path)
         analyser.analyse()
+        if analyser.result == None:
+            return
         ref = self.recognize_card(analyser.result[0], analyser.result[1], image_path)
         if ref != "UNKNOWN":
             self.add_card(ref)
@@ -303,7 +318,46 @@ class CardsManager:
         create_button.pack(pady=10)
 
 
+    def delete_collection(self):
+        collection_window = tk.Toplevel(self.master)
+        collection_window.title("Create Collection")
+        collection_window.geometry("800x600")
+        collection_window.resizable(False, False)
+        collection_window.iconbitmap(os.path.join("App", "DATA", "IMAGES", "icone.ico"))
+        collection_window.config(bg="#1e1e1e")
+        collection_window.focus_force()
+        collection_window.grab_set()
+        def delete_selected_collection():
+            collection_name = collection_combobox.get()
+            if collection_name:
+                for i, col in enumerate(self.collections):
+                    if col[0] == collection_name:
+                        del self.collections[i]
+                        # Delete the selected collection file or perform any other desired operation
+                        print(f"Deleted Collection '{collection_name}'")
+                        self.master.cards_menu.update_collections(self.collections)
+                        collection_window.destroy()
+                        os.remove(os.path.join("App", "DATA", "COLLECTIONS", "COLLECTION_" + str(i+1) + ".txt"))
+                        for file in os.listdir(os.path.join("App", "DATA", "COLLECTIONS")):
+                            if file[11:-4] > str(i+1):
+                                os.rename(os.path.join("App", "DATA", "COLLECTIONS", file), os.path.join("App", "DATA", "COLLECTIONS", "COLLECTION_" + str(int(file[11:-4])-1) + ".txt"))
+                                
+                        tk.messagebox.showinfo("Collection Deleted", f"Collection '{collection_name}' deleted successfully!")
+                        break
+            else:
+                tk.messagebox.showerror("Collection Selection Error", "Please select a collection to delete.")
 
+        collection_label = tk.Label(collection_window, text="Select Collection to Delete:")
+        collection_label.pack(pady=10)
+
+        collection_combobox_frame = tk.Frame(collection_window)
+        collection_combobox_frame.pack()
+
+        collection_combobox = ttk.Combobox(collection_combobox_frame, values=[col[0] for col in self.collections])
+        collection_combobox.pack(side=tk.LEFT)
+
+        delete_button = tk.Button(collection_window, text="Delete Collection", command=delete_selected_collection)
+        delete_button.pack(pady=10)
 
 
 
@@ -359,6 +413,9 @@ class CardsManager:
         if tk.messagebox.askyesno("Réinitialiser", message):
             with open(os.path.join("App", "DATA", "CARDS", "cards.txt"), "w") as f:
                 f.write("")
+            for filename in os.listdir(os.path.join("App", "DATA", "COLLECTIONS")):
+                os.remove(os.path.join("App", "DATA", "COLLECTIONS", filename))
+            self.collections = []
             self.cards = []
             self.cards_ref = []
             self.master.authentifier.update_filedata()

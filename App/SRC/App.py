@@ -19,10 +19,10 @@ from SRC.CARDS.CardsManager import CardsManager
 from SRC.INTERFACE.GoogleAuth import GoogleAuth
 
 from SRC.INTERFACE.MainMenu import MainMenu
-from SRC.INTERFACE.CreditsMenu import CreditsMenu
-from SRC.INTERFACE.SettingsMenu import SettingsMenu
 from SRC.INTERFACE.CardsMenu import CardsMenu
 from SRC.INTERFACE.WINDOWS.CardDescWindow import CardDescWindow
+
+from SRC.CARDS.TOOLS.Tools import *
 
 #------------------------------------------------------------#
 
@@ -56,7 +56,7 @@ class App(tk.Tk):
         #Define the label of the window
         tk.Label(image=test, background="chocolate4", border=0).pack()
         
-        self.center()
+        center(self)
             
         self.after(100, self.setup_window)
         
@@ -135,6 +135,7 @@ class App(tk.Tk):
         add_menu.add_command(label="Add card with image", command=lambda: self.cards_menu.cards_manager.analyse_card())
         add_menu.add_command(label="Add card with code", command=lambda: self.cards_menu.set_code_query())
         add_menu.add_command(label="Create collection", command=lambda: self.cards_menu.create_collection())
+        add_menu.add_command(label="Delete collection", command=lambda: self.cards_menu.delete_collection())
         
         view_menu = tk.Menu(self.menubar, tearoff=0)
         view_menu.add_command(label="Change view", command=lambda: self.cards_menu.change_view())
@@ -145,8 +146,6 @@ class App(tk.Tk):
         self.menubar.add_cascade(label="View", menu=view_menu, state="disabled")
         
         self.main_menu = MainMenu(self)
-        self.credits_menu = CreditsMenu(self)
-        self.settings_menu = SettingsMenu(self)
         self.cards_menu = CardsMenu(self, self.cards_manager)
         self.card_desc_window = CardDescWindow(self, self.card)
         
@@ -158,25 +157,6 @@ class App(tk.Tk):
         Reset the application cards.
         """
         self.cards_manager.reset()
+        self.authentifier.reset()
         
-        
-    def center(self):
-        """
-        Centers a Tkinter window on the screen.
-        """
-        self.update_idletasks()
-        width = self.winfo_width()
-        height = self.winfo_height()
-        
-        frm_width = self.winfo_rootx() - self.winfo_x()
-        frm_height = self.winfo_rooty() - self.winfo_y()
-        
-        win_width = width + 2 * frm_width
-        win_height = height + frm_height + frm_width
-        
-        x = self.winfo_screenwidth() // 2 - win_width // 2
-        y = self.winfo_screenheight() // 2 - win_height // 2
-        
-        self.geometry(f'{width}x{height}+{x}+{y}')
-        self.deiconify()
     

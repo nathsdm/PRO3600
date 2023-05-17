@@ -70,8 +70,8 @@ class Analyser():
 		# apply the four point transform to obtain a top-down
 		pts=[]
 		if len(screenCnt) == 0:
-			print("No card found")
-			tk.messagebox.showerror("Error", "No card found")
+			tk.messagebox.showerror("Error", "The card shape is not detected. Please try again with a different angle or lighting.")
+			return
 			
 		for k in screenCnt:
 			tup = tuple(k[0]*100//scale_percent)

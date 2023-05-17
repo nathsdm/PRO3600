@@ -192,3 +192,23 @@ def make_parallelogram(points):
     p4 = (p3[0] - diffx, p3[1] - diffy)
     
     return [p1, p2, p3, p4]
+
+def center(window):
+    """
+    Centers a Tkinter window on the screen.
+    """
+    window.update_idletasks()
+    width = window.winfo_width()
+    height = window.winfo_height()
+    
+    frm_width = window.winfo_rootx() - window.winfo_x()
+    frm_height = window.winfo_rooty() - window.winfo_y()
+    
+    win_width = width + 2 * frm_width
+    win_height = height + frm_height + frm_width
+    
+    x = window.winfo_screenwidth() // 2 - win_width // 2
+    y = window.winfo_screenheight() // 2 - win_height // 2
+    
+    window.geometry(f'{width}x{height}+{x}+{y}')
+    window.deiconify()

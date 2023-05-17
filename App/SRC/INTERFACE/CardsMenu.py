@@ -11,6 +11,8 @@ from SRC.CARDS.CardsManager import CardsManager
 
 from SRC.INTERFACE.ScrollableImageList import ScrollableImageList
 
+from SRC.CARDS.TOOLS.Tools import *
+
 #-------------------------------------------------------------------#
 
 class CardsMenu(tk.Frame):
@@ -34,6 +36,9 @@ class CardsMenu(tk.Frame):
     
     def create_collection(self):
         self.cards_manager.create_collection()
+        
+    def delete_collection(self):
+        self.cards_manager.delete_collection()
         
     def setup_buttons(self):
         self.top_frame = tk.Frame(self)
@@ -77,7 +82,11 @@ class CardsMenu(tk.Frame):
         
         self.collection_label = tk.Label(self.buttons_frame, text="Collection:")
         self.collection_label.pack(side="left", padx=10)
-        self.collection_options = ["Global"]
+        collections = self.cards_manager.setup_collections()
+        if collections != []:
+            self.collection_options = ["Global"] + [col[0] for col in collections]
+        else:
+            self.collection_options = ["Global"]
         self.collection_var = tk.StringVar(self)
         self.collection_var.set(self.collection_options[0])
         self.collection_button = tk.OptionMenu(self.buttons_frame, self.collection_var, *self.collection_options, command=lambda x: self.update())
@@ -109,25 +118,7 @@ class CardsMenu(tk.Frame):
         """
         Ask the user to enter the code of the card.
         """
-        def center(window):
-            """
-            Centers a Tkinter window on the screen.
-            """
-            window.update_idletasks()
-            width = window.winfo_width()
-            height = window.winfo_height()
-            
-            frm_width = window.winfo_rootx() - window.winfo_x()
-            frm_height = window.winfo_rooty() - window.winfo_y()
-            
-            win_width = width + 2 * frm_width
-            win_height = height + frm_height + frm_width
-            
-            x = window.winfo_screenwidth() // 2 - win_width // 2
-            y = window.winfo_screenheight() // 2 - win_height // 2
-            
-            window.geometry(f'{width}x{height}+{x}+{y}')
-            window.deiconify()
+        
             
         def set_code():
             code = self.code_query_entry.get()

@@ -35,17 +35,17 @@ class MainMenu(tk.Frame):
         """
         Defines the labels used in the main menu.
         """
-        self.title_label = tk.Label(self, text="Yu-gi-oh app", font=("Matrix-Bold" , 50), fg="white", bg="#103188")
-        self.title_label.place(x=200, y=200, width=400, height=100)	
+        self.title_label = tk.Label(self, text="Yu-gi-oh collection manager", font=("Matrix-Bold" , 50), fg="white", bg="#173487")
+        self.title_label.place(x=50, y=200, width=900, height=100)	
     
     def setup_buttons(self):
         """
         Defines the buttons used in the main menu.
         """
         play_btn_image = ImageTk.PhotoImage(Image.open(os.path.join("App", "DATA", "IMAGES", "Play_btn.png")))
-        self.play_btn = tk.Button(self, text="View cards", command=lambda: self.master.change_menu(self.master.cards_menu), bg="#103188", fg="white", border=0, cursor="hand2", activebackground="#103188")
-        self.quit_btn = tk.Button(self, text="Quit", command=self.master.quit, bg="#103188", fg="white", border=0, cursor="hand2", activebackground="#103188")
+        self.play_btn = tk.Button(self, text="View cards", command=lambda: self.master.change_menu(self.master.cards_menu), bg="#173487", fg="white", border=0, cursor="hand2", activebackground="#173487", font=("Matrix-Bold" , 25))
+        self.quit_btn = tk.Button(self, text="Quit", command=self.master.quit, bg="#173487", fg="white", border=0, cursor="hand2", activebackground="#173487", font=("Matrix-Bold" , 25))
         
-        self.play_btn.place(x=200, y=400, width=400, height=100)
-        self.quit_btn.place(x=200, y=500, width=400, height=100)
+        self.play_btn.place(x=400, y=400, width=200, height=100)
+        self.quit_btn.place(x=400, y=500, width=200, height=100)
         
