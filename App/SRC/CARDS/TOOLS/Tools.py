@@ -4,7 +4,6 @@ import sys
 import pytesseract
 import os
 import math
-import jellyfish
 
 
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
@@ -65,7 +64,10 @@ def four_point_transform(image, pts):
 
 
 def get_id(w, h):
+    # Read the image code by returning all upper case and digits
+    # found in the cropped image
     
+    # Read the image
     img = cv2.imread(os.path.join("App", "SRC", "CARDS", "TOOLS", "id.jpg"))
 
     # Rescale the image

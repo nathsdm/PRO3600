@@ -364,10 +364,17 @@ class CardsManager:
     
     
     def import_cards(self):
+        collection = False
         file = fd.askopenfilename(title = "Choose a file", filetypes=[("Text files", ".txt")])
         with open(file, "r") as f:
             lines = f.readlines()
         for line in lines:
+            if line.startswith("nom:"):
+                collection_name = line.strip("\n")[4:]
+                self.collections.append([collection_name, []])
+                collection = True
+            if collection:
+                self.collections[-1][1].append(line.strip("\n"))
             ref = self.find_card(line.strip("\n"))
             self.add_card(ref)
             
