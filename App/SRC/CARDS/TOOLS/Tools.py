@@ -4,12 +4,10 @@ import sys
 import pytesseract
 import os
 import math
-import tkinter as tk
+import jellyfish
 
-try:
-    pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
-except:
-    tk.messagebox.showerror("Error", "Tesseract-OCR is not installed on your computer. Please install it to use this feature.")
+
+pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
 
 def order_points(pts):
@@ -67,10 +65,7 @@ def four_point_transform(image, pts):
 
 
 def get_id(w, h):
-    # Read the image code by returning all upper case and digits
-    # found in the cropped image
     
-    # Read the image
     img = cv2.imread(os.path.join("App", "SRC", "CARDS", "TOOLS", "id.jpg"))
 
     # Rescale the image
@@ -175,9 +170,9 @@ def calculate_angle(point1, point2, point3):
 def find_best_points(points):
     best_points = []
     best_angle_diff = None
-    for i, point1 in enumerate(points):
-        point2 = points[(i+1)%4]
-        point3 = points[(i+2)%4]
+    for point1 in points:
+        point2 = points[(points.index(point1) + 1) % len(points)]
+        point3 = points[(points.index(point1) + 2) % len(points)]
         angle = calculate_angle(point1, point2, point3)
         angle_diff = abs(90 - angle)
         if best_angle_diff is None or angle_diff < best_angle_diff:
@@ -191,8 +186,8 @@ def make_parallelogram(points):
     p2 = points[1]
     p3 = points[2]
     
-    diffx = abs(p2[0] - p1[0])
-    diffy = abs(p2[1] - p1[1])
+    diffx = p2[0] - p1[0]
+    diffy = p2[1] - p1[1]
     
     p4 = (p3[0] - diffx, p3[1] - diffy)
     

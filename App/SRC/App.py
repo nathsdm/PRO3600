@@ -125,8 +125,13 @@ class App(tk.Tk):
         file_menu = tk.Menu(self.menubar, tearoff=0)
         file_menu.add_command(label="Import cards", command=lambda: self.cards_menu.cards_manager.import_cards())
         file_menu.add_command(label="Export cards", command=lambda: self.cards_menu.cards_manager.export_cards())
+        menu_mode = tk.Menu(file_menu, tearoff=0)
+        menu_mode.add_command(label="Normal", command=lambda : self.cards_menu.cards_manager.set_debug(False))
+        menu_mode.add_command(label="Debug", command=lambda : self.cards_menu.cards_manager.set_debug(True))
+        file_menu.add_cascade(label="Mode", menu=menu_mode)
         file_menu.add_command(label="Reset", command=self.reset)
         file_menu.add_separator()
+        file_menu.add_command(label="Log out", command=self.log_out)
         file_menu.add_command(label="Exit", command=self.quit)
         
         add_menu = tk.Menu(self.menubar, tearoff=0)
@@ -156,5 +161,11 @@ class App(tk.Tk):
         """
         self.cards_manager.reset()
         self.authentifier.reset()
-        
+    
+    def log_out(self):
+        """
+        Log out the user.
+        """
+        os.remove(os.path.join("APP", "token.json"))
+        self.quit()
     

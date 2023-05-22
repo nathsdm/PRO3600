@@ -12,11 +12,13 @@ from SRC.CARDS.TOOLS.Tools import *
 from tkinter import filedialog as fd
 import numpy as np
 from tkinter import ttk
+from unidecode import unidecode
 
 
 class CardsManager:
-    def __init__(self, master=None):
+    def __init__(self, master=None, debug=False):
         self.master = master
+        self.debug = debug
         self.cards = []
         self.cards_names = {}
         self.names = {}
@@ -103,7 +105,7 @@ class CardsManager:
                     else:
                         self.names[k.get("name")] = [k.get("card_sets")[num]["set_code"]]
                     if k.get('name') not in self.cards_names:
-                        self.cards_names[k.get('name').replace(" ","").upper()] = k.get('name')
+                        self.cards_names[unidecode(k.get('name').replace(" ","").upper())] = k.get('name')
             else:
                 pass
             
@@ -116,7 +118,7 @@ class CardsManager:
                         self.names[k.get("name")] = [k.get("card_sets")[num]["set_code"].replace("EN", "FR")]
                         
                     if k.get('name') not in self.cards_names:
-                        self.cards_names[k.get('name').replace(" ","").upper()] = k.get('name')
+                        self.cards_names[unidecode(k.get('name').replace(" ","").upper())] = k.get('name')
             else:
                 pass
     
@@ -138,8 +140,11 @@ class CardsManager:
     def recognize_card(self, ref, name=None, image_path=None):
         probas = difflib.get_close_matches(ref, self.refs.keys(), n=1, cutoff=0.5)
         if name != None:
-            closest = difflib.get_close_matches(name, self.cards_names.keys(), n=1, cutoff=0.5)[0]
-            closest = self.cards_names.get(closest)
+            closest = difflib.get_close_matches(name, self.cards_names.keys(), n=1, cutoff=0.5)
+            if len(closest) != 0:
+                closest = self.cards_names.get(closest[0])
+            else:
+                tk.messagebox.showerror("Card Recognition Error", f"Card '{name}' not found! Error while reading the card, please try again.")
         
         if len(probas) == 0:
             probas = [""]
@@ -213,7 +218,7 @@ class CardsManager:
         image_path = fd.askopenfilename(title = "Choose an image", filetypes=[("Image files", ".jpg .png")])
         if image_path == None or image_path == "":
             return
-        analyser = Analyser(image_path)
+        analyser = Analyser(image_path, self.debug)
         analyser.analyse()
         if analyser.result == None:
             return
@@ -426,3 +431,6 @@ class CardsManager:
             self.master.authentifier.update_filedata()
             self.master.cards_menu.update()
             self.collection_price()
+    
+    def set_debug(self, debug):
+        self.debug = debug

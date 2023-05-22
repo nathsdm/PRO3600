@@ -42,9 +42,6 @@ class Analyser():
 		# Perform Gaussian blur on the input image
 		blur = cv2.GaussianBlur(image, (3, 3), 0)
 
-		# Convert the input image to grayscale
-		gray = cv2.cvtColor(blur, cv2.COLOR_BGR2GRAY)
-
 		# Apply Canny edge detection with limited non-linear edge detection
 		edged = cv2.Canny(blur, 0, 280, L2gradient=True)
 

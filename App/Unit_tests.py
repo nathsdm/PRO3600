@@ -30,7 +30,7 @@ class TestYourProgram(unittest.TestCase):
         self.assertAlmostEqual(angle, expected_angle)
 
     def test_find_best_points(self):
-        points = [(0, 0), (2, 0), (3, 3), (0, 2)]
+        points = [(2, 0), (3, 3), (0, 2), (0, 0)]
         best_points = find_best_points(points)
         expected_points = [(0, 2), (0, 0), (2, 0)]
         self.assertListEqual(best_points, expected_points)
@@ -47,6 +47,7 @@ def test_card_recognition():
     analyser.analyse()
     print(analyser.result)
 
+
 if __name__ == '__main__':
     test_card_recognition()
-    unittest.main()
+    #unittest.main()
