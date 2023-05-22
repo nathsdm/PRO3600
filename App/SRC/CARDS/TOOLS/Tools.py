@@ -4,9 +4,12 @@ import sys
 import pytesseract
 import os
 import math
+import tkinter as tk
 
-
-pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+try:
+    pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+except:
+    tk.messagebox.showerror("Error", "Tesseract-OCR is not installed on your computer. Please install it to use this feature.")
 
 
 def order_points(pts):

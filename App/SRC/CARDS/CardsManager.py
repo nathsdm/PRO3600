@@ -1,7 +1,6 @@
 import SRC.CARDS.cardinfo as cardinfo
 from SRC.CARDS.Card import Card
 import os
-import random
 import difflib
 from urllib.request import urlretrieve
 import tkinter as tk
@@ -11,7 +10,6 @@ from functools import partial
 from SRC.CARDS.Analyser import Analyser
 from SRC.CARDS.TOOLS.Tools import *
 from tkinter import filedialog as fd
-import cv2
 import numpy as np
 from tkinter import ttk
 

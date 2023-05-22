@@ -1,7 +1,7 @@
 """
 Main.py
 
-This script is the main entry point for the BT application.
+This script is the main entry point for the Yugioh trading application.
 """
 
 #------------------------------------------------------------#

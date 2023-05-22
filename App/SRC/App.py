@@ -6,8 +6,6 @@ This script describes the App class.
 
 #------------------------------------------------------------#
 
-import traceback
-
 import tkinter as tk
 from tkinter import font
 from PIL import Image, ImageTk
