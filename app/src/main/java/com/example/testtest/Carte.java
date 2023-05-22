@@ -1,43 +1,82 @@
 package com.example.testtest;
 
 
+import androidx.annotation.NonNull;
+import androidx.room.*;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Scanner;
 
+@Entity
 public class Carte {
-    //PARTIE 1 : IMAGE DE LA CARTE
-    private File image;//photo de la carte
+    // PARTIE 1 : IMAGE DE LA CARTE
+    @Ignore
+    private File image; // photo de la carte
 
-    //PARTIE 2 : INFORMATION / TEXTE ECRIT SUR LA CARTE
-    private String code; //code de la carte X
-    private String name; //nom inscrit sur la carte X
-    private String name_en; //nom de la carte en anglais X
-    private String categorie; //monstre, magie, piège
-    private String rarete; //common, rare, super rare, ..., rareté de la carte, se voit avec les éléments brillants de la carte.
+    // PARTIE 2 : INFORMATION / TEXTE ECRIT SUR LA CARTE
+    @PrimaryKey
+    @NonNull
+    @ColumnInfo(name = "code")
+    private String code; // code de la carte X
+
+    @ColumnInfo(name = "name")
+    private String name; // nom inscrit sur la carte X
+
+    @Ignore
+    private String name_en; // nom de la carte en anglais X
+
+    @Ignore
+    private String categorie; // monstre, magie, piège
+
+    @ColumnInfo(name = "rarete")
+    private String rarete; // common, rare, super rare, ..., rareté de la carte, se voit avec les éléments brillants de la carte.
+
+    @Ignore
     private String effet;
-    private boolean first_ed; //si c'est une première édition ou pas. CHOIX
 
+    @Ignore
+    private boolean first_ed; // si c'est une première édition ou pas. CHOIX
+
+    @ColumnInfo(name = "frameType")
     private String frameType;
 
+    @ColumnInfo(name = "description")
     private String description;
 
-    //PARTIE 3 : LIENS, INFORMATIONS SUPLéMENTAIRES
-    private String set_long;//nom complet du set; X
-    private String lien_cm; //lien CardMarket X
-    private String lien_ygopro_name; //lien vers la page YGOPRO dont on pull le prix et les informations. X
-    private float prix; //le prix de la carte
-    private String lang_id; // les 2 lettres qui indiquent la langue X
-    private String etat; // état de la carte, arbitraire, uniquement pour le lien CardMarket. CHOIX
-    private String marche; // possédée (de base), wanted (non-possédée, influe sur la photo), vitrine(automatiquement dans une liste spéciale). CHOIX
+    // PARTIE 3 : LIENS, INFORMATIONS SUPLéMENTAIRES
+    @ColumnInfo(name = "set_long")
+    private String set_long; // nom complet du set; X
 
+    @Ignore
+    private String lien_cm; // lien CardMarket X
+
+    @Ignore
+    private String lien_ygopro_name; // lien vers la page YGOPRO dont on pull le prix et les informations. X
+
+    @ColumnInfo(name = "prix")
+    private float prix; // le prix de la carte
+
+    @Ignore
+    private String lang_id; // les 2 lettres qui indiquent la langue X
+
+    @Ignore
+    private String etat; // état de la carte, arbitraire, uniquement pour le lien CardMarket. CHOIX
+
+    @Ignore
+    private String marche; // possédée (de base), wanted (non-possédée, influe sur la photo), vitrine(automatiquement dans une liste spéciale). CHOIX
 //c'est pas super pratique tout ça, mais j'ai du mal à voir un découpage des méthodes qui colle bien et qui soit moins compliqué
     //découper en monstre / magie / piege ?
 
+   // private int quantite = 1; //nombre de copies de la carte
 
 
-    public Carte(String code, String nom)throws IOException { //builder1
+
+   /* public Carte(String code, String nom)throws IOException { //builder1
 
         this.code = code;
         this.name = nom;
@@ -82,9 +121,14 @@ public class Carte {
         this.prix=getPriceFromYGO_int(set_info);
         this.lien_cm=get_CMlink();
     }
+*/
+
+    public Carte(){ //le type de database utilisé pour enregister les collections localement necessite un constructeur vide.
+
+    }
 
 
-    public Carte(String code_in)throws IOException { //builder1
+    public void init(String code_in)throws IOException{ //correspond au constructeur de la carte
         this.code = code_in;
         this.lang_id = code.substring(code.indexOf('-')+1);
         this.lang_id = this.lang_id.substring(0,2);
@@ -114,6 +158,7 @@ public class Carte {
         this.frameType = nomToFrameType(name);
         this.name_en = this.name;
         this.lien_ygopro_name = makeYGOPRO_link_no_language(this.name);
+        this.description = nomToDescription(name);
         String out_ygopro = new Scanner(new URL(lien_ygopro_name).openStream(), "UTF-8").useDelimiter("\\A").next();
 
         String card_sets = "";
@@ -139,12 +184,13 @@ public class Carte {
         this.lien_cm=get_CMlink();
     }
 
+
     @Override
     public String toString() {
-        return this.getName();  // this will be displayed in the dropdown
+        return this.getName();  // nécessaire pour les menus déroulants.
     }
 
-    public static Object attempt_card(String name_in, String code_in)throws IOException{
+   /* public static Carte attempt_card(String name_in, String code_in)throws IOException, ExpectedException{
         String lang_id = code_in.substring(code_in.indexOf('-')+1);
         lang_id = lang_id.replaceAll("\\d","");
         if (lang_id.length()>2){
@@ -153,30 +199,32 @@ public class Carte {
         code_in = code_in.substring(0,code_in.indexOf("-")+1)+lang_id;
         //on s'assure que le code est incomplet.
 
-        String res = Carte.isItReal(code_in,name_in);
-        if (res.indexOf("0")!=0){
-            return(res.substring(1));
+        try{
+            String res = Carte.isItReal(code_in,name_in);
+            String code_full = code_in+res.substring((res.length()-3), res.length());
+            String type_got = Carte.whatType(name_in,code_full);
+            Carte card1;
+            switch (type_got){
+                case "Monster":
+                    card1 = new Carte_monster(code_full,name_in);
+                    break;
+                case "Spell":
+                    card1 = new Carte_spell(code_full,name_in);
+                    break;
+                case "Trap":
+                    card1 = new Carte_trap(code_full,name_in);
+                    break;
+                default:
+                    card1 = new Carte(code_full,name_in);
+            }
+            return(card1);
         }
-        String code_full = code_in+res.substring((res.length()-3), res.length());
-        String type_got = Carte.whatType(name_in,code_full);
-        Carte card1;
-        switch (type_got){
-            case "Monster":
-                card1 = new Carte_monster(code_full,name_in);
-                break;
-            case "Spell":
-                card1 = new Carte_spell(code_full,name_in);
-                break;
-            case "Trap":
-                card1 = new Carte_trap(code_full,name_in);
-                break;
-            default:
-                card1 = new Carte(code_full,name_in);
+        catch (Exception e){
+            throw new ExpectedException("Il y a eu un problème : vérifiez votre connection internet, ou les informations rentrées.");
         }
-        return(card1);
-    }
+    }*/
 
-    public static Object attempt_card(String code_in)throws IOException{
+   /* public static Carte attempt_card(String code_in)throws IOException, ExpectedException{
         String lang = code_in.substring(code_in.indexOf("-")+1,code_in.indexOf("-")+3).replaceAll("\\d","");
 
         String code_norm; //code anglais pour YGO_prices et YGOpro avec le code.
@@ -196,28 +244,38 @@ public class Carte {
                     break;
             }
         }
-        String res = Carte.isItReal(code_norm);
-        if (res.indexOf("0")!=0){
-            return(res.substring(1));
+        try{
+            String name_in = Carte.isItReal(code_norm);
+            String type_got;
+            try{
+                type_got = Carte.whatType(name_in,code_norm);
+            }
+            catch(Exception e){
+                throw e;
+            }
+            Carte card;
+
+            switch (type_got){
+                case "Monster":
+                    card = new Carte_monster(code_in);
+                    break;
+                case "Spell":
+                    card = new Carte_spell(code_in);
+                    break;
+                case "Trap":
+                    card = new Carte_trap(code_in);
+                    break;
+                default:
+                    throw new ExpectedException("La categorie de cette carte n'est pas reconnue.");
+            }
+
+
+            return(card);
         }
-        String name_in=res.substring(1);
-        String type_got = Carte.whatType(name_in,code_norm);
-        Carte card;
-        switch (type_got){
-            case "Monster":
-                card = new Carte_monster(code_in);
-                break;
-            /*case "Spell":
-                card = new Carte_spell(code_in);
-                break;
-            case "Trap":
-                card = new Carte_trap(code_in);
-                break;*/
-            default:
-                card = new Carte(code_in);
+        catch(Exception e){
+            throw new ExpectedException("Il y a eu un problème : vérifiez votre connection internet, ou les informations rentrées.");
         }
-        return(card);
-    }
+    }*/
     public void Afficher(){
         System.out.println("Code sur la carte : "+this.code);
         System.out.println("Nom de la carte : "+this.name);
@@ -266,7 +324,7 @@ public class Carte {
         return(lien);
     }
 
-    public static String isItReal(String code_inc, String name)throws IOException{
+ /*   public static String isItReal(String code_inc, String name)throws IOException,ExpectedException{
         String ret = "";
         String box = code_inc.substring(0,code_inc.indexOf("-"));
         String link_name = makeYGOPRO_link(name,code_inc);
@@ -274,55 +332,70 @@ public class Carte {
             String out_name = new Scanner(new URL(link_name).openStream(), "UTF-8").useDelimiter("\\A").next();
             if (out_name.indexOf(box)!=-1){
                 ret = out_name.substring(out_name.indexOf(box));
-                ret = "0"+ret.substring(0,ret.indexOf("\""));
+                ret = ret.substring(0,ret.indexOf("\""));
 
             }
             else {
-                ret = "1Le code en entrée ne correspond pas.";
+                throw new ExpectedException("Le code en entrée ne correspond pas.");
             }
 
         }
         catch (Exception e){
-            ret = "2Le nom de la carte ne correspond pas.";
-
+            throw new ExpectedException("Le nom de la carte ne correspond pas.");
         }
-
         return(ret);
     }
 
-    public static String isItReal(String codefull_norm)throws IOException{
+    public static String isItReal(String codefull_norm)throws IOException, ExpectedException {
         String ret = "";
 
         String link_name = makeYGOPRO_setlink(codefull_norm);
-        System.out.println(link_name);
         try {
             String out_name = new Scanner(new URL(link_name).openStream(), "UTF-8").useDelimiter("\\A").next();
-            ret="0"+getInfoFromYGO_String(out_name,"name");
+            ret = getInfoFromYGO_String(out_name, "name");
+
+        } catch (Exception e) {
+            throw new ExpectedException("Le code n'a pas été reconnu.");
+        }
+
+        return (ret);
+    }*/
+
+    public static boolean goodCodeOrBadCode(String code)throws IOException{ //return true si un code est valide, false sinon
+        boolean ret = true;
+
+        String url = "https://db.ygoprodeck.com/api/v7/cardsetsinfo.php?setcode=" + code;
+        Document doc = Jsoup.connect(url).ignoreContentType(true).get();
+        String text = doc.body().text();
+        String firstSevenChars = text.substring(0, 7);
+        if (firstSevenChars == "{\"error"){
+            ret = false;
+        }
+        return (ret);
+
+    }
+
+
+    public static String whatType (String name_in,String code_in)throws IOException, ExpectedException{
+        String link = makeYGOPRO_link(name_in,code_in);
+        try{
+            String out_prices = new Scanner(new URL(link).openStream(), "UTF-8").useDelimiter("\\A").next();
+            String card_type= getInfoFromYGO_String(out_prices,"type");
+            if (card_type.indexOf("Monster")!=-1){
+                return("Monster");
+            }
+            if (card_type.indexOf("Spell")!=-1) {
+                return ("Spell");
+            }
+            if(card_type.indexOf("Trap")!=-1) {
+                return("Trap");
+            }
+            throw new ExpectedException("Erreur, la catégorie de la carte n'a pas été reconnue.");
 
         }
         catch (Exception e){
-            ret = "2Le code n'a pas été reconnu.";
-
+            throw new ExpectedException("Erreur, vérifiez votre connection internet ou les informations entrées.");
         }
-
-        return(ret);
-    }
-
-    public static String whatType (String name_in,String code_in)throws IOException{
-        String link = makeYGOPRO_link(name_in,code_in);
-        System.out.println(name_in+code_in);
-        String out_prices = new Scanner(new URL(link).openStream(), "UTF-8").useDelimiter("\\A").next();
-        String card_type= getInfoFromYGO_String(out_prices,"type");
-        if (card_type.indexOf("Monster")!=-1){
-            return("Monster");
-        }
-        if (card_type.indexOf("Spell")!=-1) {
-            return ("Spell");
-        }
-        if(card_type.indexOf("Trap")!=-1) {
-            return("Trap");
-        }
-        return ("1Erreur");
     }
 
     public static String getInfoFromYGO_String(String page, String info){
@@ -414,8 +487,8 @@ public class Carte {
         try {
             String cardset = "https://db.ygoprodeck.com/api/v7/cardinfo.php?name=" + nom;
             String out = new Scanner(new URL(cardset).openStream(), "UTF-8").useDelimiter("\\A").next();
-            int p1 = out.indexOf("\"desc\":\"") + "\"desc\":\"".length();
-            int p2 = out.indexOf("\",\"race\"");
+            int p1 = out.indexOf("\"desc\":") + "\"desc\":".length();
+            int p2 = out.indexOf(",\"race");
             return out.substring(p1, p2);
         } catch (Exception e) {
             e.printStackTrace();
@@ -581,5 +654,9 @@ public class Carte {
 
     public void setEffet(String effet) {
         this.effet = effet;
+    }
+
+    public void setDescription(String description){
+        this.description = description;
     }
 }

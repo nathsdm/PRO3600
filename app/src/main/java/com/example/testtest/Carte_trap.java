@@ -5,7 +5,9 @@ import java.net.URL;
 import java.util.Scanner;
 
 public class Carte_trap extends Carte {
-    private String carac;
+
+    public Carte_trap(){}
+    /*private String carac;
     public Carte_trap(String code, String nom) throws IOException {
         super(code, nom);
         this.setCategorie("trap");
@@ -23,5 +25,5 @@ public class Carte_trap extends Carte {
     public void Afficher(){
         super.Afficher();
         System.out.println(carac);
-    }
+    }*/
 }

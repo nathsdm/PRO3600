@@ -4,8 +4,11 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Scanner;
 
-public class Carte_monster extends Carte {
-    private String attributs; //pour les monstres uniquement (lumière, ténèbres, vent, feu, eau, terre, divin). Pour les magies ou pièges: null
+public class Carte_monster extends Carte{
+    public Carte_monster(){
+
+    }
+  /*  private String attributs; //pour les monstres uniquement (lumière, ténèbres, vent, feu, eau, terre, divin). Pour les magies ou pièges: null
     private String[] type; //type, supertype, effet, ...
     //pour les monstres : guerrier, magicien, ... / fusion, xyz, toon, ... / effet ou normal (à noter comme SANS EFFET)
     private int atk;
@@ -74,6 +77,6 @@ public class Carte_monster extends Carte {
         else{
             System.out.println("Valeur Lien : "+linkval);
         }
-    }
+    }*/
 }
 

@@ -5,7 +5,9 @@ import java.net.URL;
 import java.util.Scanner;
 
 public class Carte_spell extends Carte {
-    private String carac;
+
+    public Carte_spell(){}
+    /*private String carac;
     public Carte_spell(String code, String nom) throws IOException {
         super(code, nom);
         this.setCategorie("spell");
@@ -23,5 +25,5 @@ public class Carte_spell extends Carte {
     public void Afficher(){
         super.Afficher();
         System.out.println(carac);
-    }
+    }*/
 }

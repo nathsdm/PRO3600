@@ -1,6 +1,7 @@
 package com.example.testtest;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 
@@ -51,6 +52,8 @@ public class SecondActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
+        getSupportActionBar().setTitle("Informations sur la carte");
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
 
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
@@ -65,6 +68,7 @@ public class SecondActivity extends AppCompatActivity {
         String price = getIntent().getStringExtra("price");
         String rarete = getIntent().getStringExtra("rarete");
         String desc = getIntent().getStringExtra("desc");
+        String quantite = getIntent().getStringExtra("quantite");
 
 
 
@@ -93,8 +97,7 @@ public class SecondActivity extends AppCompatActivity {
         TextView textView4 = findViewById(R.id.textView4);
         textView4.setText("Rarete : " + rarete);
 
-        TextView textView5 = findViewById(R.id.textView5);
-        textView5.setText(desc);
+
 
 
 
