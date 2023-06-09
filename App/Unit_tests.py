@@ -49,5 +49,5 @@ def test_card_recognition():
 
 
 if __name__ == '__main__':
-    test_card_recognition()
-    #unittest.main()
+    #test_card_recognition()
+    unittest.main()
