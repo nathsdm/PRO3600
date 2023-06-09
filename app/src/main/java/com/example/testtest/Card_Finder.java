@@ -300,7 +300,7 @@ public class Card_Finder {
         Mat OCRcode = OCRtraitement(croppedCode);
         Mat OCRnom = OCRtraitement(croppedNom);
 
-        return new Mat[]{OCRcode, OCRnom};
+        return new Mat[]{OCRcode, OCRnom,image};
     }
 
 

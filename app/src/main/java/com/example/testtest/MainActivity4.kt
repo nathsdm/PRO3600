@@ -345,8 +345,8 @@ class MainActivity4 : AppCompatActivity() {
                 })
 
                 // Afficher la première image uniquement
-                if (i == 0) {
-                    //imageView.setImageBitmap(resultBitmap)
+                if (i == 2) {
+                    imageView.setImageBitmap(resultBitmap)
                 }
 
                 // Save the image file
@@ -358,7 +358,7 @@ class MainActivity4 : AppCompatActivity() {
                 }
             }
         } else {
-            //imageView.setImageDrawable(null)
+            imageView.setImageDrawable(null)
             Toast.makeText(this@MainActivity4, "Carte non détectée", Toast.LENGTH_SHORT).show()
             showPopUpNon()
         }
