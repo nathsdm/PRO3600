@@ -118,9 +118,9 @@ class Analyser():
 			cv2.waitKey(0)
 			cv2.destroyAllWindows()
    
-		cv2.imwrite(os.path.join("App", "DATA", "CARDS", "IMAGES", "test.jpg"), warped)
+		cv2.imwrite(os.path.join("DATA", "CARDS", "IMAGES", "test.jpg"), warped)
 		img = warped[0:w//8, 0:h]
-		cv2.imwrite(os.path.join("App", "SRC", "CARDS", "TOOLS", "name.jpg"), img)
+		cv2.imwrite(os.path.join("SRC", "CARDS", "TOOLS", "name.jpg"), img)
 		img = warped[45*w//64:49*w//64, 2*h//3:49*h//50]
-		cv2.imwrite(os.path.join("App", "SRC", "CARDS", "TOOLS", "id.jpg"), img)
+		cv2.imwrite(os.path.join("SRC", "CARDS", "TOOLS", "id.jpg"), img)
 		self.result = (get_id(w, h), get_name(w, h))

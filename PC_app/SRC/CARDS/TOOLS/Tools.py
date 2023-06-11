@@ -66,7 +66,7 @@ def four_point_transform(image, pts):
 
 def get_id(w, h):
     
-    img = cv2.imread(os.path.join("App", "SRC", "CARDS", "TOOLS", "id.jpg"))
+    img = cv2.imread(os.path.join("SRC", "CARDS", "TOOLS", "id.jpg"))
 
     # Rescale the image
     img = cv2.resize(img, None, fx=3, fy=3, interpolation=cv2.INTER_CUBIC)
@@ -102,7 +102,7 @@ def get_id(w, h):
 
 def get_name(w, h):
     
-    img = cv2.imread(os.path.join("App", "SRC", "CARDS", "TOOLS", "name.jpg"))
+    img = cv2.imread(os.path.join("SRC", "CARDS", "TOOLS", "name.jpg"))
 
     # Adjust contrast
     alpha = 1.5

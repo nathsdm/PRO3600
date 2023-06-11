@@ -28,7 +28,7 @@ class CardDescWindow(tk.Frame):
     def setup_images(self):
         """Define the images used in the card description window."""
         card_img = ImageTk.PhotoImage(
-            Image.open(os.path.join("App", "DATA", "CARDS", "IMAGES", self.card.image_name + ".jpg"))
+            Image.open(os.path.join("DATA", "CARDS", "IMAGES", self.card.image_name + ".jpg"))
         )
         self.images.append(tk.Label(self, image=card_img))
         self.images[-1].image = card_img
@@ -108,9 +108,9 @@ class CardDescWindow(tk.Frame):
         except:
             pass
         if self.card.set_code != self.edition.get():
-            with open(os.path.join("App", "DATA", "CARDS", "cards.txt"), "r") as file:
+            with open(os.path.join("DATA", "CARDS", "cards.txt"), "r") as file:
                 lines = file.readlines()
-            with open(os.path.join("App", "DATA", "CARDS", "cards.txt"), "w") as file:
+            with open(os.path.join("DATA", "CARDS", "cards.txt"), "w") as file:
                 for line in lines:
                     if line.strip("\n") == self.card.set_code:
                         file.write(self.edition.get())

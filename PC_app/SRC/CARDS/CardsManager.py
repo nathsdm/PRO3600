@@ -22,13 +22,13 @@ class CardsManager:
         self.cards = []
         self.cards_names = {}
         self.names = {}
-        self.cards_path = os.path.join("App", "DATA", "CARDS", "cards.txt")
+        self.cards_path = os.path.join("DATA", "CARDS", "cards.txt")
         self.info_fr = cardinfo.info_fr["data"]
         self.info_en = cardinfo.info_en["data"]
         self.refs = {}
         self.price = 0
         self.collections = []
-        path = os.path.join("App", "DATA", "CARDS", "IMAGES")        
+        path = os.path.join("DATA", "CARDS", "IMAGES")        
         if os.path.isdir(path):
             print("Images folder found")
         else:
@@ -49,10 +49,10 @@ class CardsManager:
         return str(self.price)
         
     def setup_collections(self):
-        if os.path.isfile(os.path.join("App", "DATA", "COLLECTIONS", "COLLECTION_1.txt")):
-            for filename in os.listdir(os.path.join("App", "DATA", "COLLECTIONS")):
+        if os.path.isfile(os.path.join("DATA", "COLLECTIONS", "COLLECTION_1.txt")):
+            for filename in os.listdir(os.path.join("DATA", "COLLECTIONS")):
                 collection = []
-                with open(file=os.path.join("App", "DATA", "COLLECTIONS", filename), mode="r") as f:
+                with open(file=os.path.join("DATA", "COLLECTIONS", filename), mode="r") as f:
                     for line in f:
                         collection.append(line.rstrip('\n'))
                 self.collections.append([collection[0][4:], collection[1:]])
@@ -67,12 +67,12 @@ class CardsManager:
         Defines the cards used in the cards menu.
         """
         self.cards_ref = []
-        if os.path.isdir(os.path.join("App", "DATA", "CARDS")):
+        if os.path.isdir(os.path.join("DATA", "CARDS")):
             print("Cards folder found")
         else:
-            os.makedirs(name=os.path.join("App", "DATA", "CARDS"))
+            os.makedirs(name=os.path.join("DATA", "CARDS"))
         if os.path.isfile(self.cards_path):
-            for ref in open(file=os.path.join("App", "DATA", "CARDS", "cards.txt"), mode="r"):
+            for ref in open(file=os.path.join("DATA", "CARDS", "cards.txt"), mode="r"):
                 if ref != "UNKNOWN":
                     self.cards_ref.append(ref.rstrip('\n'))
         else:
@@ -206,7 +206,7 @@ class CardsManager:
         """
         # Download the image from the URL
         filename = slugify(card.name) + ".jpg"
-        path = os.path.join("App", "DATA", "CARDS", "IMAGES")
+        path = os.path.join("DATA", "CARDS", "IMAGES")
         image_path = os.path.join(path, filename)
         
         if not os.path.isfile(image_path):
@@ -231,7 +231,7 @@ class CardsManager:
         collection_window.title("Create Collection")
         collection_window.geometry("800x600")
         collection_window.resizable(False, False)
-        collection_window.iconbitmap(os.path.join("App", "DATA", "IMAGES", "icone.ico"))
+        collection_window.iconbitmap(os.path.join("DATA", "IMAGES", "icone.ico"))
         collection_window.config(bg="#1e1e1e")
         collection_window.focus_force()
         collection_window.grab_set()
@@ -261,9 +261,9 @@ class CardsManager:
                 self.master.cards_menu.update_collections(self.collections)
                 collection_window.destroy()
                 tk.messagebox.showinfo("Collection Created", f"Collection '{collection_name}' created successfully!")
-                if not os.path.isdir(os.path.join("App", "DATA", "COLLECTIONS")):
-                    os.mkdir(os.path.join("App", "DATA", "COLLECTIONS"))
-                with open(os.path.join("App", "DATA", "COLLECTIONS", "COLLECTION_" + str(len(self.collections)) + ".txt"), "w") as f:
+                if not os.path.isdir(os.path.join("DATA", "COLLECTIONS")):
+                    os.mkdir(os.path.join("DATA", "COLLECTIONS"))
+                with open(os.path.join("DATA", "COLLECTIONS", "COLLECTION_" + str(len(self.collections)) + ".txt"), "w") as f:
                     f.write("nom:" + collection_name + "\n")
                     for card in selected_cards:
                         f.write(card.set_code + "\n")
@@ -326,7 +326,7 @@ class CardsManager:
         collection_window.title("Create Collection")
         collection_window.geometry("800x600")
         collection_window.resizable(False, False)
-        collection_window.iconbitmap(os.path.join("App", "DATA", "IMAGES", "icone.ico"))
+        collection_window.iconbitmap(os.path.join("DATA", "IMAGES", "icone.ico"))
         collection_window.config(bg="#1e1e1e")
         collection_window.focus_force()
         collection_window.grab_set()
@@ -340,10 +340,10 @@ class CardsManager:
                         print(f"Deleted Collection '{collection_name}'")
                         self.master.cards_menu.update_collections(self.collections)
                         collection_window.destroy()
-                        os.remove(os.path.join("App", "DATA", "COLLECTIONS", "COLLECTION_" + str(i+1) + ".txt"))
-                        for file in os.listdir(os.path.join("App", "DATA", "COLLECTIONS")):
+                        os.remove(os.path.join("DATA", "COLLECTIONS", "COLLECTION_" + str(i+1) + ".txt"))
+                        for file in os.listdir(os.path.join("DATA", "COLLECTIONS")):
                             if file[11:-4] > str(i+1):
-                                os.rename(os.path.join("App", "DATA", "COLLECTIONS", file), os.path.join("App", "DATA", "COLLECTIONS", "COLLECTION_" + str(int(file[11:-4])-1) + ".txt"))
+                                os.rename(os.path.join("DATA", "COLLECTIONS", file), os.path.join("DATA", "COLLECTIONS", "COLLECTION_" + str(int(file[11:-4])-1) + ".txt"))
                                 
                         tk.messagebox.showinfo("Collection Deleted", f"Collection '{collection_name}' deleted successfully!")
                         break
@@ -396,9 +396,9 @@ class CardsManager:
         self.collection_price()
         
     def delete_card(self, card, mode=0):
-        with open(os.path.join("App", "DATA", "CARDS", "cards.txt"), "r") as f:
+        with open(os.path.join("DATA", "CARDS", "cards.txt"), "r") as f:
             lines = f.readlines()
-        with open(os.path.join("App", "DATA", "CARDS", "cards.txt"), "w") as f:
+        with open(os.path.join("DATA", "CARDS", "cards.txt"), "w") as f:
             count = 0
             for line in lines:
                 if line.strip("\n") == card.set_code and count == 0:
@@ -421,10 +421,10 @@ class CardsManager:
     def reset(self):
         message = "Êtes-vous sûr de vouloir réinitialiser votre collection ?"
         if tk.messagebox.askyesno("Réinitialiser", message):
-            with open(os.path.join("App", "DATA", "CARDS", "cards.txt"), "w") as f:
+            with open(os.path.join("DATA", "CARDS", "cards.txt"), "w") as f:
                 f.write("")
-            for filename in os.listdir(os.path.join("App", "DATA", "COLLECTIONS")):
-                os.remove(os.path.join("App", "DATA", "COLLECTIONS", filename))
+            for filename in os.listdir(os.path.join("DATA", "COLLECTIONS")):
+                os.remove(os.path.join("DATA", "COLLECTIONS", filename))
             self.collections = []
             self.cards = []
             self.cards_ref = []

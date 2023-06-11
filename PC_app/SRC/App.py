@@ -43,13 +43,12 @@ class App(tk.Tk):
         except:
             pass
         
-        image = Image.open(os.path.join("APP", "DATA", "IMAGES", "yugi_transparent.png"))
+        image = Image.open(os.path.join("DATA", "IMAGES", "yugi_transparent.png"))
         image = image.resize((400, 200), Image.ANTIALIAS)
         test = ImageTk.PhotoImage(image)
         
         #Define the size of the window or frame
         self.geometry("{}x{}" .format(test.width(), test.height()))
-        #self.iconphoto(True, PhotoImage(os.path.join(os.getcwd(), "DATA", "IMAGES", "icone.png")))
 
         #Define the label of the window
         tk.Label(image=test, background="chocolate4", border=0).pack()
@@ -98,7 +97,7 @@ class App(tk.Tk):
         except:
             pass
         self.title("Yugioh trading app")
-        photo = Image.open(os.path.join("APP", "DATA", "IMAGES", "icone.png"))
+        photo = Image.open(os.path.join("DATA", "IMAGES", "icone.png"))
         photo = ImageTk.PhotoImage(photo)
         self.iconphoto(True, photo)
         self.attributes("-fullscreen", True)
@@ -166,6 +165,6 @@ class App(tk.Tk):
         """
         Log out the user.
         """
-        os.remove(os.path.join("APP", "token.json"))
+        os.remove("token.json")
         self.quit()
     

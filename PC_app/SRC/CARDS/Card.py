@@ -18,7 +18,7 @@ class Card():
         self.find_card()
         self.image = self.card_info.get("card_images")[0].get("image_url")
         self.image_name = slugify(self.name)
-        self.image_path = os.path.join(os.getcwd(), "App", "DATA", "CARDS", "IMAGES", self.image_name + ".jpg")
+        self.image_path = os.path.join(os.getcwd(), "DATA", "CARDS", "IMAGES", self.image_name + ".jpg")
         self.infos = []
         self.setup_infos()
         

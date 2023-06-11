@@ -22,15 +22,15 @@ class GoogleAuth:
         self.master = master
         self.creds = None
         self.file_id = None
-        self.path = os.path.join("App", "DATA", "CARDS", "cards.txt")
+        self.path = os.path.join("DATA", "CARDS", "cards.txt")
         self.local_fd = io.FileIO(self.path, mode="w")
         # If modifying these scopes, delete the file token.json.
         self.SCOPES = ['https://www.googleapis.com/auth/drive.appdata']
         # The file token.json stores the user's access and refresh tokens, and is
         # created automatically when the authorization flow completes for the first
         # time.
-        if os.path.exists(os.path.join("App", "token.json")):
-            self.creds = Credentials.from_authorized_user_file(os.path.join("App", "token.json"), self.SCOPES)
+        if os.path.exists("token.json"):
+            self.creds = Credentials.from_authorized_user_file("token.json", self.SCOPES)
         # If there are no (valid) credentials available, let the user log in.
         if not self.creds or not self.creds.valid:
             self.master.withdraw()
@@ -39,17 +39,17 @@ class GoogleAuth:
                     self.creds.refresh(Request())
                 except:
                     tk.messagebox.showerror(title="Error", message="An error occured while refreshing the token. Check your connection and please try again.")
-                    os.remove(path=os.path.join("App", "token.json"))
+                    os.remove("token.json")
                     self.master.destroy()
                     exit()
                     return
                     
             else:
-                flow = InstalledAppFlow.from_client_secrets_file(os.path.join("App", "credentials.json"), self.SCOPES)
+                flow = InstalledAppFlow.from_client_secrets_file("credentials.json", self.SCOPES)
                 self.creds = flow.run_local_server(port=0)
             self.master.deiconify()
             # Save the credentials for the next run
-            with open(os.path.join("App", "token.json"), 'w') as token:
+            with open("token.json", 'w') as token:
                 token.write(self.creds.to_json())
         self.service = build('drive', 'v3', credentials=self.creds)
         try:
@@ -73,7 +73,7 @@ class GoogleAuth:
             if not F"COLLECTION_{collection_id}.txt" in [file.get('name') for file in list_files]:
                 done = True
             else:
-                self.path = os.path.join("App", "DATA", "COLLECTIONS", F"COLLECTION_{collection_id}.txt")
+                self.path = os.path.join("DATA", "COLLECTIONS", F"COLLECTION_{collection_id}.txt")
                 self.local_fd = io.FileIO(self.path, mode="w")
                 self.file_id = [file.get('id') for file in list_files if file.get('name') == F"COLLECTION_{collection_id}.txt"][0]
                 self.download_file()
@@ -147,12 +147,13 @@ class GoogleAuth:
 
     def update_filedata(self):
         self.reset()
-        self.path = os.path.join("App", "DATA", "CARDS", "CARDS.txt")
+        self.path = os.path.join("DATA", "CARDS", "CARDS.txt")
         self.upload_appdata(target="CARDS.txt")
-        for filename in os.listdir(os.path.join("App", "DATA", "COLLECTIONS")):
-            if filename.startswith("COLLECTION_"):
-                self.path = os.path.join("App", "DATA", "COLLECTIONS", filename)
-                self.upload_appdata(filename)
+        if os.path.exists(os.path.join("DATA", "COLLECTIONS")):
+            for filename in os.listdir(os.path.join("DATA", "COLLECTIONS")):
+                if filename.startswith("COLLECTION_"):
+                    self.path = os.path.join("DATA", "COLLECTIONS", filename)
+                    self.upload_appdata(filename)
                         
     def list_appdata(self):
         """
