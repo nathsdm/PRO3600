@@ -1,4 +1,0 @@
-nom:global
-SDCS-FR009
-SDCS-FR010
-EndOfglobal
