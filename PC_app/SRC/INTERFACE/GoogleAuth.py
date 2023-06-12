@@ -174,4 +174,4 @@ class GoogleAuth:
             tk.messagebox.showerror(title="Error", message="An error occured while listing the files. Check your connection and please try again.")
             response = None
 
-        return response.get('files')
+        return response.get('files') if response else []

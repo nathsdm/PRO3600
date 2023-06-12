@@ -66,8 +66,11 @@ class Card():
         for k in self.card_info.keys():
             print(k, " : ", self.card_info.get(k))
             
-    def add_quantity(self, quantity):
-        self.quantity += quantity
+    def add_quantity(self, new_card=False):
+        self.quantity += 1
+        if(new_card):
+            cards_file = open(os.path.join(os.getcwd(), "DATA", "CARDS", "CARDS.txt"), "a")
+            cards_file.write(self.set_code + "\n")
     
     def quantity_update(self, quantity):
         previous_quantity = self.quantity

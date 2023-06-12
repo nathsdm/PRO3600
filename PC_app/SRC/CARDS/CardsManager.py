@@ -72,9 +72,12 @@ class CardsManager:
         else:
             os.makedirs(name=os.path.join("DATA", "CARDS"))
         if os.path.isfile(self.cards_path):
-            for ref in open(file=os.path.join("DATA", "CARDS", "cards.txt"), mode="r"):
-                if ref != "UNKNOWN":
+            file = open(file=self.cards_path, mode="r+")
+            for ref in file:
+                if ref.strip('/n') != "UNKNOWN":
                     self.cards_ref.append(ref.rstrip('\n'))
+                else:
+                    del ref
         else:
             print("No cards found")
     
@@ -85,8 +88,8 @@ class CardsManager:
             if k in self.cards_ref[:index]:
                 for card in self.cards:
                     if card.set_code == k:
-                        card.add_quantity(1)
-                    break
+                        card.add_quantity()
+                        break
             else:
                 self.find_card(k)
             
@@ -133,6 +136,10 @@ class CardsManager:
         if len(card_name) == 0:
             return "UNKNOWN"
         card_name = card_name[0]
+        for card in self.cards:
+            if card.name == card_name:
+                card.add_quantity(new_card=True)
+                return ref if self.leng == "EN" else ref.replace("EN", "FR")
         self.cards.append(Card(self, ref, card_name, self.info, self.leng))
         self.download_card(self.cards[-1])
         return ref
@@ -167,7 +174,7 @@ class CardsManager:
         card_name = closest
         for card in self.cards:
             if card.name == card_name:
-                card.add_quantity(1)
+                card.add_quantity(new_card=True)
                 return finding if self.leng == "EN" else finding.replace("EN", "FR")
         self.cards.append(Card(self, finding, card_name, self.info, self.leng))
         self.download_card(self.cards[-1])
@@ -324,7 +331,7 @@ class CardsManager:
     def delete_collection(self):
         collection_window = tk.Toplevel(self.master)
         collection_window.title("Create Collection")
-        collection_window.geometry("800x600")
+        collection_window.geometry("600x400")
         collection_window.resizable(False, False)
         collection_window.iconbitmap(os.path.join("DATA", "IMAGES", "icone.ico"))
         collection_window.config(bg="#1e1e1e")
@@ -368,24 +375,90 @@ class CardsManager:
     
     def import_cards(self):
         collection = False
-        file = fd.askopenfilename(title = "Choose a file", filetypes=[("Text files", ".txt")])
+        file = fd.askopenfilename(title="Choose a file", filetypes=[("Text files", ".txt")])
+        if not file:
+            return
         with open(file, "r") as f:
             lines = f.readlines()
         for line in lines:
-            if line.startswith("nom:"):
-                collection_name = line.strip("\n")[4:]
-                self.collections.append([collection_name, []])
-                collection = True
             if collection:
                 self.collections[-1][1].append(line.strip("\n"))
+            if line.startswith("nom:"):
+                collection_name = line.strip("\n")[4:]
+
+                if collection_name in [col[0] for col in self.collections]:
+                    top = tk.Toplevel(self.master)
+                    label = tk.Label(top, text="Collection name already exists. Please enter a different name.",
+                                    font=("Matrix-Bold", 12))
+                    entry = tk.Entry(top)
+
+                    def change_name():
+                        new_collection_name = entry.get()
+                        if new_collection_name in [col[0] for col in self.collections]:
+                            tk.messagebox.showerror("Collection Name Error",
+                                                    "Collection name already exists. Please enter a different name.")
+                        else:
+                            nonlocal collection_name
+                            collection_name = new_collection_name
+                            top.destroy()
+
+                    button = tk.Button(top, text="OK", command=change_name)
+                    label.pack()
+                    entry.pack(side=tk.LEFT, padx=30)
+                    button.pack(side=tk.LEFT)
+                    top.wait_window()  # Wait until the top window is closed
+
+                self.collections.append([collection_name, []])
+                collection = True
+                continue
             ref = self.find_card(line.strip("\n"))
             self.add_card(ref)
+        if collection:
+            if not os.path.isdir(os.path.join("DATA", "COLLECTIONS")):
+                os.mkdir(os.path.join("DATA", "COLLECTIONS"))
+            with open(os.path.join("DATA", "COLLECTIONS", "COLLECTION_" + str(len(self.collections)) + ".txt"), "w") as f:
+                f.write("nom:" + collection_name + "\n")
+                for code in self.collections[-1][1]:
+                    f.write(code + "\n")
+        self.master.cards_menu.update_collections(self.collections)
+        tk.messagebox.showinfo("Import Successful", "Cards imported successfully!")
+
+
+
             
     def export_cards(self):
-        file = fd.asksaveasfile(title = "Choose a file", filetypes=[("Text files", ".txt")])
-        for card in self.cards:
-            file.write(card.set_code)
-            file.write("\n")
+        top = tk.Toplevel(self.master)
+        
+        def choose_location(collection):
+            file = fd.asksaveasfile(title = "Choose a file", filetypes=[("Text files", ".txt")], defaultextension=".txt", initialfile=collection)
+            if not file:
+                return
+            if collection != "global":
+                file.write("nom:" + collection + "\n")
+                for name, cards in self.collections:
+                    if name == collection:
+                        for card in cards:
+                            file.write(card + "\n")
+            else:
+                for card in self.cards:
+                    for i in range(card.quantity):
+                        file.write(card.ref + "\n")
+            tk.messagebox.showinfo("Export Successful", "{} exported successfully!".format(collection))
+            file.close()
+            top.destroy()
+        
+        choose_collection_label = tk.Label(top, text="Choose Collection:")
+        choose_collection_label.pack()
+        
+        choose_collection_combobox_frame = tk.Frame(top)
+        choose_collection_combobox_frame.pack()
+        
+        choose_collection_combobox = ttk.Combobox(choose_collection_combobox_frame, values= ["global"] + [col[0] for col in self.collections])
+        choose_collection_combobox.current(0)
+        choose_collection_combobox.pack(side=tk.LEFT)
+        
+        choose_location_button = tk.Button(top, text="Choose Location", command=lambda: choose_location(choose_collection_combobox.get()))
+        choose_location_button.pack()
     
         
     def add_card(self, ref):
@@ -411,7 +484,6 @@ class CardsManager:
         self.collection_price()
         
     def update_quantity(self, card, quantity):
-        count = 0
         for card_ref in self.cards:
             if card_ref.set_code == card.set_code:
                 card_ref.quantity_update(quantity)
@@ -419,8 +491,8 @@ class CardsManager:
         self.collection_price()
     
     def reset(self):
-        message = "Êtes-vous sûr de vouloir réinitialiser votre collection ?"
-        if tk.messagebox.askyesno("Réinitialiser", message):
+        message = "Confirm reset ?"
+        if tk.messagebox.askyesno("Reset", message):
             with open(os.path.join("DATA", "CARDS", "cards.txt"), "w") as f:
                 f.write("")
             for filename in os.listdir(os.path.join("DATA", "COLLECTIONS")):
