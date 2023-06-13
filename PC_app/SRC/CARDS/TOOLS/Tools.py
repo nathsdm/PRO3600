@@ -132,6 +132,7 @@ def get_name(w, h):
     for char in pre_result:
         if char.isupper():
             result += char
+    print(result)
     return result
 
 def invert_if_needed(img, threshold=60):

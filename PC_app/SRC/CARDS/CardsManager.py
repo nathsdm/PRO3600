@@ -442,7 +442,7 @@ class CardsManager:
             else:
                 for card in self.cards:
                     for i in range(card.quantity):
-                        file.write(card.ref + "\n")
+                        file.write(card.set_code + "\n")
             tk.messagebox.showinfo("Export Successful", "{} exported successfully!".format(collection))
             file.close()
             top.destroy()
@@ -505,4 +505,8 @@ class CardsManager:
             self.collection_price()
     
     def set_debug(self, debug):
+        if debug:
+            tk.messagebox.showinfo("Debug Mode", "Debug mode activated. You can now see the evolution of card detection.")
+        else:
+            tk.messagebox.showinfo("Debug Mode", "Debug mode deactivated.")
         self.debug = debug
