@@ -5,9 +5,25 @@ import pytesseract
 import os
 import math
 import jellyfish
+import tkinter as tk
+from tkinter.filedialog import askopenfilename
+
+try:
+    pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+except Exception as e:
+    user_response = tk.messagebox.askyesno("Tesseract not found", "Did you install Tesseract?")
+    if user_response:
+        tesseract_path = askopenfilename(title="Select Tesseract executable")
+        if tesseract_path and os.path.isfile(tesseract_path) and os.path.basename(tesseract_path) == 'tesseract.exe':
+            pytesseract.pytesseract.tesseract_cmd = tesseract_path
+        else:
+            tk.messagebox.showerror("Invalid Tesseract executable", "Please select a valid Tesseract executable file (.exe) and try again.")
+            exit()
+    else:
+        tk.messagebox.showerror("Tesseract not found", "Please install Tesseract and try again.")
+        exit()
 
 
-pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
 
 def order_points(pts):

@@ -108,6 +108,7 @@ class GoogleAuth:
         except HttpError as error:
             tk.messagebox.showerror(title="Error", message="An error occured while uploading the file. Check your connection and please try again.")
             file = None
+            return
 
         return file.get('id')
 

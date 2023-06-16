@@ -15,9 +15,12 @@ try:
         print("Data retrieved successfully.")
     else:
         messagebox.showerror("Error", f"Failed to retrieve data. Status code: {response.status_code}")
+        exit
 
 except requests.exceptions.RequestException as e:
     messagebox.showerror("Error", f"Failed to retrieve data. Error: {str(e)}")
+    exit
 
 except Exception as e:
     messagebox.showerror("Error", f"An error occurred: {str(e)}")
+    exit
